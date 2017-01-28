@@ -1,0 +1,283 @@
+/*
+Theme Name: 	IvanNikitin.com Total
+Theme URI: 		https://ivannikitin.com
+Description: 	Тема сайта ivannikitin.com, наследует Total
+Author: 		Иван Никитин
+Author URI: 	http://totalwptheme.com
+Template: 		Total
+Version: 		1.1
+*/
+
+/* !!! Parent stylesheet should be loaded from functions.php not using @import !!! */
+
+#site-header.fixed-scroll{
+    z-index: 102;
+}
+.single-product.woocommerce div.product form.cart div.quantity{
+	margin-bottom:10px;
+}
+@media only screen and (max-width: 992px){
+	#top-bar-social.top-bar-right{
+		position: static;
+		left: auto;
+		right: auto;
+		float: none;
+		text-align: center;
+		height: auto;
+		line-height: 1.5em;
+		margin-top: 0;
+		padding-top:10px;
+	}
+	#top-bar-content {
+		float: none;
+		text-align: center;
+	}
+	#top-bar-social a {
+		display: inline-block;
+		float: none;
+	}
+}
+/* Pricing Tables */
+.pricing-plan.group{
+	margin-bottom:20px !important;
+}
+@media (max-width: 910px) and (min-width: 769px){
+	.pricing-plan.group span.price-number{
+		font-size: 42px;
+	}
+}
+
+
+/* ================================ Меню в строку ================================ */
+.inline-menu
+{
+	margin-bottom: 1em;
+	border-bottom: 1px dotted #eee;
+}
+
+.inline-menu li
+{
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.my-account .form-row-first { float: left; width: 48%; }
+.my-account .form-row-last { float: right; width: 48%; }
+
+@media only screen and (max-width: 767px) {
+	.my-account .form-row-first,
+	.my-account .form-row-last
+	{ 
+		float: none; 
+		width: 100%; 
+	}		
+}
+
+/* ================================ Таблица цен ================================ */
+table{
+	width:100%;
+}
+#priceTable thead,
+#priceTable thead td
+{
+	background-color: #ccc;
+	font-weight: bold;
+}
+
+#priceTable td
+{
+	padding: 5px;
+}
+
+#priceTable tr:nth-child(2n)
+{
+	background-color: #eee;
+}
+#priceTable tbody td.priceTablePrice
+{
+	text-align: right;
+}
+
+#priceTable a,
+#priceTable a span
+{
+	color: black;
+	text-decoration: none;
+}
+
+#priceTable a:hover
+{
+	text-decoration: underline;
+}
+#priceTable del:after{
+	content:'';
+	display:block;
+}
+#priceTable thead, #priceTable thead td {
+    background-color: #ccc;
+    font-weight: bold;
+}
+#priceTable td {
+    padding: 5px;
+}
+#priceTable a, #priceTable a span {
+    color: black;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+
+	#priceTable {
+		border: 0;
+	}
+	#priceTable thead {
+		display: none;
+	}
+
+	#priceTable tr {
+		margin-bottom: 10px;
+		display: block;
+		border-bottom: 1px solid #ddd;
+	}
+
+	#priceTable td {
+		display: block;
+		background:#eee;
+		padding:6px 8px;
+	}
+
+	.priceTableTitle{
+		float:left;
+		padding-right:16px;
+	}
+}
+
+/* Список товаров */
+.woocommerce ul.products li.product h3{
+    line-height: normal;
+}
+/* Хлебные крошки налезают на заголовок, когда длинные оба */
+.site-breadcrumbs.position-absolute {
+    position: inherit;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin-top: 0;
+	height:auto;
+	line-height:inherit;
+}
+
+
+/* ================================ Таблица клиентов ================================ */
+.handsontable-container
+{
+	position: relative;
+	left: -20%;
+	width: 2400px;
+}
+
+.htContextMenu table
+{
+	width: 250px !important;
+}
+
+/* =============================== Наша команда ===================================== */
+
+.member-about{
+	margin:2em 0;
+}
+.member-about p{
+	margin-bottom:0.8em;
+}
+
+@media(min-width:360px){
+	ul.info_member{
+		display:table;
+	}
+	ul.info_member li{
+		display:table-row;
+	}
+	ul.info_member li *{
+		display:table-cell;
+	}
+}
+ul.info_member li b{
+	padding-right:10px;
+	font-weight:600;
+}
+.team-details{
+	text-align:center;
+}
+.team-details h3{
+	margin: 0;
+    font-size: 1.231em;
+}
+.team-details a{
+	display:inline-block;
+	text-decoration:none !important;
+}
+.team img{
+	display: block;
+    margin: 0 auto 20px;
+}
+.single-in_team #content-wrap .content-area, .archive.tax-in_team_department #content-wrap .content-area{
+	width: 100% !important;
+	max-width:100% !important;
+}
+.images-member{
+	float: right;
+    width: 48%;
+    margin-bottom: 0;
+}
+.images-member img{
+	display: block;
+	/*width:100%;*/
+    max-width:100%;
+    height: auto;
+	margin-left:auto;
+	margin-right:auto;
+    /*box-shadow: none;*/
+	box-shadow: 6px 6px 5px rgba(0,0,0,0.1);
+}
+.in-team .summary {
+    float: left;
+    width: 48%;
+    margin-bottom: 2em;
+}
+.department{
+	margin:20px 0 30px;
+}
+.in-team.department .summary {
+	width:64%;
+}
+.single.in-team ul{
+	list-style:none;
+	margin-left:0;
+}
+
+@media only screen and (max-width: 767px){
+	.images-member, .in-team .summary{
+		float: none;
+		width: 100%;
+		margin-bottom:30px;
+	}
+	.images-member img{
+		width:auto;
+		margin-left:auto;
+		margin-right:auto;
+	}
+}
+/* CPM */
+.cpm .cpm-plus-white{
+	background-position:15px 50%;
+}
+.cpm ul.cpm-todolists article.cpm-todolist > ul{
+	padding:10px 15px;
+}
+.cpm .cpm-todolists .cpm-todolist .cpm-todos-new-form .cpm-new-btn{
+	padding-left:0;
+}
+.cpm-project-grid article.cpm-project:nth-of-type(3n+1){
+	clear:both;
+}
+
