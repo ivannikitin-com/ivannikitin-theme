@@ -267,6 +267,8 @@ ul.info_member li b{
 		margin-right:auto;
 	}
 }
+
+
 /* CPM */
 .cpm .cpm-plus-white{
 	background-position:15px 50%;
@@ -280,4 +282,75 @@ ul.info_member li b{
 .cpm-project-grid article.cpm-project:nth-of-type(3n+1){
 	clear:both;
 }
+.cpm-single-task .cpm-todo-details {
+    border-top: 1px dotted #555;
+}
+.cpm-todo-content .cpm-todo-text{
+	font-size:110%;
+	color:#222;
+	font-weight:600;
+}
+.cpm-todo .cpm-todo-wrap .cpm-todo-content .cpm-current-date {
+    background: #f9f9d5;
+	color:#555;
+}
+.cpm .cpm-project-header ul li a{
+	color:#555;
+}
 
+/* Forms */
+#loginform label{
+	display:block;
+	font-weight:600;
+}
+#loginform input[type="text"], #loginform input[type="password"]{
+	width:280px;
+}
+#loginform input[type="submit"]{
+	min-width:100px;
+}
+
+/* jQuery UI */
+
+
+/*----*/
+#cpm-project-dialog{
+	clear:both;
+}
+
+
+.cpm
+{
+	color: #333;
+}
+
+.cpm-comment-content a:hover
+{
+	text-decoration: underline !important;
+}
+
+blockquote, .cpm-comment-container blockquote, .cpm-comment-container pre
+{
+	font-size: 100%;
+	color: #333;
+}
+
+.cpm-comment-container pre
+{
+	font-family: monospace;
+}
+
+/* ========================= Личный кабинет =========================*/
+#wc-dashboard li
+{
+	margin-bottom: 1ex;
+	font-size: 11pt;
+}
+.woocommerce table.my_account_orders .button
+{
+	margin: 5px;
+}
+
+/* Плагин подсветки кода */
+.wp_syntax pre { padding: 0em 4px 0em 3em !important; }
+.wp_syntax { overflow-x:hidden; }

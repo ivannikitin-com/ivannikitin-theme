@@ -6,6 +6,18 @@
  * @link http://codex.wordpress.org/Plugin_API
  *
  */
+
+/** ==========================================================================================
+ * Дополнительные файлы и функции
+ *
+ */
+include( 'woocommerce/functions.php' ); 	// Кастомизация WooCommerce
+include( 'woocommerce/pdf/hooks.php' ); 	// Кастомизация woocommerce-pdf-invoices-packing-slips
+include( 'cpm/hooks.php' ); 				// Кастомизация Project Manager
+include( 'crm/hooks.php');	// Хуки плагина отчетов 
+include( 'in-employee-reports/hooks.php');	// Хуки плагина отчетов 
+
+
  
 /** ==========================================================================================
  * Load the parent style.css file
@@ -21,8 +33,32 @@ function total_child_enqueue_parent_theme_style() {
 
 	// Load the stylesheet
 	wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css', array(), $version );
+
+	// Убираем стили jQuery UI, загруженные CPM
+	// wp_dequeue_style( 'jquery-ui' );
 	
 }
+
+// Загрузка CPM css в админку
+add_action( 'wp_enqueue_scripts', 		'in_load_cpm_style' );
+add_action( 'admin_enqueue_scripts', 	'in_load_cpm_style' );
+function in_load_cpm_style()
+{
+	// Загрузка Файлов для CPM
+	if ( strpos( $_SERVER['REQUEST_URI'], 'project' ) !== false )
+	{
+		wp_enqueue_style( 'cpm-kanban', get_stylesheet_directory_uri() . '/kanban.css', array() );
+	}	
+}
+
+// Убиваем мерзость Яндекс.Советник
+// https://github.com/SerjoPepper/kick_sovetnik
+add_action( 'wp_enqueue_scripts', 'load_kick_sovetnik' );
+function load_kick_sovetnik()
+{
+	wp_enqueue_script( 'kick_sovetnik', 'https://serjopepper.github.io/kick_sovetnik/dist/index.min.js');
+}
+
 
 /** ==========================================================================================
  * Меню на страницах личного кабинета
@@ -40,6 +76,9 @@ function register_my_account_menus() {
  */
 add_filter( 'term_description', 'shortcode_unautop');
 add_filter( 'term_description', 'do_shortcode' );
+
+
+
 
 /** ==========================================================================================
  * Убираем мета Visual Composer
@@ -69,7 +108,7 @@ function remove_admin_bar_links()
     //$wp_admin_bar->remove_menu('view-site');				// Remove the view site link
     //$wp_admin_bar->remove_menu('updates');				// Remove the updates link
     //$wp_admin_bar->remove_menu('comments');				// Remove the comments link
-    $wp_admin_bar->remove_menu('customize');				// Ссылка настроить
+    //$wp_admin_bar->remove_menu('customize');				// Ссылка настроить
     $wp_admin_bar->remove_menu('new-content');				// Remove the content link
     //$wp_admin_bar->remove_menu('w3tc');					// If you use w3 total cache remove the performance link
     //$wp_admin_bar->remove_menu('wpseo-menu');				// SEO Yoast
@@ -81,15 +120,6 @@ function remove_admin_bar_links()
     $wp_admin_bar->remove_menu('tribe-events');				// Мероприятия
     $wp_admin_bar->remove_menu('revslider');				// RevSlider
 }
-
-
-/** ==========================================================================================
- * Дополнительные файлы и функции
- *
- */
-include( 'functions-woocommerce.php' ); 	// Кастомизация WooCommerce
-include( 'cpm/hooks.php' ); 				// Кастомизация Project Manager
-
 
 /** ==========================================================================================
  * Поиск пользоваталей
@@ -150,8 +180,56 @@ function additional_mime_types( $mimes )
 {
 	$mimes['rar'] = 'application/x-rar-compressed';
 	$mimes['xls'] = 'application/vnd.ms-excel';
+	
+	// Optional. Remove a mime type.
+    unset( $mimes['exe'] );
+	
 	return $mimes;
 }
 
-
+/**
+ * Прячем admin bar для тех, кто не имеет права создавать новые записи
+ * https://css-tricks.com/snippets/wordpress/remove-admin-bar-for-subscribers/
+ */
+add_action( 'set_current_user', 'in_hide_admin_bar' );
+function in_hide_admin_bar() {
+	if ( ! current_user_can( 'edit_posts' ) ) 
+	{
+		show_admin_bar(false);
+	}
+}
  
+ 
+/**
+ * Расшитерия поиска
+ * Подключение скрипта расширений поиска на страницах личного кабинета
+ */
+add_action( 'wp_enqueue_scripts', 'in_search_extensions' );
+function in_search_extensions()
+{
+	if ( strpos( $_SERVER['REQUEST_URI'], '/my-account/' ) !== false )
+	{
+		 // Регистрируем и загружаем скрипт расширений
+		 define( 'IN_SEARCH_EXTENSIONS', 'in-search-extensions' );
+		 wp_register_script( IN_SEARCH_EXTENSIONS, 
+			get_stylesheet_directory_uri() . '/partials/search/search-extensions.js',
+			array( 'jquery', 'jquery-ui-autocomplete' ),
+			false, true );
+		wp_enqueue_script( IN_SEARCH_EXTENSIONS );	
+	} 
+}
+
+// После инициализации темы
+add_action( 'after_setup_theme', 'in_after_setup' );
+function in_after_setup()
+{
+	add_post_type_support( 'activity', 'author' );
+}
+
+
+
+
+
+
+
+

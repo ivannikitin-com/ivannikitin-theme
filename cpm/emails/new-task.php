@@ -16,14 +16,53 @@ $linkto = cpm_get_option( 'email_url_link', 'cpm_mails' );
 
 ?>
 
-<div id="author">
-	<div style="width:48px;height:48px;float:left;margin:4px"><?php echo get_avatar( $author->ID, 48 ); ?></div> 
+<div id="cpm_author">
+	<div style="width:48px;height:48px;float:left;margin:4px">
+		<?php echo get_avatar( $author->ID, 48 ); ?>
+	</div> 
 	<?php echo $author->display_name; ?><br>
 	Новая задача: <?php echo $task_data->post_title ?></br>
 	<?php if ( ! empty( $due_date ) ):?>
 		Срок: <?php echo $due_date ?></br>
 	<?php endif ?>
 </div>
+
+<div id="cpm_task_content">
+	<?php echo $task_data->post_content ?>
+</div>
+
+<hr style="clear:both">
+
+<?php
+	// Пять последних комменнтариев
+	$comments = get_comments( array(
+		'number' 	=> '5',
+		'post_id' 	=> $task_id,
+		'orderby'	=> 'comment_date',
+		'order'		=> 'ASC',		
+	) );
+?>
+
+<?php if ( count( $comments ) > 0 ) : ?>
+<div id="cpm_comments">
+	<p>Последние комментарии к задаче:</p>
+	<?php foreach( $comments as $comment ) : ?>
+	<div class="cpm_comment">
+		<div style="width:48px;height:48px;float:left;margin:4px">
+			<?php echo get_avatar( $comment->user_id , 48 ); ?>
+		</div>	
+		<?php echo $comment->comment_author ?>	
+		<?php echo $comment->comment_date ?>		
+		<br>
+		<div>
+			<?php echo $comment->comment_content ?>
+		</div>
+	</div>
+	<hr style="clear:both">
+	<?php endforeach ?>	
+</div>
+<?php endif ?>
+
 
 <div style="font-size:85%">
 	<a href="<?php echo cpm_url_single_task( $project_id, $list_id, $task_id ); ?>">

@@ -45,6 +45,7 @@ switch ( $parent_post->post_type ) {
 // foreach ($template_vars as $key => $value) {
 //     $message = str_replace( $key, $value, $message );
 // }
+
 ?>
 <div id="author">
 	<div style="width:48px;height:48px;float:left;margin:4px"><?php echo get_avatar( $author->ID, 48 ); ?></div> 
@@ -57,7 +58,7 @@ switch ( $parent_post->post_type ) {
 </div>
 
 <div style="font-size:85%">
-	<a href="<?php echo $comment_url; ?>">
+	<a href="<?php echo $comment_url . '#cpm-comment-' . $comment_id; ?>">
 		Просмотреть комментарий
 	</a>
 </div>
