@@ -1,356 +1,847 @@
-/*
-Theme Name: 	IvanNikitin.com Total
-Theme URI: 		https://ivannikitin.com
-Description: 	Тема сайта ivannikitin.com, наследует Total
-Author: 		Иван Никитин
-Author URI: 	http://totalwptheme.com
-Template: 		Total
-Version: 		1.1
+/*!
+Theme Name: IvanNikitin 2019
+Theme URI: https://ivannikitin.com/
+Author: Иван Никитин и партнеры
+Author URI: https://ivannikitin.com/
+Description: Тема оформления "Иван Никитин и партнеры 2019"
+Version: 2.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: in-2019
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+in-2018 is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Typography
+# Elements
+# Forms
+# Navigation
+	## Links
+	## Menus
+# Accessibility
+# Alignments
+# Clearings
+# Widgets
+# Content
+	## Posts and pages
+	## Comments
+# Infinite scroll
+# Media
+	## Captions
+	## Galleries
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+/* normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 
-/* !!! Parent stylesheet should be loaded from functions.php not using @import !!! */
+/* Document
+	 ========================================================================== */
 
-#site-header.fixed-scroll{
-    z-index: 102;
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+body{
+	font-family:'Roboto', sans-serif;
+	font-size:.875rem;
+	line-height:1.4;
 }
-.single-product.woocommerce div.product form.cart div.quantity{
-	margin-bottom:10px;
+h1, h2, h3, h4, h5, h6, .ffrc, .h1, .h2, .h3, .h4, .h5, .h6{
+	font-family: 'Roboto Condensed', sans-serif;
 }
-@media only screen and (max-width: 992px){
-	#top-bar-social.top-bar-right{
-		position: static;
-		left: auto;
-		right: auto;
-		float: none;
-		text-align: center;
-		height: auto;
-		line-height: 1.5em;
-		margin-top: 0;
-		padding-top:10px;
-	}
-	#top-bar-content {
-		float: none;
-		text-align: center;
-	}
-	#top-bar-social a {
-		display: inline-block;
-		float: none;
-	}
-}
-/* Pricing Tables */
-.pricing-plan.group{
-	margin-bottom:20px !important;
-}
-@media (max-width: 910px) and (min-width: 769px){
-	.pricing-plan.group span.price-number{
-		font-size: 42px;
-	}
-}
-
-
-/* ================================ Меню в строку ================================ */
-.inline-menu
-{
-	margin-bottom: 1em;
-	border-bottom: 1px dotted #eee;
-}
-
-.inline-menu li
-{
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.my-account .form-row-first { float: left; width: 48%; }
-.my-account .form-row-last { float: right; width: 48%; }
-
-@media only screen and (max-width: 767px) {
-	.my-account .form-row-first,
-	.my-account .form-row-last
-	{ 
-		float: none; 
-		width: 100%; 
-	}		
-}
-
-/* ================================ Таблица цен ================================ */
-table{
-	width:100%;
-}
-#priceTable thead,
-#priceTable thead td
-{
-	background-color: #ccc;
-	font-weight: bold;
-}
-
-#priceTable td
-{
-	padding: 5px;
-}
-
-#priceTable tr:nth-child(2n)
-{
-	background-color: #eee;
-}
-#priceTable tbody td.priceTablePrice
-{
-	text-align: right;
-}
-
-#priceTable a,
-#priceTable a span
-{
-	color: black;
-	text-decoration: none;
-}
-
-#priceTable a:hover
-{
-	text-decoration: underline;
-}
-#priceTable del:after{
-	content:'';
-	display:block;
-}
-#priceTable thead, #priceTable thead td {
-    background-color: #ccc;
-    font-weight: bold;
-}
-#priceTable td {
-    padding: 5px;
-}
-#priceTable a, #priceTable a span {
-    color: black;
-    text-decoration: none;
-}
-
-@media screen and (max-width: 768px) {
-
-	#priceTable {
-		border: 0;
-	}
-	#priceTable thead {
-		display: none;
-	}
-
-	#priceTable tr {
-		margin-bottom: 10px;
-		display: block;
-		border-bottom: 1px solid #ddd;
-	}
-
-	#priceTable td {
-		display: block;
-		background:#eee;
-		padding:6px 8px;
-	}
-
-	.priceTableTitle{
-		float:left;
-		padding-right:16px;
-	}
-}
-
-/* Список товаров */
-.woocommerce ul.products li.product h3{
-    line-height: normal;
-}
-/* Хлебные крошки налезают на заголовок, когда длинные оба */
-.site-breadcrumbs.position-absolute {
-    position: inherit;
-    top: auto;
-    left: auto;
-    right: auto;
-    margin-top: 0;
-	height:auto;
-	line-height:inherit;
-}
-
-
-/* ================================ Таблица клиентов ================================ */
-.handsontable-container
-{
-	position: relative;
-	left: -20%;
-	width: 2400px;
-}
-
-.htContextMenu table
-{
-	width: 250px !important;
-}
-
-/* =============================== Наша команда ===================================== */
-
-.member-about{
-	margin:2em 0;
-}
-.member-about p{
-	margin-bottom:0.8em;
-}
-
-@media(min-width:360px){
-	ul.info_member{
-		display:table;
-	}
-	ul.info_member li{
-		display:table-row;
-	}
-	ul.info_member li *{
-		display:table-cell;
-	}
-}
-ul.info_member li b{
-	padding-right:10px;
-	font-weight:600;
-}
-.team-details{
+h1{
+	font-size:2.25rem;
+	color:#072133;
 	text-align:center;
 }
-.team-details h3{
-	margin: 0;
-    font-size: 1.231em;
+a{
+	color:#0c68a5;
+	text-decoration:underline;
 }
-.team-details a{
-	display:inline-block;
-	text-decoration:none !important;
+a:hover, a:focus{
+	text-decoration:none;
 }
-.team img{
-	display: block;
-    margin: 0 auto 20px;
+a[href^='tel:'], a[href^='mailto:']{
+	white-space:nowrap;
+	text-decoration:none;
 }
-.single-in_team #content-wrap .content-area, .archive.tax-in_team_department #content-wrap .content-area{
-	width: 100% !important;
-	max-width:100% !important;
+.mb-0{
+	margin-bottom:0 !important;
 }
-.images-member{
-	float: right;
-    width: 48%;
-    margin-bottom: 0;
+.nodecor{
+	text-decoration:none;
 }
-.images-member img{
-	display: block;
-	/*width:100%;*/
-    max-width:100%;
-    height: auto;
-	margin-left:auto;
-	margin-right:auto;
-    /*box-shadow: none;*/
-	box-shadow: 6px 6px 5px rgba(0,0,0,0.1);
+.color1{
+	color:#bf1e2e;
 }
-.in-team .summary {
-    float: left;
-    width: 48%;
-    margin-bottom: 2em;
+.bg-primary{
+	background-color:#0c68a5 !important;
+	color:#fff;
 }
-.department{
-	margin:20px 0 30px;
+.bg-primary a{
+	color:#fff;
 }
-.in-team.department .summary {
-	width:64%;
+.text-primary{
+  color:#fff !important;
 }
-.single.in-team ul{
-	list-style:none;
-	margin-left:0;
+.text-secondary{
+  color:#0c68a5 !important;
 }
-
-@media only screen and (max-width: 767px){
-	.images-member, .in-team .summary{
-		float: none;
-		width: 100%;
-		margin-bottom:30px;
-	}
-	.images-member img{
-		width:auto;
-		margin-left:auto;
-		margin-right:auto;
-	}
+.bg-light{
+  background-color: #ebeef3 !important;
 }
-
-
-/* CPM */
-.cpm .cpm-plus-white{
-	background-position:15px 50%;
+.bg-dark{
+	background-color:#072133 !important;
 }
-.cpm ul.cpm-todolists article.cpm-todolist > ul{
-	padding:10px 15px;
+header.site-header{
+	position:relative;
+	-webkit-box-shadow: 0px 14px 6px -4px rgba(50, 50, 50, 0.42);
+	-moz-box-shadow:    0px 14px 6px -4px rgba(50, 50, 50, 0.42);
+	box-shadow:         0px 14px 6px -4px rgba(50, 50, 50, 0.42);
+	z-index:2;
 }
-.cpm .cpm-todolists .cpm-todolist .cpm-todos-new-form .cpm-new-btn{
+.logo{
 	padding-left:0;
 }
-.cpm-project-grid article.cpm-project:nth-of-type(3n+1){
-	clear:both;
+.logo a, .logo span{
+    display:flex;
+	align-items: flex-start !important;
+	/*align-items:center!important;*/
+    /*min-height:136px;*/
+	height:100%;
+	background:#0e76bc;
 }
-.cpm-single-task .cpm-todo-details {
-    border-top: 1px dotted #555;
+.login a, .cart a{
+	color:#bf1e2e;
+	display:inline-block;
 }
-.cpm-todo-content .cpm-todo-text{
-	font-size:110%;
-	color:#222;
-	font-weight:600;
+.login a:before, .cart a:before, header .phone a:before, header .email a:before{
+	content:'';
+	display:inline-block;
+	background:url(./img/bg.png) no-repeat;
+	vertical-align:middle;
+	margin-right:6px;
 }
-.cpm-todo .cpm-todo-wrap .cpm-todo-content .cpm-current-date {
-    background: #f9f9d5;
-	color:#555;
+.login a:before{
+	width:16px;
+	height:26px;
 }
-.cpm .cpm-project-header ul li a{
-	color:#555;
+.cart a:before{
+	width:28px;
+	height:19px;
+	background-position:-25px 0;
 }
-
-/* Forms */
-#loginform label{
+header .phone{
+	line-height:1.2;
+}
+header .phone a{
+	font-size:1.125rem;
+}
+header .phone span{
+	color:#0c68a5;
+	margin-left:25px;
+}
+header .phone a:before{
+	width:19px;
+	height:19px;
+	background-position:-64px 0;
+	vertical-align:baseline;
+}
+header .email a:before{
+	width:20px;
+	height:15px;
+	background-position:-94px 0;
+}
+.main_menu/*, .search form*/{
+	padding:.7rem 0 0;
+	font-size:0;
+}
+.main_menu ul > li{
+	white-space:nowrap;
+}
+.main_menu ul > li a{
+	font-family:'Roboto Condensed', sans-serif;
+	font-size:1.1rem;
+	display:inline-block;
+	color:#072133;
+	text-decoration:none;
+}
+.main_menu li.current-menu-item a, .main_menu li a:hover{
+	color:#0c68a5;
+}
+.main_menu ul > li:first-child a{
+	padding-left:0;
+}
+.main_menu button{
+	border-radius:0;
+	background:#0e76bc;
+	padding:1px 7px;
+}
+.main_menu .navbar-toggler-icon{
+	font-size:1rem;
+    display:block;
+    margin:6px 0;
+    height:4px;
+    background:#fff;
+}
+.main_menu .navbar-toggler-icon:nth-of-type(2){
+	width:80%;
+}
+.search form{
+	position:relative;
+	background:url(./img/bg.png) no-repeat -281px -181px;
+	margin:.6rem 0 0 0;
+	overflow:hidden;
+	padding-left:26px;
+	min-width:200px;
+}
+/*.search form:before{
+	content:'';
+	display:inline-block;
+	/*position:absolute;
+    vertical-align:bottom;*/
+	/*width:19px;
+	height:19px;
+	background:url(img/bg.png) no-repeat -125px 0;
+}*/
+.icon_search{
+	position:absolute;
+	width:19px;
+	height:19px;
+	background:url(./img/bg.png) no-repeat -125px 0;
+	margin-right:6px;
+}
+.search input[type='text']{
+	border:0;
+	border-bottom:1px solid #d7d7d7;
+    background:none;
+	outline:0 !important;
+	box-shadow:none;
+	border-radius:0;
+	padding:0;
+	max-width:100%;
+}
+.search input[type='submit']{
+	display:none;
+	border:0;
+	padding:0;
+	outline:0 !important;
+}
+.navbar-toggler:focus{
+	outline:0;
+}
+.close{
+	position: absolute;
+	right: 12px;
+    top: 14px;
+    width: 18px;
+    height: 18px;
+    z-index: 101;
+    cursor: pointer;
+}
+/*Breadcrumbs*/
+#breadcrumbs{
+	font-family: 'Roboto Condensed', sans-serif;
+	margin:4px 15px 0 7px;
+}
+#breadcrumbs a{
+    display: inline-block;
+    /*color:#666;*/
+    text-decoration: none;
+    margin:0 8px;
+	padding:3px 0;
+}
+main{
+	padding:35px 0 0 0;
+}
+#breadcrumbs span.breadcrumb_last{
+	margin-left:8px;
+	padding:3px 0;
+}
+/*Услуги на Главной*/
+.item-services{
+	padding:48px 15px 20px;
+	color:#fff;
+	min-height:285px;
+}
+.item-services a{
 	display:block;
-	font-weight:600;
+	font-family:'Roboto Condensed', sans-serif;
+	color:#fff;
+	font-weight:bold;
+	text-transform:uppercase;
+	margin-top:1.2rem;
 }
-#loginform input[type="text"], #loginform input[type="password"]{
-	width:280px;
+.align-middle{	
+	display:flex;
+  	justify-content:center;
+	align-items:center;
+  	flex-direction:column;
+	padding-top:0;
+	padding-bottom:0;
 }
-#loginform input[type="submit"]{
-	min-width:100px;
+.bg_pic{
+	background-size:cover;
+	background-repeat:no-repeat;
+}
+.bg_pic *{
+	z-index:2;
+}
+.bg_pic:after{
+	content:'';
+	position:absolute;
+	left:0;
+	right:0;
+    top:0;
+	bottom:0;
+	background-color:rgba(53, 159, 229, .87);
+	z-index:1;
+}
+.item-services .descr{
+	margin-top:.7rem;
+}
+.slider_wrap{
+	position:relative;
+	/*-webkit-box-shadow: inset 0px 12px 10px -2px rgba(50, 50, 50, 0.62);
+	-moz-box-shadow:    inset 0px 12px 10px -2px rgba(50, 50, 50, 0.62);
+	box-shadow:         inset 0px 12px 10px -2px rgba(50, 50, 50, 0.62);*/
+}
+.team{
+	padding:24px 0 90px;
+}
+.team_item{
+	margin-bottom:2.2rem;
+}
+.team_item img{
+	width:195px;
+}
+.team_name{
+	font-family:'Roboto Condensed', sans-serif;
+	font-weight:bold;
+	text-transform:uppercase;
+	margin-top:15px;
+}
+.team_func, .team_name{
+	color:#072133;
+	font-size:1rem;
+}
+.social{
+	background:#bf202f;
+	min-height:42px;
+	position:relative;
+	text-align:center;
+	z-index:1;
+}
+.social a{
+	display:inline-block;
+	color:#fff;
+	font-size:17px;
+	padding:5px;
+	margin:0 11px;
+    text-decoration:none;
+}
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+	word-wrap: normal!important;
+}
+.block_bg{
+	color:#252525;
+	font-size:1.2rem;
+	line-height:1.2;
+	background:#ebeef3;
+	padding:2rem 6rem 1rem;
+    margin-bottom:2rem;
 }
 
-/* jQuery UI */
+small {
+	font-size: 80%;
+}
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
 
+sub {
+	bottom: -0.25em;
+}
 
-/*----*/
-#cpm-project-dialog{
-	clear:both;
+sup {
+	top: -0.5em;
+}
+
+/* Interactive
+	 ========================================================================== */
+
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+
+details {
+	display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+
+summary {
+	display: list-item;
+}
+
+/* Misc
+	 ========================================================================== */
+
+/**
+ * Add the correct display in IE 10+.
+ */
+
+template {
+	display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+
+[hidden] {
+	display: none;
 }
 
 
-.cpm
-{
-	color: #333;
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
 
-.cpm-comment-content a:hover
-{
-	text-decoration: underline !important;
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	clip-path: none;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+	/* Above WP toolbar. */
 }
 
-blockquote, .cpm-comment-container blockquote, .cpm-comment-container pre
-{
-	font-size: 100%;
-	color: #333;
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+	outline: 0;
 }
 
-.cpm-comment-container pre
-{
-	font-family: monospace;
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
 }
 
-/* ========================= Личный кабинет =========================*/
-#wc-dashboard li
-{
-	margin-bottom: 1ex;
-	font-size: 11pt;
-}
-.woocommerce table.my_account_orders .button
-{
-	margin: 5px;
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
 }
 
-/* Плагин подсветки кода */
-.wp_syntax pre { padding: 0em 4px 0em 3em !important; }
-.wp_syntax { overflow-x:hidden; }
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*--------------------------------------------------------------
+# Clearings
+--------------------------------------------------------------*/
+.clear:before,
+.clear:after,
+.entry-content:before,
+.entry-content:after,
+.comment-content:before,
+.comment-content:after,
+.site-header:before,
+.site-header:after,
+.site-content:before,
+.site-content:after,
+.site-footer:before,
+.site-footer:after {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+
+.clear:after,
+.entry-content:after,
+.comment-content:after,
+.site-header:after,
+.site-content:after,
+.site-footer:after {
+	clear: both;
+}
+
+
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+.widget {
+	margin: 0 0 1.5em;
+	/* Make sure select elements fit in widgets. */
+}
+
+.widget select {
+	max-width: 100%;
+}
+
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Posts and pages
+--------------------------------------------------------------*/
+.sticky {
+	display: block;
+}
+
+.hentry {
+	margin: 0 0 1.5em;
+}
+
+.updated:not(.published) {
+	display: none;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: 1.5em 0 0;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
+.comment-content a {
+	word-wrap: break-word;
+}
+
+.bypostauthor {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Infinite scroll
+--------------------------------------------------------------*/
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .posts-navigation,
+.infinite-scroll.neverending .site-footer {
+	/* Theme Footer (when set to scrolling) */
+	display: none;
+}
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
+.infinity-end.neverending .site-footer {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+/* Make sure logo link wraps around logo image. */
+.custom-logo-link {
+	display: inline-block;
+}
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+.wp-caption-text {
+	text-align: center;
+}
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+.gallery {
+	margin-bottom: 1.5em;
+}
+
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+
+.gallery-caption {
+	display: block;
+}
+
+/*footer*/
+footer{
+	padding:0 0 15px;
+}
+footer nav a{
+	display:block;
+	font-size:18px;
+	text-decoration:none;
+	padding:11px 20px 9px;
+}
+
+/* Media queries */
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width:none;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 576px){
+	header.site-header{
+		background:#ebeef3;
+	}
+}
+@media (min-width: 768px){
+	.login a{
+		position:relative;
+    	left:12px;
+	}
+}
+@media (min-width: 992px){
+	.jc-sb-lg{
+		justify-content: space-between;
+	}
+	.main_menu ul > li a{
+		font-size:1.5rem;
+		padding:0 10px;
+	}
+	.main_menu ul > li:first-child a{
+		padding-left:0;
+	}
+	.main_menu ul > li:after{
+		content:'';
+		display:inline-block;
+		height:17px;
+		width:1px;
+		font-size:0;
+		margin:0 6px;
+		background:#072133;	
+	}
+	.main_menu ul > li:last-child:after{
+		margin-right:0;
+	}
+	.main_menu button{
+		margin-bottom:15px;
+	}
+	.lg-arrow-l:after, .lg-arrow-r:after{
+		content:'';
+		position:absolute;
+		top:50%;
+		margin-top:-14px;
+		border:14px solid transparent;
+		z-index:3;
+	}
+	.lg-arrow-l:after{
+		left:-28px;
+		border-right:14px solid #0c68a5;
+	}
+	.lg-arrow-r:after{
+		right:-28px;
+		border-left:14px solid #0c68a5;
+	}
+}
+
+@media (min-width: 1200px){
+	.container {
+		max-width:1170px;
+  	}
+}
+@media (max-width: 1199.98px){
+}
+@media (max-width: 991.98px){
+	.main_menu ul{
+		/*background:#fff;*/
+	}
+	.main_menu ul li{
+		border-bottom: 1px solid rgba(255,255,255,0.035);
+		border-top: 1px solid rgba(255,255,255,0.035);
+	}
+	.main_menu ul > li a{
+		display:block;
+		color:#fff;
+		padding: 0.9em 20px !important;
+	}
+	.navbar-collapse{
+		background: rgb(38, 38, 38);
+	}
+	.main_menu{		
+		display:block;
+		text-align:right;
+		padding:0;
+		margin:10px 0 0;
+	}
+}
+@media (max-width: 767.98px){
+	.phone a{
+		/*margin-left:9px;*/
+	}
+	.phone .hour{
+		margin-left:34px;
+	}
+	.email a{
+		/*margin-left:8px;*/
+	}
+}
+@media (max-width: 575.98px){
+	.logo{
+		/*padding-right:0;*/
+	}
+	header .phone a{
+		font-size:1rem;
+	}		
+	.login a:before, .cart a:before, header .phone a:before, header .email a:before{
+		margin-right:4px;
+	}
+}
+@media (max-width: 481px){
+	header .row [class^='col']{
+		padding-right:0;
+	}
+	header .phone{
+		font-size:14px;
+	}
+	header .hour{
+		font-size:13px;
+	}
+}
+
+

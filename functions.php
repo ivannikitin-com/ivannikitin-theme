@@ -1,235 +1,178 @@
 <?php
 /**
- * Тема сайта ivannikitin.com
- * 
- * Text Domain: wpex
- * @link http://codex.wordpress.org/Plugin_API
+ * in-2018 functions and definitions
  *
- */
-
-/** ==========================================================================================
- * Дополнительные файлы и функции
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
+ * @package in-2018
  */
-include( 'woocommerce/functions.php' ); 	// Кастомизация WooCommerce
-include( 'woocommerce/pdf/hooks.php' ); 	// Кастомизация woocommerce-pdf-invoices-packing-slips
-include( 'cpm/hooks.php' ); 				// Кастомизация Project Manager
-include( 'crm/hooks.php');	// Хуки плагина отчетов 
-include( 'in-employee-reports/hooks.php');	// Хуки плагина отчетов 
+if ( ! function_exists( 'in_2018_setup' ) ) :
+	/**
+	 * Sets up theme defaults and registers support for various WordPress features.
+	 *
+	 * Note that this function is hooked into the after_setup_theme hook, which
+	 * runs before the init hook. The init hook is too late for some features, such
+	 * as indicating support for post thumbnails.
+	 */
+	function in_2018_setup() {
+		/*
+		 * Make theme available for translation.
+		 * Translations can be filed in the /languages/ directory.
+		 * If you're building a theme based on in-2018, use a find and replace
+		 * to change 'in-2018' to the name of your theme in all the template files.
+		 */
+		load_theme_textdomain( 'in-2018', get_template_directory() . '/languages' );
 
+		// Add default posts and comments RSS feed links to head.
+		add_theme_support( 'automatic-feed-links' );
 
- 
-/** ==========================================================================================
- * Load the parent style.css file
- *
- * @link http://codex.wordpress.org/Child_Themes
- */
-add_action( 'wp_enqueue_scripts', 'total_child_enqueue_parent_theme_style' );
-function total_child_enqueue_parent_theme_style() {
+		/*
+		 * Let WordPress manage the document title.
+		 * By adding theme support, we declare that this theme does not use a
+		 * hard-coded <title> tag in the document head, and expect WordPress to
+		 * provide it for us.
+		 */
+		add_theme_support( 'title-tag' );
 
-	// Dynamically get version number of the parent stylesheet (lets browsers re-cache your stylesheet when you update your theme)
-	$theme   = wp_get_theme( 'Total' );
-	$version = $theme->get( 'Version' );
+		/*
+		 * Enable support for Post Thumbnails on posts and pages.
+		 *
+		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+		 */
+		add_theme_support( 'post-thumbnails' );
 
-	// Load the stylesheet
-	wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css', array(), $version );
+		// This theme uses wp_nav_menu() in one location.
+		register_nav_menus( array(
+			'menu-1' => esc_html__( 'Primary', 'in-2018' ),
+			'menu-2' => esc_html__( 'Footer menu', 'in-2018' ),
+		) );
 
-	// Убираем стили jQuery UI, загруженные CPM
-	// wp_dequeue_style( 'jquery-ui' );
-	
-}
+		/*
+		 * Switch default core markup for search form, comment form, and comments
+		 * to output valid HTML5.
+		 */
+		add_theme_support( 'html5', array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+		) );
 
-// Загрузка CPM css в админку
-add_action( 'wp_enqueue_scripts', 		'in_load_cpm_style' );
-add_action( 'admin_enqueue_scripts', 	'in_load_cpm_style' );
-function in_load_cpm_style()
-{
-	// Загрузка Файлов для CPM
-	if ( strpos( $_SERVER['REQUEST_URI'], 'project' ) !== false )
-	{
-		wp_enqueue_style( 'cpm-kanban', get_stylesheet_directory_uri() . '/kanban.css', array() );
-	}	
-}
+		// Set up the WordPress core custom background feature.
+		add_theme_support( 'custom-background', apply_filters( 'in_2018_custom_background_args', array(
+			'default-color' => 'ffffff',
+			'default-image' => '',
+		) ) );
 
-// Убиваем мерзость Яндекс.Советник
-// https://github.com/SerjoPepper/kick_sovetnik
-add_action( 'wp_enqueue_scripts', 'load_kick_sovetnik' );
-function load_kick_sovetnik()
-{
-	wp_enqueue_script( 'kick_sovetnik', 'https://serjopepper.github.io/kick_sovetnik/dist/index.min.js');
-}
+		// Add theme support for selective refresh for widgets.
+		add_theme_support( 'customize-selective-refresh-widgets' );
 
-
-/** ==========================================================================================
- * Меню на страницах личного кабинета
- */
-add_action( 'init', 'register_my_account_menus' );
-function register_my_account_menus() {
-	register_nav_menus( array(
-		'customer-menu' => 'Личный кабинет: Меню клиента',
-		'employee-menu' => 'Личный кабинер: Меню сотрудника',
-    ));
-}
-
-/** ==========================================================================================
- * Шорткоды и форматированный текст в таксономиях
- */
-add_filter( 'term_description', 'shortcode_unautop');
-add_filter( 'term_description', 'do_shortcode' );
-
-
-
-
-/** ==========================================================================================
- * Убираем мета Visual Composer
- * https://community.theme.co/forums/topic/how-to-remove-visual-composer-meta-tags/
- */ 
-add_action('init', 'remove_vc_meta', 100);
-function remove_vc_meta() 
-{
-    remove_action('wp_head', array(visual_composer(), 'addMetaData'));
-}
- 
- 
-/** ==========================================================================================
- *  Убираем лишнее из админбара
- */ 
-add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links', 99);
-function remove_admin_bar_links() 
-{
-    global $wp_admin_bar;
-    $wp_admin_bar->remove_menu('wp-logo');					// Remove the WordPress logo
-    $wp_admin_bar->remove_menu('about');					// Remove the about WordPress link
-    $wp_admin_bar->remove_menu('wporg');					// Remove the WordPress.org link
-    $wp_admin_bar->remove_menu('documentation');			// Remove the WordPress documentation link
-    $wp_admin_bar->remove_menu('support-forums');			// Remove the support forums link
-    $wp_admin_bar->remove_menu('feedback');					// Remove the feedback link
-    //$wp_admin_bar->remove_menu('site-name');				// Remove the site name menu
-    //$wp_admin_bar->remove_menu('view-site');				// Remove the view site link
-    //$wp_admin_bar->remove_menu('updates');				// Remove the updates link
-    //$wp_admin_bar->remove_menu('comments');				// Remove the comments link
-    //$wp_admin_bar->remove_menu('customize');				// Ссылка настроить
-    $wp_admin_bar->remove_menu('new-content');				// Remove the content link
-    //$wp_admin_bar->remove_menu('w3tc');					// If you use w3 total cache remove the performance link
-    //$wp_admin_bar->remove_menu('wpseo-menu');				// SEO Yoast
-    $wp_admin_bar->remove_menu('mail_bank');				// WP Mail Bank
-    $wp_admin_bar->remove_menu('theme_options');			// Параметры темы
-    $wp_admin_bar->remove_menu('my-account');				// Remove the user details tab
-    $wp_admin_bar->remove_menu('wpex_custom_css');			// Пользовательский CSS, добавила тема Total
-    $wp_admin_bar->remove_menu('vc_inline-admin-bar-link');	// Редактировать Visual Composer
-    $wp_admin_bar->remove_menu('tribe-events');				// Мероприятия
-    $wp_admin_bar->remove_menu('revslider');				// RevSlider
-}
-
-/** ==========================================================================================
- * Поиск пользоваталей
- * TODO: Сделать отдельным плагином
- * https://gist.github.com/danielbachhuber/7126249
- * http://stackoverflow.com/questions/32958075/how-to-include-authors-users-in-the-results-for-the-native-wordpress-search
- *
- * Также
- * https://www.smashingmagazine.com/2012/06/front-end-author-listing-user-search-wordpress/
- */
-add_filter( 'posts_search', 'db_filter_authors_search' );
-function db_filter_authors_search( $posts_search ) {
-
-	// Don't modify the query at all if we're not on the search template
-	// or if the LIKE is empty
-	if ( !is_search() || empty( $posts_search ) )
-		return $posts_search;
-
-	global $wpdb;
-	// Get all of the users of the blog and see if the search query matches either
-	// the display name or the user login
-	add_filter( 'pre_user_query', 'db_filter_user_query' );
-	$search = sanitize_text_field( get_query_var( 's' ) );
-	$args = array(
-		'count_total' => false,
-		'search' => sprintf( '*%s*', $search ),
-		'search_fields' => array(
-			'display_name',
-			'user_login',
-		),
-		'fields' => 'ID',
-	);
-	$matching_users = get_users( $args );
-	remove_filter( 'pre_user_query', 'db_filter_user_query' );
-	// Don't modify the query if there aren't any matching users
-	if ( empty( $matching_users ) )
-		return $posts_search;
-	// Take a slightly different approach than core where we want all of the posts from these authors
-	$posts_search = str_replace( ')))', ")) OR ( {$wpdb->posts}.post_author IN (" . implode( ',', array_map( 'absint', $matching_users ) ) . ")))", $posts_search );
-	return $posts_search;
-}
-/**
- * Modify get_users() to search display_name instead of user_nicename
- */
-function db_filter_user_query( &$user_query ) {
-
-	if ( is_object( $user_query ) )
-		$user_query->query_where = str_replace( "user_nicename LIKE", "display_name LIKE", $user_query->query_where );
-	return $user_query;
-} 
+			
+		/**
+		 * Включаем поддержку WooCommerce
+		 * В этом вызове также можно указать некоторые параметры. См ссылку ниже
+		 * @link https://github.com/woocommerce/woocommerce/wiki/Declaring-WooCommerce-support-in-themes
+		 */
+		add_theme_support( 'woocommerce', array(
+			'thumbnail_image_width' => 150,			//TODO: Необходимо установить правильные значения!
+			'single_image_width'    => 300,
+			'product_grid'          => array(
+				'default_rows'    => 3,
+				'min_rows'        => 2,
+				'max_rows'        => 8,
+				'default_columns' => 4,
+				'min_columns'     => 2,
+				'max_columns'     => 5,
+			),
+		) );		
+		
+	}
+endif;
+add_action( 'after_setup_theme', 'in_2018_setup' );
 
 /**
- * Разрешенные типы файлов
- * https://codex.wordpress.org/%D0%A7%D0%90%D0%92%D0%9E/%D0%9A%D0%B0%D0%BA_%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%B8%D1%82%D1%8C_%D0%BD%D0%B5%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D1%8B%D0%B9_%D1%84%D0%B0%D0%B9%D0%BB
+ * Set the content width in pixels, based on the theme's design and stylesheet.
+ *
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
  */
-add_filter( 'upload_mimes', 'additional_mime_types' );
-function additional_mime_types( $mimes ) 
-{
-	$mimes['rar'] = 'application/x-rar-compressed';
-	$mimes['xls'] = 'application/vnd.ms-excel';
-	
-	// Optional. Remove a mime type.
-    unset( $mimes['exe'] );
-	
-	return $mimes;
+function in_2018_content_width() {
+	// This variable is intended to be overruled from themes.
+	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
+	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+	$GLOBALS['content_width'] = apply_filters( 'in_2018_content_width', 640 );
 }
+add_action( 'after_setup_theme', 'in_2018_content_width', 0 );
 
 /**
- * Прячем admin bar для тех, кто не имеет права создавать новые записи
- * https://css-tricks.com/snippets/wordpress/remove-admin-bar-for-subscribers/
+ * Register widget area.
+ *
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-add_action( 'set_current_user', 'in_hide_admin_bar' );
-function in_hide_admin_bar() {
-	if ( ! current_user_can( 'edit_posts' ) ) 
-	{
-		show_admin_bar(false);
+function in_2018_widgets_init() {
+	register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar', 'in-2018' ),
+		'id'            => 'sidebar-1',
+		'description'   => esc_html__( 'Add widgets here.', 'in-2018' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+}
+add_action( 'widgets_init', 'in_2018_widgets_init' );
+
+/**
+ * Enqueue scripts and styles.
+ */
+function in_2018_scripts() {
+	wp_enqueue_style( 'in-2018-bootstrap', get_template_directory_uri() . '/bootstrap-4.1.3/dist/css/bootstrap.min.css' );
+	wp_enqueue_style( 'in-2018-style', get_stylesheet_uri() );
+	wp_enqueue_script( 'in-2018-popper', get_template_directory_uri() . '/bootstrap-4.1.3/site/docs/4.1/assets/js/vendor/popper.min.js', array('jquery'),null, true );
+	//wp_enqueue_script( 'in-2018-holder', get_template_directory_uri() . '/bootstrap-4.1.3/site/docs/4.1/assets/js/vendor/holder.min.js', array('jquery','in-2018-bootstrap'),null, true );
+	//wp_enqueue_script( 'in-2018-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'in-2018-bootstrap-js', get_template_directory_uri() . '/bootstrap-4.1.3/dist/js/bootstrap.min.js', array('jquery'), null, true );
+
+	wp_enqueue_script( 'in-2018-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
 	}
 }
- 
- 
+add_action( 'wp_enqueue_scripts', 'in_2018_scripts' );
+
 /**
- * Расшитерия поиска
- * Подключение скрипта расширений поиска на страницах личного кабинета
+ * Implement the Custom Header feature.
  */
-add_action( 'wp_enqueue_scripts', 'in_search_extensions' );
-function in_search_extensions()
-{
-	if ( strpos( $_SERVER['REQUEST_URI'], '/my-account/' ) !== false )
-	{
-		 // Регистрируем и загружаем скрипт расширений
-		 define( 'IN_SEARCH_EXTENSIONS', 'in-search-extensions' );
-		 wp_register_script( IN_SEARCH_EXTENSIONS, 
-			get_stylesheet_directory_uri() . '/partials/search/search-extensions.js',
-			array( 'jquery', 'jquery-ui-autocomplete' ),
-			false, true );
-		wp_enqueue_script( IN_SEARCH_EXTENSIONS );	
-	} 
+require get_template_directory() . '/inc/custom-header.php';
+
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/template-tags.php';
+
+/**
+ * Functions which enhance the theme by hooking into WordPress.
+ */
+require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Load Jetpack compatibility file.
+ */
+if ( defined( 'JETPACK__VERSION' ) ) {
+	require get_template_directory() . '/inc/jetpack.php';
 }
 
-// После инициализации темы
-add_action( 'after_setup_theme', 'in_after_setup' );
-function in_after_setup()
-{
-	add_post_type_support( 'activity', 'author' );
-}
 
-
-
-
-
-
-
+/**
+ * Дополнительные файлы включений. Все специфические функции пишем в них
+ */
+require get_template_directory() . '/woocommerce/hooks.php';
 
