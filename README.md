@@ -1,2 +1,4 @@
 # ivannikitin-theme
-Тема сайта ivannikitin.com
+## Дочерняя тема Total
+Тема сайта ivannikitin.com 
+
