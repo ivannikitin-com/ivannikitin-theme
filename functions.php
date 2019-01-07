@@ -43,8 +43,8 @@ if ( ! function_exists( 'in_2018_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'in-2018' ),
-			'menu-2' => esc_html__( 'Footer menu', 'in-2018' ),
+			'Primary' => esc_html__( 'Основное меню', 'in-2018' ),
+			'Footer' => esc_html__( 'Меню в подвале', 'in-2018' ),
 		) );
 
 		/*
@@ -182,8 +182,8 @@ class in2018_Walker_Menu extends Walker_Nav_Menu {
 		$output .= '<ul class="dropdown-menu box-shadow">';
 	}
 }
-// Изменяем атрибут class у тега li
-add_filter( 'nav_menu_css_class', 'filter_nav_menu_css_classes', 10, 4 );
+// Изменяем атрибут class у тега li -- ВОТ ЭТА ФУНКЦИЯ И СБРАСЫВАЛА КЛАССЫ
+//add_filter( 'nav_menu_css_class', 'filter_nav_menu_css_classes', 10, 4 );
 function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
 	if ( $args->theme_location === 'Primary' ) {
 		$classes = [

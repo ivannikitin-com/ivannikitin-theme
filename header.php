@@ -82,19 +82,19 @@
                                       <span class="navbar-toggler-icon"></span>
                                       <span class="navbar-toggler-icon"></span>
                                       <span class="navbar-toggler-icon"></span>
-                                    </button>                                   
-									
+                                    </button>                                  
+
 									<?php 
                                         //TODO: Вывести меню
                                     wp_nav_menu( array( 
-										'theme_location' => 'Primary',
-										'menu' => 'Primary menu',
-										'menu_id'        => '',
+										'theme_location' => 'Primary',		// Название места в шаблоне
+										//'menu' => 'Primary menu',			// Не надо явно указывать какое меню выводить! 
+										//'menu_id'        => '',			// Это должно управдяться их админки
 										'container_class' => 'navbar-collapse collapse',
 										'container_id' => 'navbar',
 										'menu_class' => 'navbar-nav text-left',
                                         'items_wrap' => '<ul class="%2$s">%3$s</ul>',
-                                        'walker' =>  new in2018_Walker_Menu(),
+                                        //'walker' =>  new in2018_Walker_Menu(),	// Пока обойдемся без Walker
 									) );?>									                                
                                 </nav>
                             </div><!--/.col-->
