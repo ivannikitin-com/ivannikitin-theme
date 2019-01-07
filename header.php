@@ -84,13 +84,17 @@
                                       <span class="navbar-toggler-icon"></span>
                                     </button>                                   
 									
-									<?php wp_nav_menu( array( 
+									<?php 
+                                        //TODO: Вывести меню
+                                    wp_nav_menu( array( 
 										'theme_location' => 'Primary',
 										'menu' => 'Primary menu',
 										'menu_id'        => '',
 										'container_class' => 'navbar-collapse collapse',
 										'container_id' => 'navbar',
 										'menu_class' => 'navbar-nav text-left',
+                                        'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+                                        'walker' =>  new in2018_Walker_Menu(),
 									) );?>									                                
                                 </nav>
                             </div><!--/.col-->
