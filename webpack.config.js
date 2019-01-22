@@ -1,74 +1,74 @@
-const path = require('path');
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-
-
-const DEV = process.env.NODE_ENV === 'development';
+const path = require('path'),
+      autoprefixer = require('autoprefixer'),
+      MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+      UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
+      OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
+      BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
-  entry: './assets/app/js/index.js',
-  output: {
-    path: path.resolve(__dirname, './assets'),
-    filename: './public/js/script.min.js',
-    publicPath: 'assets/'
+  context: __dirname,
+  entry: {
+    frontend: ['babel-polyfill', './assets/app/js/index.js'],
+    customizer: './assets/app/js/customizer.js'
   },
-  devtool: DEV ? 'cheap-eval-source-map' : 'source-map',
+  output: {
+    path: path.resolve(__dirname, 'assets/public/js'),
+    filename: '[name]-bundle.js'
+  },
+  mode: 'development',
+  devtool: 'source-map',
   module: {
     rules: [
       {
+        enforce: 'pre',
+        exclude: /node_modules/,
         test: /\.js$/,
-        loader: 'babel-loader',
-        // exclude: /node_modules/
+        loader: 'eslint-loader'
       },
       {
-        test: /\.(scss)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1
-              },
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => [
-                  autoprefixer({
-                    grid: "autoplace",
-                    browsers: [
-                      '>1%',
-                      'last 4 versions',
-                      'Firefox ESR',
-                      'not ie < 9', // React doesn't support IE8 anyway
-                    ],
-                  }),
-                ],
-              }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true
-              }
+        test: /\.js?$/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          MiniCssExtractPlugin.loader, 
+          {
+            loader: "css-loader", 
+            options: {
+              sourceMap: true
             }
-          ]
-        })
+          },
+          {
+            loader: 'postcss-loader', // Run post css actions
+            options: {
+              plugins: [
+                autoprefixer({
+                  grid: "autoplace",
+                  browsers:['> 1%', 'last 2 versions']
+                })
+              ],
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(jpe?g|png|gif)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'public/images'
+              outputPath: '../images/'
             }
-          }
+          },
+          'img-loader'
         ]
       },
       {
@@ -77,23 +77,24 @@ module.exports = {
             loader: 'file-loader',
             options: {
                 name: '[name].[ext]',
-                outputPath: 'public/fonts'
+                outputPath: '../fonts/'
             }
         }]
       },
     ]
   },
   plugins: [
-    new ExtractTextPlugin('public/css/style.min.css'),
+    new MiniCssExtractPlugin({ filename: '../css/style.css' }),
+    new BrowserSyncPlugin({
+      files: '**/*.php',
+      injectCss: true,
+      proxy: 'http://ivannikitin.local'
+    })
   ],
   optimization: {
     minimizer: [
-      !DEV &&
-      new UglifyJsPlugin({
-        sourceMap: true,
-      }),
-      !DEV &&
-      new OptimizeCSSAssetsPlugin()
+      new UglifyJSPlugin(), 
+      new OptimizeCssAssetsPlugin()
     ]
   }
 }
