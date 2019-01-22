@@ -27,3 +27,4 @@
 * yarn или npm install
 * yarn start / npm run start - Работа в режиме development без минификации файлов
 * yarn build / npm run build - Работа в режиме production минификация (используем только с выгрузом на прод)
+* При локальной разработке указываем в webpack.config.js свой адрес сайта 'http://ivannikitin.local' меняем на свой, лучше чтобы у всех был один адрес на локальной машине, чтобы не перезаписывать файл
