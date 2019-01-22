@@ -22,3 +22,8 @@
 
 #### Шаблоны, базирующиеся на URL и слагах
 * page-contacts.php -- шаблон страницы контактов
+
+#### Запуск webpack
+* yarn или npm install
+* yarn start / npm run start - Работа в режиме development без минификации файлов
+* yarn build / npm run build - Работа в режиме production минификация (используем только с выгрузом на прод)
