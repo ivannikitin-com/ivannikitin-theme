@@ -220,7 +220,13 @@ function in_after_setup()
 
 
 
-
+// Ссылка с отметкой из логотипа, Нужна для того, чтобы улучшить перелиинковку
+add_action( 'wpex_logo_url', 'in_wpex_logo_url' );
+function in_wpex_logo_url( $url )
+{
+	$logo_mark = 'inner=logo';
+	return ( strpos( '$url', '? ') === false ) ? $url . '?' . $logo_mark : $url . '&' . $logo_mark;
+}
 
 
 
