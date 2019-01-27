@@ -51,14 +51,6 @@ function in_load_cpm_style()
 	}	
 }
 
-// Убиваем мерзость Яндекс.Советник
-// https://github.com/SerjoPepper/kick_sovetnik
-add_action( 'wp_enqueue_scripts', 'load_kick_sovetnik' );
-function load_kick_sovetnik()
-{
-	wp_enqueue_script( 'kick_sovetnik', 'https://serjopepper.github.io/kick_sovetnik/dist/index.min.js');
-}
-
 
 /** ==========================================================================================
  * Меню на страницах личного кабинета
