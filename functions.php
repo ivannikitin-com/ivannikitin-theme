@@ -43,8 +43,8 @@ if ( ! function_exists( 'in_2018_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'in-2018' ),
-			'menu-2' => esc_html__( 'Footer menu', 'in-2018' ),
+			'Primary' => esc_html__( 'Основное меню', 'in-2018' ),
+			'Footer' => esc_html__( 'Меню в подвале', 'in-2018' ),
 		) );
 
 		/*
@@ -176,3 +176,47 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 require get_template_directory() . '/woocommerce/hooks.php';
 
+//Настраиваем основное меню
+class in2018_Walker_Menu extends Walker_Nav_Menu {
+	function start_lvl(&$output, $depth = 0, $args =array()) {
+		$output .= '<ul class="dropdown-menu box-shadow">';
+	}
+}
+// Изменяем атрибут class у тега li -- ВОТ ЭТА ФУНКЦИЯ И СБРАСЫВАЛА КЛАССЫ
+//add_filter( 'nav_menu_css_class', 'filter_nav_menu_css_classes', 10, 4 );
+function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
+	if ( $args->theme_location === 'Primary' ) {
+		$classes = [
+			'nav-item'
+		];
+		if ( $item->current ) {
+			$classes[] = 'active';
+		}
+	}
+	return $classes;
+}
+/**
+ * Add a parent CSS class for nav menu items.
+ *
+ * @param array  $items The menu items, sorted by each menu item's menu order.
+ * @return array (maybe) modified parent CSS class.
+ */
+function wpdocs_add_menu_parent_class( $items ) {
+    $parents = array();
+ 
+    // Collect menu items with parents.
+    foreach ( $items as $item ) {
+        if ( $item->menu_item_parent && $item->menu_item_parent > 0 ) {
+            $parents[] = $item->menu_item_parent;
+        }
+    }
+ 
+    // Add class.
+    foreach ( $items as $item ) {
+        if ( in_array( $item->ID, $parents ) ) {
+            $item->classes[] = 'dropdown';
+        }
+    }
+    return $items;
+}
+add_filter( 'wp_nav_menu_objects', 'wpdocs_add_menu_parent_class' );
