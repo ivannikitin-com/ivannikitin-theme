@@ -1,2 +1,4 @@
 *.log
 *.sublime-project
+
+node_modules

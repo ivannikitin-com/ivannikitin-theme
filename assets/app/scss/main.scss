@@ -1,0 +1,30 @@
+@import "libs";
+@import "vars";
+@import "fonts";
+@import "./components/extend";
+@import "./template/extend";
+
+body {
+	font-size: 14px;
+	min-width: 320px;
+	position: relative;
+	font-family: $default-font;
+	overflow-x: hidden;
+
+	input, textarea {
+		outline: none;
+
+		&:focus:required:invalid {
+			border-color: red;
+		}
+
+		&:required:valid {
+			border-color: green;
+		}
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
