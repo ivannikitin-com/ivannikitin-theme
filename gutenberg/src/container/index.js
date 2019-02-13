@@ -5,7 +5,7 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { Fragment } = wp.element;
-const { InspectorControls } = wp.editor;
+const { InspectorControls, InnerBlocks } = wp.editor;
 const { PanelBody, SelectControl } = wp.components;
 
 registerBlockType('in-2019/container', {
@@ -32,7 +32,7 @@ registerBlockType('in-2019/container', {
                 <InspectorControls>
                     <PanelBody title={__('Settings', 'in-2019')}>
                         <SelectControl
-                            label="Size"
+                            label={ __( 'Size', 'in-2019' ) }
                             value={container}
                             options={[
                                 { label: 'Container', value: 'container' },
@@ -42,7 +42,9 @@ registerBlockType('in-2019/container', {
                         />
                     </PanelBody>
                 </InspectorControls>
-                <div className={classes} >Hello</div>
+                <div className={classes}>
+                    <InnerBlocks />
+                </div>
             </Fragment>
         )
     },
@@ -55,7 +57,7 @@ registerBlockType('in-2019/container', {
             container
         );
         return (
-            <div className={ classes }>Hello</div>
+            <div className={ classes }><InnerBlocks.Content /></div>
         )
     }
 })
