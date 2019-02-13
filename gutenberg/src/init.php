@@ -45,3 +45,20 @@ function gutenberg_cgb_editor_assets() { // phpcs:ignore
 
 // Hook: Editor assets.
 add_action( 'enqueue_block_editor_assets', 'gutenberg_cgb_editor_assets' );
+
+// Create custom category
+function gutenberg_nikitin_block_categories ( $categories ) {
+	return array_merge(
+		$categories,
+		array(
+			array(
+				'slug' 	=> 'nikitin',
+				'title'	=> __( 'Nikitin', 'in-2019' ),
+			)
+		)
+	);
+}
+
+add_filter( 'block_categories', 'gutenberg_nikitin_block_categories', 10, 2 );
+
+add_theme_support( 'align-wide' );			
