@@ -11,4 +11,5 @@
 
 // Blocks
 import './section/index';
+import './container/index';
 // import './block/block.js';

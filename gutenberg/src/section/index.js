@@ -6,13 +6,12 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { registerBlockType } = wp.blocks;
-const { InnerBlocks, MediaUpload, MediaUploadCheck, BlockControls, InspectorControls, PanelColorSettings, withColors } = wp.editor;
-const { Toolbar, IconButton, ToggleControl, PanelBody, RangeControl, withNotices } = wp.components;
+const { InnerBlocks, MediaUpload, MediaUploadCheck, BlockControls, InspectorControls, PanelColorSettings, withColors, getColorClassName } = wp.editor;
+const { Toolbar, IconButton, ToggleControl, PanelBody, RangeControl } = wp.components;
 const { compose } = wp.compose;
 
-const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
+const ALLOWED_MEDIA_TYPES = [ 'image' ];
 const IMAGE_BACKGROUND_TYPE = 'image';
-const VIDEO_BACKGROUND_TYPE = 'video';
 
 registerBlockType('in-2019/section', {
 	title: __( 'Section', 'in-2019' ),
@@ -47,6 +46,9 @@ registerBlockType('in-2019/section', {
 		overlayColor: {
 			type: 'string',
 		},
+		customOverlayColor: {
+			type: 'string',
+		},
 		opacity: {
 			type: 'number',
 			default: 50
@@ -61,8 +63,7 @@ registerBlockType('in-2019/section', {
 		anchor: true,
 	},
 	edit: compose( [
-		withColors( { overlayColor: 'background-color' } ),
-		withNotices,
+		withColors( { overlayColor: 'background-color' } )
 	] )(
 		( { className, attributes, setAttributes, overlayColor, setOverlayColor } ) => {
 			const { url, id, hasParallax, hasRepeat, hasCover, backgroundType, opacity } = attributes;
@@ -76,7 +77,7 @@ registerBlockType('in-2019/section', {
 				setAttributes( { url: undefined, id: undefined } );
 			};
 			const onSelectMedia = ( media ) => {
-				if ( ! media || ! media.url  ) {
+				if ( ! media || ! media.url ) {
 					setAttributes( { url: undefined, id: undefined } );
 					return;
 				}
@@ -117,7 +118,7 @@ registerBlockType('in-2019/section', {
 				className,
 				opacityToClass( opacity ),
 				{
-					'has-background-opacity': opacity !== 0,
+					'has-background-opacity': opacity !== 0 && url,
 					'has-parallax': hasParallax,
 					'no-repeat': hasRepeat,
 					'cover': hasCover,
@@ -198,8 +199,28 @@ registerBlockType('in-2019/section', {
 		}
 	),
 	save: function( props ) {
+		const { attributes } = props;
+		const { url, hasParallax, hasRepeat, hasCover, opacity, overlayColor, customOverlayColor } = attributes;
+		const overlayColorClass = getColorClassName( 'background-color', overlayColor );
+		const style = backgroundImageStyles( url );
+		if ( ! overlayColorClass ) {
+			style.backgroundColor = customOverlayColor;
+		}
+
+		const classes = classnames(
+			'wp-block-in-2019-section',
+			overlayColorClass,
+			!! url && opacityToClass( opacity ),
+			{
+				'has-background-opacity': opacity !== 0 && url,
+				'has-parallax': hasParallax,
+				'no-repeat': hasRepeat,
+				'cover': hasCover,
+			}
+		);
+
 		return (
-			<section><InnerBlocks.Content /></section>
+			<section className={ classes } style={ style }><InnerBlocks.Content /></section>
 		);
 	},
 });
