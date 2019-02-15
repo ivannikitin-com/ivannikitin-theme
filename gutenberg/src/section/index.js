@@ -193,7 +193,10 @@ registerBlockType('in-2019/section', {
 							/>
 						</PanelBody>
 					</InspectorControls>
-					<section className={ classes } style={ style } ><InnerBlocks /></section>
+					<section className={ classes } style={ style } >
+						<span className="name">{ __( 'Section', 'in-2019' ) }</span>
+						<InnerBlocks />
+					</section>
 				</Fragment>
 			);
 		}

@@ -16,7 +16,15 @@ registerBlockType('in-2019/container', {
         container: {
             type: 'string',
             default: 'container'
-        }
+        },
+        align: {
+            type: 'string',
+            default: 'wide',
+        },
+    },
+    supports: {
+        align: ['wide'],
+        anchor: true,
     },
     edit: function (props) {
         const { className, attributes, setAttributes } = props;
@@ -32,7 +40,7 @@ registerBlockType('in-2019/container', {
                 <InspectorControls>
                     <PanelBody title={__('Settings', 'in-2019')}>
                         <SelectControl
-                            label={ __( 'Size', 'in-2019' ) }
+                            label={__('Size', 'in-2019')}
                             value={container}
                             options={[
                                 { label: 'Container', value: 'container' },
@@ -43,6 +51,7 @@ registerBlockType('in-2019/container', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={classes}>
+                    <span className="name">{ __( 'Container', 'in-2019' ) }</span>
                     <InnerBlocks />
                 </div>
             </Fragment>
@@ -57,7 +66,7 @@ registerBlockType('in-2019/container', {
             container
         );
         return (
-            <div className={ classes }><InnerBlocks.Content /></div>
+            <div className={classes}><InnerBlocks.Content /></div>
         )
     }
 })
