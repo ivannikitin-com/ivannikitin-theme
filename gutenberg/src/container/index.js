@@ -1,6 +1,8 @@
 import './style.scss';
+import './editor.scss';
 import icon from '-!svg-react-loader!../assets/container.svg';
 import classnames from 'classnames';
+import BlockName from '../components/BlockName.jsx';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -27,7 +29,7 @@ registerBlockType( 'in-2019/container', {
 		anchor: true,
 	},
 	edit: function( props ) {
-		const { className, attributes, setAttributes } = props;
+		const { className, attributes, setAttributes, name } = props;
 		const { container } = attributes;
 
 		const classes = classnames(
@@ -53,7 +55,7 @@ registerBlockType( 'in-2019/container', {
 					</PanelBody>
 				</InspectorControls>
 				<div className={ classes }>
-					<span className="name">{ __( 'Container', 'in-2019' ) }</span>
+					<BlockName name={ name } />
 					<InnerBlocks />
 				</div>
 			</Fragment>

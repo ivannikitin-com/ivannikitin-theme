@@ -1,6 +1,7 @@
 import './editor.scss';
 import icon from '-!svg-react-loader!../assets/row.svg';
 import classnames from 'classnames';
+import BlockName from '../components/BlockName.jsx';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -13,15 +14,15 @@ registerBlockType( 'in-2019/row', {
 	attributes: {
 		align: {
 			type: 'string',
-			// default: 'wide',
+			default: 'wide',
 		},
 	},
 	supports: {
-		// align: [ 'wide' ],
+		align: [ 'wide' ],
 		anchor: true,
 	},
 	edit: function( props ) {
-		const { className } = props;
+		const { className, name } = props;
 
 		const classes = classnames(
 			className
@@ -29,7 +30,7 @@ registerBlockType( 'in-2019/row', {
 
 		return (
 			<div className={ classes }>
-				<span className="name">{ __( 'Row', 'in-2019' ) }</span>
+				<BlockName name={ name } />
 				<InnerBlocks />
 			</div>
 		);

@@ -3,6 +3,7 @@ import './style.scss';
 import icon from '-!svg-react-loader!../assets/col.svg';
 import classnames from 'classnames';
 import blockAttributes from './components/attributes';
+import BlockName from '../components/BlockName.jsx';
 
 const { __ } = wp.i18n;
 const {
@@ -47,7 +48,7 @@ registerBlockType( 'in-2019/col', {
 	edit: compose( [
 		withColors( { overlayColor: 'background-color' } ),
 	] )(
-		( { className, attributes, setAttributes, overlayColor, setOverlayColor } ) => {
+		( { className, attributes, setAttributes, overlayColor, setOverlayColor, name } ) => {
 			const {
 				xl,
 				lg,
@@ -325,7 +326,7 @@ registerBlockType( 'in-2019/col', {
 						{ panelBodyBg }
 					</InspectorControls>
 					<div className={ classes } style={ style }>
-						<span className="name">{ __( 'Column', 'in-2019' ) } { cols }</span>
+						<BlockName name={ name } text={ cols } />
 						<InnerBlocks />
 					</div>
 				</Fragment>

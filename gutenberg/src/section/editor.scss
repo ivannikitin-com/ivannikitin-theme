@@ -1,26 +1,9 @@
-// .wp-block-in-2019-section,
-// .wp-block-in-2019-container,
-// .wp-block-in-2019-row,
-// .wp-block-in-2019-col {
-//     border: 1px solid $red;
-// }
+[class*="wp-block-in-2019"] {
+    padding-top: 30px;
+    position: relative;
+    border: 1px solid rgba(124, 184, 224, 0.5);
+}
 
-// [class*="wp-block-in-2019"] {
-//     padding-top: 30px;
-//     position: relative;
-
-//     .name {
-//         position: absolute;
-//         height: 30px;
-//         padding: 5px;
-//         top: 0;
-//         left: 0;
-//         font-size: 14px;
-//         width: 100%;
-//         text-align: right;
-//         background: #d0cdcd;
-//         white-space: nowrap;
-//         overflow: hidden;
-//         text-overflow: ellipsis;
-//     }
-// }
+.wp-block-in-2019-section > .editor-inner-blocks > .editor-block-list__layout {
+    margin: 0;
+}

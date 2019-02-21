@@ -1,5 +1,9 @@
 .wp-block-in-2019-row {
     > .editor-inner-blocks > .editor-block-list__layout {
         @extend .row;
+
+        > [data-type="core/paragraph"] {
+            width: 100%;
+        }
     }
 }
