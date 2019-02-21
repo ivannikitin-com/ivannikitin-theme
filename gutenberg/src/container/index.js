@@ -8,65 +8,67 @@ const { Fragment } = wp.element;
 const { InspectorControls, InnerBlocks } = wp.editor;
 const { PanelBody, SelectControl } = wp.components;
 
-registerBlockType('in-2019/container', {
-    title: __('Container', 'in-2019'),
-    category: 'nikitin',
-    icon: icon,
-    attributes: {
-        container: {
-            type: 'string',
-            default: 'container'
-        },
-        align: {
-            type: 'string',
-            default: 'wide',
-        },
-    },
-    supports: {
-        align: ['wide'],
-        anchor: true,
-    },
-    edit: function (props) {
-        const { className, attributes, setAttributes } = props;
-        const { container } = attributes;
+registerBlockType( 'in-2019/container', {
+	title: __( 'Container', 'in-2019' ),
+	category: 'nikitin',
+	icon: icon,
+	attributes: {
+		container: {
+			type: 'string',
+			default: 'container',
+		},
+		align: {
+			type: 'string',
+			default: 'wide',
+		},
+	},
+	supports: {
+		align: [ 'wide' ],
+		anchor: true,
+	},
+	edit: function( props ) {
+		const { className, attributes, setAttributes } = props;
+		const { container } = attributes;
 
-        const classes = classnames(
-            className,
-            container
-        );
+		const classes = classnames(
+			className,
+			container
+		);
 
-        return (
-            <Fragment>
-                <InspectorControls>
-                    <PanelBody title={__('Settings', 'in-2019')}>
-                        <SelectControl
-                            label={__('Size', 'in-2019')}
-                            value={container}
-                            options={[
-                                { label: 'Container', value: 'container' },
-                                { label: 'Container-fluid', value: 'container-fluid' },
-                            ]}
-                            onChange={(container) => { setAttributes({ container }) }}
-                        />
-                    </PanelBody>
-                </InspectorControls>
-                <div className={classes}>
-                    <span className="name">{ __( 'Container', 'in-2019' ) }</span>
-                    <InnerBlocks />
-                </div>
-            </Fragment>
-        )
-    },
-    save: function (props) {
-        const { attributes, className } = props;
-        const { container } = attributes;
+		return (
+			<Fragment>
+				<InspectorControls>
+					<PanelBody title={ __( 'Settings', 'in-2019' ) }>
+						<SelectControl
+							label={ __( 'Size', 'in-2019' ) }
+							value={ container }
+							options={ [
+								{ label: 'Container', value: 'container' },
+								{ label: 'Container-fluid', value: 'container-fluid' },
+							] }
+							onChange={ ( container ) => {
+								setAttributes( { container } );
+							} }
+						/>
+					</PanelBody>
+				</InspectorControls>
+				<div className={ classes }>
+					<span className="name">{ __( 'Container', 'in-2019' ) }</span>
+					<InnerBlocks />
+				</div>
+			</Fragment>
+		);
+	},
+	save: function( props ) {
+		const { attributes, className } = props;
+		const { container } = attributes;
 
-        const classes = classnames(
-            className,
-            container
-        );
-        return (
-            <div className={classes}><InnerBlocks.Content /></div>
-        )
-    }
-})
+		const classes = classnames(
+			className,
+			container
+		);
+		return (
+			<div className={ classes }><InnerBlocks.Content /></div>
+		);
+	},
+} );

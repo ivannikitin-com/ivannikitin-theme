@@ -2,6 +2,7 @@ import './editor.scss';
 import './style.scss';
 import icon from '-!svg-react-loader!../assets/section.svg';
 import classnames from 'classnames';
+import BlockName from '../components/BlockName.jsx';
 
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
@@ -13,7 +14,7 @@ const { compose } = wp.compose;
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 const IMAGE_BACKGROUND_TYPE = 'image';
 
-registerBlockType('in-2019/section', {
+registerBlockType( 'in-2019/section', {
 	title: __( 'Section', 'in-2019' ),
 	category: 'nikitin',
 	icon: icon,
@@ -51,7 +52,7 @@ registerBlockType('in-2019/section', {
 		},
 		opacity: {
 			type: 'number',
-			default: 50
+			default: 50,
 		},
 		align: {
 			type: 'string',
@@ -63,9 +64,10 @@ registerBlockType('in-2019/section', {
 		anchor: true,
 	},
 	edit: compose( [
-		withColors( { overlayColor: 'background-color' } )
+		withColors( { overlayColor: 'background-color' } ),
 	] )(
-		( { className, attributes, setAttributes, overlayColor, setOverlayColor } ) => {
+		( props ) => {
+			const { className, attributes, setAttributes, overlayColor, setOverlayColor, name } = props;
 			const { url, id, hasParallax, hasRepeat, hasCover, backgroundType, opacity } = attributes;
 
 			const toggleParallax = () => setAttributes( { hasParallax: ! hasParallax } );
@@ -97,14 +99,14 @@ registerBlockType('in-2019/section', {
 					}
 					mediaType = media.type;
 				}
-	
+
 				setAttributes( {
 					url: media.url,
 					id: media.id,
 					backgroundType: mediaType,
 				} );
-			}
-	
+			};
+
 			const style = {
 				...(
 					backgroundType === IMAGE_BACKGROUND_TYPE ?
@@ -121,15 +123,16 @@ registerBlockType('in-2019/section', {
 					'has-background-opacity': opacity !== 0 && url,
 					'has-parallax': hasParallax,
 					'no-repeat': hasRepeat,
-					'cover': hasCover,
+					cover: hasCover,
 				}
 			);
+
 			return (
 				<Fragment>
 					<BlockControls>
 						<Fragment>
 							<MediaUploadCheck>
-								<Toolbar>	
+								<Toolbar>
 									<MediaUpload
 										onSelect={ onSelectMedia }
 										value={ id }
@@ -194,6 +197,7 @@ registerBlockType('in-2019/section', {
 						</PanelBody>
 					</InspectorControls>
 					<section className={ classes } style={ style } >
+						<BlockName name={ name } />
 						<span className="name">{ __( 'Section', 'in-2019' ) }</span>
 						<InnerBlocks />
 					</section>
@@ -218,7 +222,7 @@ registerBlockType('in-2019/section', {
 				'has-background-opacity': opacity !== 0 && url,
 				'has-parallax': hasParallax,
 				'no-repeat': hasRepeat,
-				'cover': hasCover,
+				cover: hasCover,
 			}
 		);
 
@@ -226,7 +230,7 @@ registerBlockType('in-2019/section', {
 			<section className={ classes } style={ style }><InnerBlocks.Content /></section>
 		);
 	},
-});
+} );
 
 function opacityToClass( ratio ) {
 	return ( ratio === 0 || ratio === 50 ) ?

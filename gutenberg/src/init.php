@@ -62,3 +62,4 @@ function gutenberg_nikitin_block_categories ( $categories ) {
 add_filter( 'block_categories', 'gutenberg_nikitin_block_categories', 10, 2 );
 
 add_theme_support( 'align-wide' );			
+add_theme_support( 'align-full' );			
