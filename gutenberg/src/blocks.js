@@ -14,4 +14,5 @@ import './section/index';
 import './container/index';
 import './row/index';
 import './col/index';
+import './service/index';
 // import './block/block.js';

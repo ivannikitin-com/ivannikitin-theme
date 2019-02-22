@@ -319,19 +319,6 @@ main{
 	padding:3px 0;
 }
 /*Услуги на Главной*/
-.item-services{
-	padding:48px 15px 20px;
-	color:#fff;
-	min-height:285px;
-}
-.item-services a{
-	display:block;
-	font-family:'Roboto Condensed', sans-serif;
-	color:#fff;
-	font-weight:bold;
-	text-transform:uppercase;
-	margin-top:1.2rem;
-}
 .align-middle{	
 	display:flex;
   	justify-content:center;
@@ -354,11 +341,8 @@ main{
 	right:0;
     top:0;
 	bottom:0;
-	background-color:rgba(53, 159, 229, .87);
+	background-color:rgba(68, 151, 206, 0.87);
 	z-index:1;
-}
-.item-services .descr{
-	margin-top:.7rem;
 }
 .slider_wrap{
 	position:relative;

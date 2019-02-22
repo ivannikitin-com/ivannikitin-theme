@@ -1,13 +1,8 @@
 div[data-type="in-2019/col"] {
     margin: 0 !important;
-}
 
-.wp-block-in-2019-row {
-    > .editor-inner-blocks > .editor-block-list__layout {
-        > *:last-child,
-        div[data-type="core/paragraph"]
-         {
-            width: 100%;
-        }
+    > .editor-block-mover {
+        left: -15px;
+        margin-top: 45px !important;
     }
 }

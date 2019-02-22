@@ -4,10 +4,12 @@ import icon from '-!svg-react-loader!../assets/col.svg';
 import classnames from 'classnames';
 import blockAttributes from './components/attributes';
 import BlockName from '../components/BlockName.jsx';
+import ArrowBlock from '../components/ArrowBlock.jsx';
 
 const { __ } = wp.i18n;
 const {
 	compose,
+	withInstanceId,
 } = wp.compose;
 const {
 	Fragment,
@@ -21,7 +23,9 @@ const {
 	ToggleControl,
 	PanelBody,
 	RangeControl,
-	TextControl } = wp.components;
+	TextControl,
+	RadioControl,
+	Button } = wp.components;
 const {
 	InnerBlocks,
 	MediaUpload,
@@ -42,13 +46,13 @@ registerBlockType( 'in-2019/col', {
 	icon: icon,
 	attributes: blockAttributes,
 	supports: {
-		// align: ['wide'],
 		anchor: true,
 	},
 	edit: compose( [
 		withColors( { overlayColor: 'background-color' } ),
 	] )(
-		( { className, attributes, setAttributes, overlayColor, setOverlayColor, name } ) => {
+		( props ) => {
+			const { className, attributes, setAttributes, overlayColor, setOverlayColor, name } = props;
 			const {
 				xl,
 				lg,
@@ -60,6 +64,7 @@ registerBlockType( 'in-2019/col', {
 				orderMd,
 				orderSm,
 				orderXs,
+				order,
 				offsetXl,
 				offsetLg,
 				offsetMd,
@@ -72,10 +77,12 @@ registerBlockType( 'in-2019/col', {
 				hasCover,
 				backgroundType,
 				opacity,
+				arrow,
 			} = attributes;
 
-			const cols = ( 'xl-' + xl + ' lg-' + lg + ' md-' + md + ' sm-' + sm + ' xs-' + xs );
+			console.log( instanceId );
 
+			const cols = ( 'xl-' + xl + ' lg-' + lg + ' md-' + md + ' sm-' + sm + ' xs-' + xs );
 			const toggleParallax = () => setAttributes( { hasParallax: ! hasParallax } );
 			const toggleRepeat = () => setAttributes( { hasRepeat: ! hasRepeat } );
 			const toggleCover = () => setAttributes( { hasCover: ! hasCover } );
@@ -204,15 +211,13 @@ registerBlockType( 'in-2019/col', {
 				}
 			);
 
-			const order = (
-				<PanelBody title={ __( 'Order', 'in-2019' ) } initialOpen={ false }>
+			const orderSettings = (
+				<PanelBody title={ __( 'Order', 'in-2019' ) }>
 					<TextControl
 						label="Order XL"
 						type="number"
 						value={ orderXl }
-						onChange={ ( orderXl ) => {
-							setAttributes( { orderXl } );
-						} }
+						onChange={ ( orderXl ) => setAttributes( { orderXl } ) }
 					/>
 					<TextControl
 						label="Order LG"
@@ -238,11 +243,17 @@ registerBlockType( 'in-2019/col', {
 						value={ orderXs }
 						onChange={ ( orderXs ) => setAttributes( { orderXs } ) }
 					/>
+					<TextControl
+						label="Order"
+						type="number"
+						value={ order }
+						onChange={ ( order ) => setAttributes( { order } ) }
+					/>
 				</PanelBody>
 			);
 
 			const offset = (
-				<PanelBody title={ __( 'Offset', 'in-2019' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Offset', 'in-2019' ) } >
 					<TextControl
 						label="Offset XL"
 						type="number"
@@ -277,11 +288,29 @@ registerBlockType( 'in-2019/col', {
 					/>
 				</PanelBody>
 			);
-
 			return (
 				<Fragment>
 					{ blockControls }
 					<InspectorControls title={ __( 'Settings', 'in-2019' ) }>
+						<PanelBody title={ __( 'Arrow', 'in-2019' ) }>
+							<RadioControl
+								label="User type"
+								help="The type of the current user"
+								selected={ arrow }
+								options={ [
+									{ label: 'Left', value: 'arrow-left' },
+									{ label: 'Right', value: 'arrow-right' },
+								] }
+								onChange={ ( arrow ) => {
+									setAttributes( { arrow } );
+								} }
+							/>
+							<Button isDefault onClick={ () => {
+								setAttributes( { arrow: null } );
+							} }>
+								{ __( 'Reset', 'in-2019' ) }
+							</Button>
+						</PanelBody>
 						<PanelBody title={ __( 'Settings', 'in-2019' ) }>
 							<RangeControl
 								label="Columns XL"
@@ -321,7 +350,7 @@ registerBlockType( 'in-2019/col', {
 								max={ 12 }
 							/>
 						</PanelBody>
-						{ order }
+						{ orderSettings }
 						{ offset }
 						{ panelBodyBg }
 					</InspectorControls>
@@ -332,6 +361,7 @@ registerBlockType( 'in-2019/col', {
 				</Fragment>
 			);
 		}
+
 	),
 	getEditWrapperProps: function( attributes ) {
 		const {
@@ -345,11 +375,13 @@ registerBlockType( 'in-2019/col', {
 			orderMd,
 			orderSm,
 			orderXs,
+			order,
 			offsetXl,
 			offsetLg,
 			offsetMd,
 			offsetSm,
 			offsetXs,
+			arrow,
 		} = attributes;
 
 		const classes = classnames(
@@ -357,12 +389,14 @@ registerBlockType( 'in-2019/col', {
 			'editor-block-list__block',
 			'is-focused',
 			'is-focus-mode',
+			arrow,
 			{
 				[ `col-xl-${ xl }` ]: xl,
 				[ `col-lg-${ lg }` ]: lg,
 				[ `col-md-${ md }` ]: md,
 				[ `col-sm-${ sm }` ]: sm,
 				[ `col-xs-${ xs }` ]: xs,
+				[ `order-${ order }` ]: order,
 				[ `order-xl-${ orderXl }` ]: orderXl,
 				[ `order-lg-${ orderLg }` ]: orderLg,
 				[ `order-md-${ orderMd }` ]: orderMd,
@@ -381,7 +415,7 @@ registerBlockType( 'in-2019/col', {
 		};
 	},
 	save: function( props ) {
-		const { className, attributes } = props;
+		const { attributes } = props;
 		const {
 			xl,
 			lg,
@@ -393,6 +427,7 @@ registerBlockType( 'in-2019/col', {
 			orderMd,
 			orderSm,
 			orderXs,
+			order,
 			offsetXl,
 			offsetLg,
 			offsetMd,
@@ -405,6 +440,7 @@ registerBlockType( 'in-2019/col', {
 			opacity,
 			overlayColor,
 			customOverlayColor,
+			arrow,
 		} = attributes;
 
 		const overlayColorClass = getColorClassName( 'background-color', overlayColor );
@@ -414,9 +450,9 @@ registerBlockType( 'in-2019/col', {
 		}
 
 		const classes = classnames(
-			className,
 			overlayColorClass,
 			!! url && opacityToClass( opacity ),
+			arrow,
 			{
 				'has-background-opacity': opacity !== 0 && url,
 				'has-parallax': hasParallax,
@@ -427,6 +463,7 @@ registerBlockType( 'in-2019/col', {
 				[ `col-md-${ md }` ]: md,
 				[ `col-sm-${ sm }` ]: sm,
 				[ `col-xs-${ xs }` ]: xs,
+				[ `order-${ order }` ]: order,
 				[ `order-xl-${ orderXl }` ]: orderXl,
 				[ `order-lg-${ orderLg }` ]: orderLg,
 				[ `order-md-${ orderMd }` ]: orderMd,
@@ -442,8 +479,9 @@ registerBlockType( 'in-2019/col', {
 		);
 
 		return (
-			<div className={ classes } style={ style }>
+			<div className={ classes } style={ style } id={ id }>
 				<div>
+					<ArrowBlock color={ customOverlayColor } />
 					<InnerBlocks.Content />
 				</div>
 			</div>

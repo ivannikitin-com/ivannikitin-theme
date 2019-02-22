@@ -2,7 +2,8 @@
     > .editor-inner-blocks > .editor-block-list__layout {
         @extend .row;
 
-        > [data-type="core/paragraph"] {
+        > [data-type="core/paragraph"],
+        > *:last-child {
             width: 100%;
         }
     }

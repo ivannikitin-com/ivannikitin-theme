@@ -5,11 +5,25 @@
  * that are used across the project.
 */
 
+// Required
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+// Optional
 @import "~bootstrap/scss/bootstrap-grid.scss";
 
 // Colors.
-$black: rgb(41, 41, 41);
-$white: #f4f4f4;
-$gray: #dedede;
-$green: #bada55;
-$red: orangered;
+$white: #fff;
+
+// Fonts
+$default__fonts: 'Roboto Condensed', sans-serif;
+
+.align-middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 0;
+  padding-bottom: 0;
+}
