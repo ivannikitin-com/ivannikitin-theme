@@ -80,8 +80,6 @@ registerBlockType( 'in-2019/col', {
 				arrow,
 			} = attributes;
 
-			console.log( instanceId );
-
 			const cols = ( 'xl-' + xl + ' lg-' + lg + ' md-' + md + ' sm-' + sm + ' xs-' + xs );
 			const toggleParallax = () => setAttributes( { hasParallax: ! hasParallax } );
 			const toggleRepeat = () => setAttributes( { hasRepeat: ! hasRepeat } );
