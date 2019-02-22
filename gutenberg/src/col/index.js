@@ -479,7 +479,7 @@ registerBlockType( 'in-2019/col', {
 		);
 
 		return (
-			<div className={ classes } style={ style } id={ id }>
+			<div className={ classes } style={ style }>
 				<div>
 					<ArrowBlock color={ customOverlayColor } />
 					<InnerBlocks.Content />

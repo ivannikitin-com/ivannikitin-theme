@@ -87,9 +87,6 @@ const blockAttributes = {
 	arrow: {
 		type: 'string',
 	},
-	classNames: {
-		type: 'string',
-	},
 };
 
 export default blockAttributes;
