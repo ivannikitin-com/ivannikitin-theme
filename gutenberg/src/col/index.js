@@ -45,14 +45,11 @@ registerBlockType( 'in-2019/col', {
 	category: 'nikitin',
 	icon: icon,
 	attributes: blockAttributes,
-	supports: {
-		anchor: true,
-	},
 	edit: compose( [
 		withColors( { overlayColor: 'background-color' } ),
 	] )(
-		( props ) => {
-			const { className, attributes, setAttributes, overlayColor, setOverlayColor, name } = props;
+		withInstanceId( ( props ) => {
+			const { className, attributes, setAttributes, overlayColor, setOverlayColor, name, instanceId } = props;
 			const {
 				xl,
 				lg,
@@ -78,7 +75,12 @@ registerBlockType( 'in-2019/col', {
 				backgroundType,
 				opacity,
 				arrow,
+				idBlock,
 			} = attributes;
+
+			const idCurrentBlock = ( getId ) => {
+				setAttributes( { idBlock: getId } );
+			};
 
 			const cols = ( 'xl-' + xl + ' lg-' + lg + ' md-' + md + ' sm-' + sm + ' xs-' + xs );
 			const toggleParallax = () => setAttributes( { hasParallax: ! hasParallax } );
@@ -351,6 +353,7 @@ registerBlockType( 'in-2019/col', {
 						{ orderSettings }
 						{ offset }
 						{ panelBodyBg }
+						{ idCurrentBlock( instanceId ) }
 					</InspectorControls>
 					<div className={ classes } style={ style }>
 						<BlockName name={ name } text={ cols } />
@@ -360,7 +363,7 @@ registerBlockType( 'in-2019/col', {
 			);
 		}
 
-	),
+		) ),
 	getEditWrapperProps: function( attributes ) {
 		const {
 			xl,
@@ -439,6 +442,7 @@ registerBlockType( 'in-2019/col', {
 			overlayColor,
 			customOverlayColor,
 			arrow,
+			idBlock,
 		} = attributes;
 
 		const overlayColorClass = getColorClassName( 'background-color', overlayColor );
@@ -450,7 +454,7 @@ registerBlockType( 'in-2019/col', {
 		const classes = classnames(
 			overlayColorClass,
 			!! url && opacityToClass( opacity ),
-			arrow,
+			`${ arrow }_${ idBlock }`,
 			{
 				'has-background-opacity': opacity !== 0 && url,
 				'has-parallax': hasParallax,
@@ -479,7 +483,7 @@ registerBlockType( 'in-2019/col', {
 		return (
 			<div className={ classes } style={ style }>
 				<div>
-					<ArrowBlock color={ customOverlayColor } />
+					{ arrow && <ArrowBlock color={ customOverlayColor } id={ String( idBlock ) } /> }
 					<InnerBlocks.Content />
 				</div>
 			</div>

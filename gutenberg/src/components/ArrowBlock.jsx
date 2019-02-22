@@ -4,7 +4,7 @@ const ArrowBlock = ( { color, id } ) => {
 	return (
 		<style dangerouslySetInnerHTML={ {
 			__html: [
-				`#${ id }.arrow-right:after {`,
+				`.arrow-right_${ id }::after {`,
 				'  content: "";',
 				'  position: absolute;',
 				'  right: -28px;',
@@ -14,7 +14,7 @@ const ArrowBlock = ( { color, id } ) => {
 				`  border-left: 14px solid ${ color };`,
 				'  z-index: 3;',
 				'}',
-				`#${ id }.arrow-left:after {`,
+				`.arrow-left_${ id }::after {`,
 				'  content: "";',
 				'  position: absolute;',
 				'  left: -28px;',
@@ -32,12 +32,12 @@ const ArrowBlock = ( { color, id } ) => {
 
 ArrowBlock.propTypes = {
 	color: propTypes.string,
-	id: propTypes.number,
+	id: propTypes.string,
 };
 
 ArrowBlock.defaultProps = {
 	color: '#0c68a5',
-	id: null,
+	id: '',
 };
 
 export default ArrowBlock;

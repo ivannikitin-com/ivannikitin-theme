@@ -87,6 +87,9 @@ const blockAttributes = {
 	arrow: {
 		type: 'string',
 	},
+	idBlock: {
+		type: 'number',
+	},
 };
 
 export default blockAttributes;

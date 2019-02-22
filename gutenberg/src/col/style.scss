@@ -1,6 +1,5 @@
 .wp-block-in-2019-col {
     position: relative;
-    overflow: hidden;
     background-position: center center;
 		width: 100%;
 		
@@ -41,4 +40,11 @@
 			opacity: $i * 0.1;
 		}
 	}
+}
+
+[class*="arrow-right"]::after,
+[class*="arrow-left"]::before {
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
 }

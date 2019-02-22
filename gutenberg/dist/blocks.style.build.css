@@ -8514,7 +8514,6 @@ html {
 
 .wp-block-in-2019-col {
   position: relative;
-  overflow: hidden;
   background-position: center center;
   width: 100%; }
   .wp-block-in-2019-col > div {
@@ -8558,6 +8557,11 @@ html {
     opacity: 0.9; }
   .wp-block-in-2019-col.has-background-opacity.has-background-opacity-100::before {
     opacity: 1; }
+
+@media (max-width: 991.98px) {
+  [class*="arrow-right"]::after,
+  [class*="arrow-left"]::before {
+    display: none; } }
 /**
  * #.# Common SCSS
  *
