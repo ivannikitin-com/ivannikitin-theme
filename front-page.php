@@ -38,31 +38,10 @@ get_header();
 
                 </div><!--/end col-->
             </div><!--/.row-->
-        	
-        	<img src="img/slide.jpg" class="img-fluid" style="width:100%; height:auto;">
+        
         </div><!--/.slider_wrap-->
         
         <main role="main">
-            <h1>Заголовок 1</h1>
-            <h3>Любая проблема имеет решение!</h3>
-            <p>Мы поможем вам с любой проблемой на вашем сайте, для этого не надо заключать договор, просто оформите заявку на консультацию и подробно опишите вашу проблему, наши специалисты найдут решение!</p>
-            <div class="team text-center pt-5 pb-5">
-            	<h2>Наши сотрудники</h2>
-            	<div class="row">
-               		<div class="col-12 col-sm-4 team_item"><img src="img/ivan-nikitin.jpg" class="rounded-circle img-thumbnail border-0">
-                    	<div class="team_name">Никитин Иван Геннадьевич</div>
-                        <div class="team_func">Директор компании</div>
-                    </div>
-                    <div class="col-12 col-sm-4 team_item"><img src="img/nikitina_2-285x300.jpg" class="rounded-circle img-thumbnail border-0">
-                    	<div class="team_name">Никитина Елена Викторовна</div>
-                        <div class="team_func">Финансовый директор</div>
-                    </div>
-                    <div class="col-12 col-sm-4 team_item"><img src="img/IrinaFedorova-285x300.jpg" class="rounded-circle img-thumbnail border-0">
-                    	<div class="team_name">Федорова Ирина</div>
-                        <div class="team_func">Руководитель отдела разработки </div>
-                    </div>
-               </div>
-            </div><!--/.team-->
             <?php
                 if ( have_posts() ) :
 
