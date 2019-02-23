@@ -294,8 +294,6 @@ registerBlockType( 'in-2019/col', {
 					<InspectorControls title={ __( 'Settings', 'in-2019' ) }>
 						<PanelBody title={ __( 'Arrow', 'in-2019' ) }>
 							<RadioControl
-								label="User type"
-								help="The type of the current user"
 								selected={ arrow }
 								options={ [
 									{ label: 'Left', value: 'arrow-left' },
@@ -397,12 +395,6 @@ registerBlockType( 'in-2019/col', {
 				[ `col-md-${ md }` ]: md,
 				[ `col-sm-${ sm }` ]: sm,
 				[ `col-xs-${ xs }` ]: xs,
-				[ `order-${ order }` ]: order,
-				[ `order-xl-${ orderXl }` ]: orderXl,
-				[ `order-lg-${ orderLg }` ]: orderLg,
-				[ `order-md-${ orderMd }` ]: orderMd,
-				[ `order-sm-${ orderSm }` ]: orderSm,
-				[ `order-xs-${ orderXs }` ]: orderXs,
 				[ `offset-xl-${ offsetXl }` ]: offsetXl,
 				[ `offset-lg-${ offsetLg }` ]: offsetLg,
 				[ `offset-md-${ offsetMd }` ]: offsetMd,

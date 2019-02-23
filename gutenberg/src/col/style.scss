@@ -43,7 +43,7 @@
 }
 
 [class*="arrow-right"]::after,
-[class*="arrow-left"]::before {
+[class*="arrow-left"]::after {
     @include media-breakpoint-down(md) {
         display: none;
     }

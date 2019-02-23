@@ -15,4 +15,5 @@ import './container/index';
 import './row/index';
 import './col/index';
 import './service/index';
+import './employee/index';
 // import './block/block.js';

@@ -11,10 +11,12 @@
 @import "node_modules/bootstrap/scss/mixins";
 
 // Optional
-@import "~bootstrap/scss/bootstrap-grid.scss";
+@import "~bootstrap/scss/bootstrap-grid";
+@import "~bootstrap/scss/utilities";
 
 // Colors.
 $white: #fff;
+$black: #072133;
 
 // Fonts
 $default__fonts: 'Roboto Condensed', sans-serif;
@@ -26,4 +28,10 @@ $default__fonts: 'Roboto Condensed', sans-serif;
   flex-direction: column;
   padding-top: 0;
   padding-bottom: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  padding: .25rem;
 }
