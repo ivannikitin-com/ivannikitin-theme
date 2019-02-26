@@ -36,6 +36,9 @@ registerBlockType( 'in-2019/employee', {
 		name: {
 			type: 'string',
 		},
+		url: {
+			type: 'string',
+		},
 		src: {
 			type: 'string',
 		},
@@ -49,13 +52,13 @@ registerBlockType( 'in-2019/employee', {
 	edit,
 	save: function( props ) {
 		const { attributes } = props;
-		const { name, src, alt, widthImage, heighthImage, circleImage, alignment } = attributes;
+		const { name, src, alt, widthImage, heighthImage, circleImage, alignment, url } = attributes;
 
 		const classes = classnames(
 			`text-${ alignment }`
 		);
 		return (
-			<div className={ classes }>
+			<a className={ classes } href={ url }>
 				<Image
 					width={ widthImage }
 					height={ heighthImage }
@@ -65,7 +68,7 @@ registerBlockType( 'in-2019/employee', {
 				/>
 				<div className="employee_name">{ name }</div>
 				<div className="employee_rank"></div>
-			</div>
+			</a>
 		);
 	},
 } );

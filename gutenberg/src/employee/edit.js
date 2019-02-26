@@ -66,6 +66,7 @@ class Employee extends Component {
 			name,
 			src,
 			alt,
+			url,
 		} = attributes;
 
 		const imageSettings = (
@@ -162,6 +163,7 @@ class Employee extends Component {
 				alt: viewPost._embedded && viewPost._embedded[ 'wp:featuredmedia' ] ?
 					viewPost._embedded[ 'wp:featuredmedia' ][ 0 ].alt_text :
 					null,
+				url: viewPost.link,
 			} );
 		}
 
