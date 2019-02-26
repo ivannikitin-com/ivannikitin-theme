@@ -10,7 +10,7 @@ const { Fragment } = wp.element;
 const { ToggleControl, PanelBody } = wp.components;
 
 registerBlockType( 'in-2019/service', {
-	title: __( 'Service' ),
+	title: __( 'Service', 'in-2019' ),
 	icon: icon,
 	category: 'nikitin',
 	attributes: {
