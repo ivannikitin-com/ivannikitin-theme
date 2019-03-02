@@ -20,8 +20,8 @@
         <link href="custom.css" rel="stylesheet">
     
     </head>
-
-<body>
+<p></p>
+<body>     
 	<div class="container-fluid">
     	<header>
         	<div class="row align-items-stretch m-0">
@@ -30,7 +30,7 @@
             	<span class="text-center"><img src="img/logo.png" width="165" height="136" class="ml-auto mr-auto img-fluid"></span>
                 <!--Для всех остальных - лого - ссылка-->
             	<!--<a href="#" class="text-center"><img src="img/logo.png" width="165" height="136" class="m-auto img-fluid"></a>-->
-            </div>
+            </div><!--/.logo-->
         	<div class="col-7 col-sm-8 col-md-9 col-lg-9 col-xl-10 pr-0">
             	<div class="row mr-0">
         			<div class="col-md-7 col-lg-7 col-xl-8">
@@ -70,14 +70,14 @@
                                     <div class="collapse navbar-collapse" id="navbar">
                                         <ul class="navbar-nav text-left">
                                             <li class="nav-item active"><a href="#">Услуги</a></li>
-                                            <li class="nav-item dropdown"><a href="#" class="dropdown-toggle">Мероприятия</a>
-                                            	<div class="dropdown-menu box-shadow">
-                                                	<a class="dropdown-item" href="#">Консультации</a>
-                                                  	<a class="dropdown-item" href="#">Семинары</a>
-                                                  	<a class="dropdown-item" href="#">Конференции</a>
-                                                  	<a class="dropdown-item" href="#">Видео</a>
-                                                </div><!--/.dropdown-menu-->
-                                            </li>
+                                        	<li class="nav-item dropdown"><a href="#" class="dropdown-toggle">Мероприятия</a>
+                                                <div class="dropdown-menu box-shadow">
+                                                    <a class="dropdown-item" href="#">Консультации</a>
+                                                    <a class="dropdown-item" href="#">Семинары</a>
+                                                    <a class="dropdown-item" href="#">Конференции</a>
+                                                    <a class="dropdown-item" href="#">Видео</a>
+                                                </div><!--/.dropdown-menu-->                                    
+                                        	</li>
                                             <li class="nav-item"><a href="#">Компания</a></li>
                                             <li class="nav-item"><a href="#">Новости</a></li>
                                             <li class="nav-item"><a href="#">Контакты</a></li>
@@ -88,8 +88,7 @@
                         </div><!--/.row-->
                     </div><!--/.col-->
             	</div><!--/.row-->
-            </div>
-        
+            </div>        
 			</div><!--/.row-->
             
             <!-- --For mobile-->
@@ -112,15 +111,15 @@
                             <div class="collapse navbar-collapse" id="navbar_m">
                                 <ul class="navbar-nav text-left">
                                     <li class="nav-item active"><a href="#">Услуги</a></li>
-                                    <li class="nav-item"><a href="#">Мероприятия</a></li>
                                     <li class="nav-item dropdown"><a href="#" class="dropdown-toggle">Мероприятия</a>
-                                            	<div class="dropdown-menu box-shadow">
-                                                	<a class="dropdown-item" href="#">Консультации</a>
-                                                  	<a class="dropdown-item" href="#">Семинары</a>
-                                                  	<a class="dropdown-item" href="#">Конференции</a>
-                                                  	<a class="dropdown-item" href="#">Видео</a>
-                                                </div><!--/.dropdown-menu-->
-                                            </li>
+                                    	<div class="dropdown-menu box-shadow">
+                                        	<a class="dropdown-item" href="#">Консультации</a>
+                                            <a class="dropdown-item" href="#">Семинары</a>
+                                            <a class="dropdown-item" href="#">Конференции</a>
+                                            <a class="dropdown-item" href="#">Видео</a>
+                                    	</div><!--/.dropdown-menu-->                                    
+                                    </li>
+                                    <li class="nav-item"><a href="#">Компания</a></li>
                                     <li class="nav-item"><a href="#">Новости</a></li>
                                     <li class="nav-item"><a href="#">Контакты</a></li>
                                   </ul>
@@ -133,8 +132,8 @@
         
         <!-- Slider -->
         <div class="slider_wrap">
-        	<div class="row justify-content-end">
-                <div class="col-md-4">
+        	<div class="row no-gutters justify-content-end">
+                <div class="col col-sm-auto">
                 	<div class="social d-flex justify-content-around align-items-center">
                         <a href="#" title="Twitter" target="_blank" class="">
                             <i class="fab fa-twitter"></i>
@@ -164,14 +163,26 @@
         	
         	<img src="img/slide.jpg" class="img-fluid" style="width:100%; height:auto;">
         </div><!--/.slider_wrap-->
+   
         <main role="main">
             <h1>Заголовок 1</h1>
-            <h3>Любая проблема имеет решение!</h3>
-            <p>Мы поможем вам с любой проблемой на вашем сайте, для этого не надо заключать договор, просто оформите заявку на консультацию и подробно опишите вашу проблему, наши специалисты найдут решение!</p>
+            <div class="block_info_1">
+                <div class="row align-items-stretch m-0">
+                    <div class="col-md-8 bg-third md-arrow-r block_bg mb-0"><h3 class="h1 color1">Любая проблема имеет решение!</h3>
+                <p>Мы поможем вам с любой проблемой на вашем сайте, для этого не надо заключать договор, просто оформите заявку на консультацию и подробно опишите вашу проблему, наши специалисты найдут решение!</p>
+                    </div>
+                    <div class="col-md-4 bg-secondary align-middle c_fff">
+                    <img src="img/mess.png" class="img-fluid">
+                        <a href="#">Заказать консультацию</a>
+                    </div>
+                </div><!--/.row-->
+            </div><!--/.block_info_1-->
+            
             <div class="services">
                 <div class="row m-0">
-                    <div class="col-12 col-sm-12 col-lg-6 text-center align-middle item-services order-lg-last order-first bg_pic" style="background-image:url(img/img-1.jpg);">                    	
+                    <div class="col-12 col-sm-12 col-lg-6 text-center align-middle item-services order-lg-last order-first bg_pic" style="background-image:url(img/img-1.jpg);">    	
                         <h2>Создание и поддержка сайтов</h2>
+                        <p>ffffffff ffffffffff fffffffffff fffffffff ffffffffffff</p>
                     </div>
                     <div class="col-12 col-sm-6 col-lg-3 text-center bg-dark item-services">
                         <img src="img/i_1.png" class="ml-auto mr-auto img-fluid">
@@ -186,15 +197,15 @@
                 	</div><!--/.row-->
                     
                 	<div class="row m-0">
-                        <div class="col col-sm-12 col-lg-6 text-center bg-secondary align-middle item-services order-first bg_pic" style="background-image:url(img/img-2.jpg);">
+                        <div class="col-sm-12 col-lg-6 text-center bg-secondary align-middle item-services order-first bg_pic" style="background-image:url(img/img-2.jpg);">
                             <h2>Аналитика и продвижение</h2>
                         </div>
-                        <div class="col col-sm-6 col-lg-3 text-center bg-primary item-services lg-arrow-l">
+                        <div class="col-sm-6 col-lg-3 text-center bg-primary item-services lg-arrow-l">
                             <img src="img/i_3.png" class="ml-auto mr-auto img-fluid">
                             <a href="/">Веб-аналитика</a>
                             <div class="descr">Веб-аналитика полного цикла — любые задачи от настройки Google Analytics на сайте до  сквозной аналитики и интеграции с CRM.</div>
                         </div>
-                        <div class="col col-sm-6 col-lg-3 text-center bg-dark item-services">
+                        <div class="col-sm-6 col-lg-3 text-center bg-dark item-services">
                             <img src="img/i_4.png" class="ml-auto mr-auto img-fluid">
                             <a href="/">Продвижение сайтов</a>
                             <div class="descr">Комплексное продвижение сайтов, включающее поисковую оптимизацию (SEO), продвижение в социальных сетях (SMM), интернет-рекламу.</div>               
@@ -202,43 +213,72 @@
                 	</div><!--/.row-->
                     
                     <div class="row m-0">         
-                    <div class="col col-sm-12 col-lg-6 text-center bg-secondary align-middle item-services order-lg-last order-firs bg_pic" style="background-image:url(img/img-3.jpg);">
-                        <h2>Реклама и CMM</h2>
-                    </div>
-                    <div class="col col-sm-6 col-lg-3 text-center bg-dark item-services">
-                        <img src="img/i_5.png" class="ml-auto mr-auto img-fluid">
-                        <a href="/">Рекламные компании контекстной рекламы</a>
-                        <div class="descr">Описание что это такое для потенциального Заказчика</div>
-                    </div>                    
-                    <div class="col col-sm-6 col-lg-3 text-center bg-primary item-services lg-arrow-r">
-                        <img src="img/i_6.png" class="ml-auto mr-auto img-fluid">
-                        <a href="/">Ведение аккаунтов в социальных сетях</a>
-                        <div class="descr">Пвышение лояльности клиентов, привлечение новых клиентов.... текст</div>               
-                    </div>            
-                </div><!--/.row-->
-            </div><!--/.services-->
-            <div class="team text-center pt-5 pb-5">
-            	<h2>Наши сотрудники</h2>
-            	<div class="row">
-               		<div class="col-12 col-sm-4 team_item"><img src="img/ivan-nikitin.jpg" class="rounded-circle img-thumbnail border-0">
-                    	<div class="team_name">Никитин Иван Геннадьевич</div>
-                        <div class="team_func">Директор компании</div>
-                    </div>
-                    <div class="col-12 col-sm-4 team_item"><img src="img/nikitina_2-285x300.jpg" class="rounded-circle img-thumbnail border-0">
-                    	<div class="team_name">Никитина Елена Викторовна</div>
-                        <div class="team_func">Финансовый директор</div>
-                    </div>
-                    <div class="col-12 col-sm-4 team_item"><img src="img/IrinaFedorova-285x300.jpg" class="rounded-circle img-thumbnail border-0">
-                    	<div class="team_name">Федорова Ирина</div>
-                        <div class="team_func">Руководитель отдела разработки </div>
-                    </div>
-               </div>
-			</div><!--/.team-->
-            <p><a href="#">Use this document as</a> a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                        <div class="col-sm-12 col-lg-6 text-center bg-secondary align-middle item-services order-lg-last order-firs bg_pic" style="background-image:url(img/img-3.jpg);">
+                            <h2>Реклама и CMM</h2>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 text-center bg-dark item-services">
+                            <img src="img/i_5.png" class="ml-auto mr-auto img-fluid">
+                            <a href="/">Рекламные компании контекстной рекламы</a>
+                            <div class="descr">Описание что это такое для потенциального Заказчика</div>
+                        </div>                    
+                        <div class="col-sm-6 col-lg-3 text-center bg-primary item-services lg-arrow-r">
+                            <img src="img/i_6.png" class="ml-auto mr-auto img-fluid">
+                            <a href="/">Ведение аккаунтов в социальных сетях</a>
+                            <div class="descr">Пвышение лояльности клиентов, привлечение новых клиентов.... текст</div>               
+                        </div>            
+                	</div><!--/.row-->
+            	</div><!--/.services-->
+                <div class="team text-center pt-5 pb-5">
+                    <h2>Наши сотрудники</h2>
+                    <div class="row">
+                        <div class="col-12 col-sm-4 team_item"><img src="img/ivan-nikitin.jpg" class="rounded-circle img-thumbnail border-0">
+                            <div class="team_name">Никитин Иван Геннадьевич</div>
+                            <div class="team_func">Директор компании</div>
+                        </div>
+                        <div class="col-12 col-sm-4 team_item"><img src="img/nikitina_2-285x300.jpg" class="rounded-circle img-thumbnail border-0">
+                            <div class="team_name">Никитина Елена Викторовна</div>
+                            <div class="team_func">Финансовый директор</div>
+                        </div>
+                        <div class="col-12 col-sm-4 team_item"><img src="img/IrinaFedorova-285x300.jpg" class="rounded-circle img-thumbnail border-0">
+                            <div class="team_name">Федорова Ирина</div>
+                            <div class="team_func">Руководитель отдела разработки </div>
+                        </div>
+                   </div>
+                </div><!--/.team-->
+                
+                <div class="news">
+                	<div class="container">
+                        <h2 class="title">Новости и публикации</h2>
+                        <div class="row">
+                            <div class="col-md-4 news_item mb-3 mb-sm-4 mb-md-4">
+                                <div class="news_thumb" style="background-image:url(img/new-1.jpg);"></div>
+                                <div class="card-body">
+                                    <h5 class="news_title">Правильный переезд сайта WordPress на HTTPS</h5>
+                                    <div class="news_date">13.03.2018</div>
+                                    <a href="#" class="news_link">читать далее</a>
+                                </div><!--/.card-body-->
+                            </div><!--/.news_item-->
+                            <div class="col-md-4 news_item mb-3 mb-sm-4 mb-md-4">
+                                <div class="news_thumb" style="background-image:url(img/new-2.jpg);"></div>
+                                <div class="card-body">
+                                    <h5 class="news_title">Google Data Studio и WordPress</h5>
+                                    <div class="news_date">13.03.2018</div>
+                                    <a href="#" class="news_link">читать далее</a>
+                                </div><!--/.card-body-->
+                            </div><!--/.news_item-->
+                            <div class="col-md-4 news_item mb-3 mb-sm-4 mb-md-4">
+                                <div class="news_thumb" style="background-image:url(img/new-3.jpg);"></div>
+                                <div class="card-body">
+                                    <h5 class="news_title">Netpeak Spider — удобный инструмент оптимизатора</h5>
+                                    <div class="news_date">13.03.2018</div>
+                                    <a href="#" class="news_link">читать далее</a>
+                                </div><!--/.card-body-->
+                            </div><!--/.news_item-->
+                        </div><!--/.row-->
+                    </div><!--/.container-->
+                </div><!--/.news-->
         </main>    
-	
-        <footer class=" bg-light mb-3">
+        <footer class="bg-light mb-3">
             <nav class="bg-primary">
                 <ul class="nav justify-content-center ffrc">
                     <li><a href="#">Политика обработки персональных данных</a></li>
@@ -248,7 +288,7 @@
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">Контакты</a></li>
                 </ul>        
-            </nav>    
+            </nav> 
             <div class="row m-0 mt-3 justify-content-between align-items-center">
                 <div class="col-4">
                     <img src="img/logo_color.png" width="133" height="64" class="img-fluid">
@@ -259,6 +299,7 @@
             </div><!--/.row-->
           
         </footer>
+	
 	</div><!--/.container-fluid-->
     <!-- Bootstrap core JavaScript
     ================================================== -->
