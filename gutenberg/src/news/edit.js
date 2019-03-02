@@ -1,6 +1,5 @@
 import { isUndefined, pickBy } from 'lodash';
 import classnames from 'classnames';
-import Image from '../components/Image.jsx';
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
@@ -111,6 +110,7 @@ class News extends Component {
 
 		const classes = classnames(
 			this.props.className,
+			'row',
 			{
 				'has-dates': displayPostDate,
 			}
@@ -119,39 +119,40 @@ class News extends Component {
 		return (
 			<Fragment>
 				{ inspectorControls }
-				<ul
-					className={ classes }
-				>
+				<div className={ classes }>
 					{ displayPosts.map( ( post, index ) => {
 						const titleTrimmed = post.title.rendered.trim();
+						const backgroundImage = post._embedded && post._embedded[ 'wp:featuredmedia' ] ?
+							post._embedded[ 'wp:featuredmedia' ][ 0 ].source_url :
+							null;
+						const styleNews = {
+							backgroundImage: `url( ${ backgroundImage } )`,
+						};
+
 						return (
-							<li key={ index }>
-								<a href={ post.link }>
-									<Image
-										src={ post._embedded && post._embedded[ 'wp:featuredmedia' ] ?
-											post._embedded[ 'wp:featuredmedia' ][ 0 ].source_url :
-											null }
-										alt={ post._embedded && post._embedded[ 'wp:featuredmedia' ] ?
-											post._embedded[ 'wp:featuredmedia' ][ 0 ].alt_text :
-											null }
-									/>
-									{ titleTrimmed ? (
-										<RawHTML>
-											{ titleTrimmed }
-										</RawHTML>
-									) :
-										__( '(Untitled)' )
-									}
+							<div className="col-md-4 wp-block-in-2019-news_item mb-3 mb-sm-4 mb-md-4" key={ index }>
+								<div className="wp-block-in-2019-news_thumb" style={ styleNews } />
+								<div className="card-body">
+									<h5 className="wp-block-in-2019-news_title">
+										{ titleTrimmed ? (
+											<RawHTML>
+												{ titleTrimmed }
+											</RawHTML>
+										) :
+											__( '(Untitled)' )
+										}
+									</h5>
 									{ displayPostDate && post.date_gmt &&
-									<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-latest-posts__post-date">
+									<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-in-2019-news_date">
 										{ dateI18n( dateFormat, post.date_gmt ) }
 									</time>
 									}
-								</a>
-							</li>
+									<a href={ post.link } className="wp-block-in-2019-news_link">{ __( 'читать далее', 'palenight' ) }</a>
+								</div>
+							</div>
 						);
 					} ) }
-				</ul>
+				</div>
 			</Fragment>
 		);
 	}
