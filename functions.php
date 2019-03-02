@@ -223,4 +223,21 @@ function wpdocs_add_menu_parent_class( $items ) {
     }
     return $items;
 }
+<<<<<<< HEAD
 add_filter( 'wp_nav_menu_objects', 'wpdocs_add_menu_parent_class' );
+=======
+
+
+
+// Ссылка с отметкой из логотипа, Нужна для того, чтобы улучшить перелиинковку
+add_action( 'wpex_logo_url', 'in_wpex_logo_url' );
+function in_wpex_logo_url( $url )
+{
+	$logo_mark = 'inner=logo';
+	return ( strpos( '$url', '? ') === false ) ? $url . '?' . $logo_mark : $url . '&' . $logo_mark;
+}
+
+
+
+
+>>>>>>> ecd97a786ea52fb75c281180a1992b516c6428c0
