@@ -1,12 +1,13 @@
 <?php
 /**
- * in-2018 functions and definitions
+ * IvanNikitin 2019 functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package in-2018
+ * @package IvanNikitin_2019
  */
-if ( ! function_exists( 'in_2018_setup' ) ) :
+
+if ( ! function_exists( 'in_2019_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -14,14 +15,14 @@ if ( ! function_exists( 'in_2018_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function in_2018_setup() {
+	function in_2019_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on in-2018, use a find and replace
-		 * to change 'in-2018' to the name of your theme in all the template files.
+		 * If you're building a theme based on IvanNikitin 2019, use a find and replace
+		 * to change 'in-2019' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'in-2018', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'in-2019', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -43,8 +44,8 @@ if ( ! function_exists( 'in_2018_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'Primary' => esc_html__( 'Основное меню', 'in-2018' ),
-			'Footer' => esc_html__( 'Меню в подвале', 'in-2018' ),
+			'Primary' => esc_html__( 'Основное меню', 'in-2019' ),
+			'Footer' => esc_html__( 'Меню в подвале', 'in-201' ),
 		) );
 
 		/*
@@ -60,7 +61,7 @@ if ( ! function_exists( 'in_2018_setup' ) ) :
 		) );
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'in_2018_custom_background_args', array(
+		add_theme_support( 'custom-background', apply_filters( 'in_2019_custom_background_args', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
 		) ) );
@@ -68,28 +69,20 @@ if ( ! function_exists( 'in_2018_setup' ) ) :
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
-			
 		/**
-		 * Включаем поддержку WooCommerce
-		 * В этом вызове также можно указать некоторые параметры. См ссылку ниже
-		 * @link https://github.com/woocommerce/woocommerce/wiki/Declaring-WooCommerce-support-in-themes
+		 * Add support for core custom logo.
+		 *
+		 * @link https://codex.wordpress.org/Theme_Logo
 		 */
-		add_theme_support( 'woocommerce', array(
-			'thumbnail_image_width' => 150,			//TODO: Необходимо установить правильные значения!
-			'single_image_width'    => 300,
-			'product_grid'          => array(
-				'default_rows'    => 3,
-				'min_rows'        => 2,
-				'max_rows'        => 8,
-				'default_columns' => 4,
-				'min_columns'     => 2,
-				'max_columns'     => 5,
-			),
-		) );		
-		
+		add_theme_support( 'custom-logo', array(
+			'height'      => 250,
+			'width'       => 250,
+			'flex-width'  => true,
+			'flex-height' => true,
+		) );
 	}
 endif;
-add_action( 'after_setup_theme', 'in_2018_setup' );
+add_action( 'after_setup_theme', 'in_2019_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -98,49 +91,45 @@ add_action( 'after_setup_theme', 'in_2018_setup' );
  *
  * @global int $content_width
  */
-function in_2018_content_width() {
+function in_2019_content_width() {
 	// This variable is intended to be overruled from themes.
 	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'in_2018_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'in_2019_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'in_2018_content_width', 0 );
+add_action( 'after_setup_theme', 'in_2019_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function in_2018_widgets_init() {
+function in_2019_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'in-2018' ),
+		'name'          => esc_html__( 'Sidebar', 'in-2019' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'in-2018' ),
+		'description'   => esc_html__( 'Add widgets here.', 'in-2019' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
 }
-add_action( 'widgets_init', 'in_2018_widgets_init' );
+add_action( 'widgets_init', 'in_2019_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function in_2018_scripts() {
-	wp_enqueue_style( 'in-2018-style', get_stylesheet_uri() );
+function in_2019_scripts() {
+	wp_enqueue_style( 'in-2019-style', get_stylesheet_uri() );
 
-	wp_enqueue_style( 'in-2019-style', get_template_directory_uri() . '/assets/public/css/style.css');
+	wp_enqueue_script( 'in-2019-js', get_template_directory_uri() . '/build/app.min.js', null, null, true );
 	
-	wp_enqueue_script( 'in-2019-frontend', get_template_directory_uri() . '/assets/public/js/frontend-bundle.js', array(), '20151215', true );
-	
-	wp_enqueue_script( 'in-2019-customizer', get_template_directory_uri() . '/assets/public/js/customizer-bundle.js', array(), '20151215', true );
-
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'in_2018_scripts' );
+add_action( 'wp_enqueue_scripts', 'in_2019_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -168,70 +157,20 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/gutenberg/index.php';
 
 /**
+ * Walker Menu class.
+ */
+require get_template_directory() . '/inc/classes/class-walker-menu.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-
 /**
- * Дополнительные файлы включений. Все специфические функции пишем в них
+ * Load WooCommerce compatibility file.
  */
-require get_template_directory() . '/woocommerce/hooks.php';
-
-//Настраиваем основное меню
-class in2018_Walker_Menu extends Walker_Nav_Menu {
-	function start_lvl(&$output, $depth = 0, $args =array()) {
-		$output .= '<ul class="dropdown-menu box-shadow">';
-	}
+if ( class_exists( 'WooCommerce' ) ) {
+	require get_template_directory() . '/inc/woocommerce.php';
 }
-// Изменяем атрибут class у тега li -- ВОТ ЭТА ФУНКЦИЯ И СБРАСЫВАЛА КЛАССЫ
-//add_filter( 'nav_menu_css_class', 'filter_nav_menu_css_classes', 10, 4 );
-function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
-	if ( $args->theme_location === 'Primary' ) {
-		$classes = [
-			'nav-item'
-		];
-		if ( $item->current ) {
-			$classes[] = 'active';
-		}
-	}
-	return $classes;
-}
-/**
- * Add a parent CSS class for nav menu items.
- *
- * @param array  $items The menu items, sorted by each menu item's menu order.
- * @return array (maybe) modified parent CSS class.
- */
-function wpdocs_add_menu_parent_class( $items ) {
-    $parents = array();
- 
-    // Collect menu items with parents.
-    foreach ( $items as $item ) {
-        if ( $item->menu_item_parent && $item->menu_item_parent > 0 ) {
-            $parents[] = $item->menu_item_parent;
-        }
-    }
- 
-    // Add class.
-    foreach ( $items as $item ) {
-        if ( in_array( $item->ID, $parents ) ) {
-            $item->classes[] = 'dropdown';
-        }
-    }
-    return $items;
-}
-
-// Ссылка с отметкой из логотипа, Нужна для того, чтобы улучшить перелиинковку
-add_action( 'wpex_logo_url', 'in_wpex_logo_url' );
-function in_wpex_logo_url( $url )
-{
-	$logo_mark = 'inner=logo';
-	return ( strpos( '$url', '? ') === false ) ? $url . '?' . $logo_mark : $url . '&' . $logo_mark;
-}
-
-
-
-

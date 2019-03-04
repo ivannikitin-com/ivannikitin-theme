@@ -7,7 +7,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package in-2018
+ * @package IvanNikitin_2019
  */
 
 /*
@@ -28,18 +28,18 @@ if ( post_password_required() ) {
 		?>
 		<h2 class="comments-title">
 			<?php
-			$in_2018_comment_count = get_comments_number();
-			if ( '1' === $in_2018_comment_count ) {
+			$in_2019_comment_count = get_comments_number();
+			if ( '1' === $in_2019_comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'in-2018' ),
+					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'in-2019' ),
 					'<span>' . get_the_title() . '</span>'
 				);
 			} else {
 				printf( // WPCS: XSS OK.
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $in_2018_comment_count, 'comments title', 'in-2018' ) ),
-					number_format_i18n( $in_2018_comment_count ),
+					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $in_2019_comment_count, 'comments title', 'in-2019' ) ),
+					number_format_i18n( $in_2019_comment_count ),
 					'<span>' . get_the_title() . '</span>'
 				);
 			}
@@ -63,7 +63,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'in-2018' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'in-2019' ); ?></p>
 			<?php
 		endif;
 

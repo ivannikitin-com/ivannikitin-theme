@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package in-2018
+ * @package IvanNikitin_2019
  */
 
 /**
@@ -14,11 +14,11 @@
  * See: https://jetpack.com/support/responsive-videos/
  * See: https://jetpack.com/support/content-options/
  */
-function in_2018_jetpack_setup() {
+function in_2019_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
-		'render'    => 'in_2018_infinite_scroll_render',
+		'render'    => 'in_2019_infinite_scroll_render',
 		'footer'    => 'page',
 	) );
 
@@ -28,7 +28,7 @@ function in_2018_jetpack_setup() {
 	// Add theme support for Content Options.
 	add_theme_support( 'jetpack-content-options', array(
 		'post-details'    => array(
-			'stylesheet' => 'in-2018-style',
+			'stylesheet' => 'in-2019-style',
 			'date'       => '.posted-on',
 			'categories' => '.cat-links',
 			'tags'       => '.tags-links',
@@ -42,12 +42,12 @@ function in_2018_jetpack_setup() {
 		),
 	) );
 }
-add_action( 'after_setup_theme', 'in_2018_jetpack_setup' );
+add_action( 'after_setup_theme', 'in_2019_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function in_2018_infinite_scroll_render() {
+function in_2019_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :

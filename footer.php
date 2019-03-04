@@ -6,14 +6,14 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package in-2018
+ * @package IvanNikitin_2019
  */
 
 ?>
 
 	</div><!-- #content -->
-	
-	<footer class="bg-light mb-3">
+
+	<footer class="bg-light">
 		<?php wp_nav_menu( array( 
 			'theme_location' => 'Footer menu',
 			'menu' => 'Footer menu',
@@ -34,10 +34,9 @@
 			</div>
 		</div><!--/.row-->	  
 	</footer>
-	
-	</div><!--.#page-->
-</div><!--/.container-fluid-->
+</div><!-- #page -->
 
 <?php wp_footer(); ?>
+
 </body>
 </html>

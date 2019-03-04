@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package in-2018
+ * @package IvanNikitin_2019
  */
 
 get_header();

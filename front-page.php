@@ -1,71 +1,48 @@
 <?php
 /**
+ * The main template file
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package in-2018
+ * @package IvanNikitin_2019
  */
 
 get_header();
 ?>
-<!-- Slider -->
-        <div class="slider_wrap">
-        	<div class="row justify-content-end">
-                <div class="col-md-4">
-                	<div class="social d-flex justify-content-around align-items-center">
-                        <a href="#" title="Twitter" target="_blank" class="">
-                            <i class="fab fa-twitter"></i>
-                            <span class="screen-reader-text">Twitter</span>
-                        </a>
-                        <a href="#" title="Facebook" target="_blank" class=""><i class="fab fa-facebook-f"></i><span class="screen-reader-text">Facebook</span></a>
-                        <a href="#" title="Google Plus" target="_blank" class="#">
-                            <i class="fab fa-google-plus-g"></i>
-                            <span class="screen-reader-text">Google Plus</span>
-                        </a>
-                        <a href="#" title="Pinterest" target="_blank" class="#">
-                            <i class="fab fa-pinterest-p"></i>
-                            <span class="screen-reader-text">Pinterest</span>
-                        </a>
-                        <a href="#" title="VK" target="_blank" class="">
-                            <i class="fab fa-vk"></i>
-                            <span class="screen-reader-text">VK</span>
-                        </a>
-                        <a href="#" title="RSS" target="_blank" class="">
-                            <i class="fas fa-rss"></i>
-                            <span class="screen-reader-text">RSS</span>
-                        </a>
-					</div><!--/.social-->
 
-                </div><!--/end col-->
-            </div><!--/.row-->
-        
-        </div><!--/.slider_wrap-->
-        
-        <main role="main">
-            <?php
-                if ( have_posts() ) :
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
 
-                    /* Start the Loop */
-                    while ( have_posts() ) :
-                        the_post();
+		<?php
+		if ( have_posts() ) :
 
-                        /*
-                        * Include the Post-Type-specific template for the content.
-                        * If you want to override this in a child theme, then include a file
-                        * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-                        */
-                        get_template_part( 'template-parts/content', 'home' );
+			/* Start the Loop */
+			while ( have_posts() ) :
+				the_post();
 
-                    endwhile;
+				/*
+				 * Include the Post-Type-specific template for the content.
+				 * If you want to override this in a child theme, then include a file
+				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+				 */
+				get_template_part( 'template-parts/content', 'home' );
 
-                else :
+			endwhile;
 
-                    get_template_part( 'template-parts/content', 'none' );
+		else :
 
-                endif;
-                ?>
-        </main><!--.#main-->
-	
+			get_template_part( 'template-parts/content', 'none' );
+
+		endif;
+		?>
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
 
 <?php
 get_footer();

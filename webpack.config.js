@@ -1,100 +1,95 @@
-const path = require('path'),
-      autoprefixer = require('autoprefixer'),
-      MiniCssExtractPlugin = require('mini-css-extract-plugin'),
-      UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
-      OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
-      BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const path = require("path"),
+	UglifyJSPlugin = require("uglifyjs-webpack-plugin"),
+	MiniCssExtractPlugin = require("mini-css-extract-plugin"),
+	OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
+	CleanWebpackPlugin = require("clean-webpack-plugin"),
+	BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 
 module.exports = {
-  context: __dirname,
-  entry: {
-    frontend: ['babel-polyfill', './assets/app/js/index.js'],
-    customizer: './assets/app/js/customizer.js'
-  },
-  output: {
-    path: path.resolve(__dirname, 'assets/public/js'),
-    filename: '[name]-bundle.js'
-  },
-  mode: 'development',
-  devtool: 'source-map',
-  module: {
-    rules: [
-      {
-        enforce: 'pre',
-        exclude: /node_modules/,
-        test: /\.js$/,
-        loader: 'eslint-loader'
-      },
-      {
-        test: /\.js?$/,
-        loader: 'babel-loader'
-      },
-      {
-        test: /\.s?css$/,
-        use: [
-          MiniCssExtractPlugin.loader, 
-          {
-            loader: "css-loader", 
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'postcss-loader', // Run post css actions
-            options: {
-              plugins: [
-                autoprefixer({
-                  grid: "autoplace",
-                  browsers:['> 1%', 'last 2 versions']
-                })
-              ],
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(jpe?g|png|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: '../images/'
-            }
-          },
-          'img-loader'
-        ]
-      },
-      {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [{
-            loader: 'file-loader',
-            options: {
-                name: '[name].[ext]',
-                outputPath: '../fonts/'
-            }
-        }]
-      },
-    ]
-  },
-  plugins: [
-    new MiniCssExtractPlugin({ filename: '../css/style.css' }),
-    new BrowserSyncPlugin({
-      files: '**/*.php',
-      injectCss: true,
-      proxy: 'http://ivannikitin.local'
-    })
-  ],
-  optimization: {
-    minimizer: [
-      new UglifyJSPlugin(), 
-      new OptimizeCssAssetsPlugin()
-    ]
-  }
-}
+	entry: {
+		app: "./src/index.js",
+		style: "./src/sass/style.scss",
+		woocommerce: "./src/sass/woocommerce.scss"
+	},
+	output: {
+		filename: "./build/[name].min.js",
+		path: path.resolve(__dirname)
+	},
+	module: {
+		rules: [
+			{
+				test: /\.(js|jsx)$/,
+				loader: "babel-loader",
+				exclude: /node_modules/
+			},
+			{
+				test: /\.(scss|css)$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					{ loader: "css-loader", options: {} },
+					{
+						loader: "postcss-loader",
+						options: {
+							ident: "postcss",
+							plugins: [
+								require("autoprefixer")({
+									browsers: ["> 1%", "last 2 versions"]
+								})
+							]
+						}
+					},
+					{ loader: "sass-loader", options: {} }
+				]
+			},
+			{
+				test: /\.(jpe?g|png|gif|svg)$/,
+				use: [
+					{
+						loader: "file-loader",
+						options: {
+							publicPath: "build/images",
+							outputPath: "build/images/",
+							name: "[name].[ext]"
+						}
+					}
+				]
+			},
+			{
+				test: /\.(eot|woff|woff2|ttf)([\?]?.*)$/,
+				use: [
+					{
+						loader: "file-loader",
+						options: {
+							publicPath: "build/fonts",
+							outputPath: "build/fonts",
+							name: "[name].[ext]"
+						}
+					}
+				]
+			}
+		]
+	},
+	externals: {
+		jquery: "jQuery"
+	},
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: "./[name].css"
+		}),
+		new CleanWebpackPlugin(["./build/*"]),
+		new BrowserSyncPlugin({
+			proxy: "http://ivannikitin.local/",
+			files: ["**/*.php"],
+			reloadDelay: 0
+		})
+	],
+	optimization: {
+		minimizer: [
+			new UglifyJSPlugin({
+				cache: true,
+				parallel: true
+			}),
+			new OptimizeCSSAssetsPlugin({})
+		]
+	}
+};

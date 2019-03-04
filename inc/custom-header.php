@@ -8,33 +8,33 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package in-2018
+ * @package IvanNikitin_2019
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses in_2018_header_style()
+ * @uses in_2019_header_style()
  */
-function in_2018_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'in_2018_custom_header_args', array(
+function in_2019_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'in_2019_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'in_2018_header_style',
+		'wp-head-callback'       => 'in_2019_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'in_2018_custom_header_setup' );
+add_action( 'after_setup_theme', 'in_2019_custom_header_setup' );
 
-if ( ! function_exists( 'in_2018_header_style' ) ) :
+if ( ! function_exists( 'in_2019_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see in_2018_custom_header_setup().
+	 * @see in_2019_custom_header_setup().
 	 */
-	function in_2018_header_style() {
+	function in_2019_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		/*

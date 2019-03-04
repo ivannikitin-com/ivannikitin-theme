@@ -1,0 +1,250 @@
+.site-header {
+	position: relative;
+	box-shadow: 0px 14px 6px -4px rgba(50, 50, 50, 0.42);
+	z-index: 2;
+
+	@include media-breakpoint-down(xs) {
+		background: $grey-light;
+	}
+
+	.logo {
+		padding-left: 0;
+
+		a,
+		span {
+			display: flex;
+			align-items: flex-start !important;
+			height: 100%;
+			background: $blue;
+		}
+
+		a {
+			color: $red;
+			display: inline-block;
+
+			@include media-breakpoint-down(sm) {
+				position: relative;
+				left: 12px;
+			}
+		}
+	}
+
+	.login a::before,
+	.cart a::before,
+	.phone a::before,
+	.email a::before {
+		content: "";
+		display: inline-block;
+		background: url(../img/bg.png) no-repeat;
+		vertical-align: middle;
+		margin-right: 6px;
+	}
+
+	.login a::before {
+		width: 16px;
+		height: 26px;
+	}
+
+	.cart a::before {
+		width: 28px;
+		height: 19px;
+		background-position: -25px 0;
+	}
+
+	.phone {
+		line-height: 1.2;
+
+		a {
+			font-size: 1.125rem;
+
+			&::before {
+				width: 19px;
+				height: 19px;
+				background-position: -64px 0;
+				vertical-align: baseline;
+			}
+		}
+
+		span {
+			color: $color__link;
+			margin-left: 25px;
+		}
+	}
+
+	.email {
+		a {
+			&::before {
+				width: 20px;
+				height: 15px;
+				background-position: -94px 0;
+			}
+		}
+	}
+
+	.main_menu {
+		padding: 0.7rem 0 0;
+		font-size: 0;
+
+		@include media-breakpoint-down(md) {
+			display: block;
+			text-align: right;
+			padding: 0;
+			margin: 10px 0 0;
+		}
+
+		ul li {
+			@include media-breakpoint-up(lg) {
+				border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+				border-top: 1px solid rgba(255, 255, 255, 0.035);
+			}
+		}
+
+		ul > li {
+			white-space: nowrap;
+
+			@include media-breakpoint-down(md) {
+				&:last-child {
+					margin-right: 0;
+				}
+
+				&:first-child a {
+					padding-left: 0;
+				}
+			}
+
+			a {
+				font-family: "Roboto Condensed", sans-serif;
+				font-size: 1.1rem;
+				color: $black;
+				text-decoration: none;
+
+				@include media-breakpoint-down(md) {
+					font-size: 1.5rem;
+					padding: 0 10px;
+				}
+
+				@include media-breakpoint-up(lg) {
+					display: block;
+					color: $white;
+					padding: 0.9em 20px !important;
+				}
+			}
+
+			&::after {
+				@include media-breakpoint-down(md) {
+					content: "";
+					display: inline-block;
+					height: 17px;
+					width: 1px;
+					font-size: 0;
+					margin: 0 6px;
+					background: $black;
+				}
+			}
+		}
+	}
+
+	.main_menu li.current-menu-item a,
+	.main_menu li a:hover {
+		color: $color__link;
+	}
+
+	.main_menu ul > li:first-child a {
+		padding-left: 0;
+	}
+
+	.main_menu button {
+		border-radius: 0;
+		background: $blue;
+		padding: 1px 7px;
+
+		@include media-breakpoint-down(md) {
+			margin-bottom: 15px;
+		}
+	}
+
+	.main_menu .navbar-toggler-icon {
+		font-size: 1rem;
+		display: block;
+		margin: 6px 0;
+		height: 4px;
+		background: $white;
+	}
+	.main_menu .navbar-toggler-icon:nth-of-type(2) {
+		width: 80%;
+	}
+	.search form {
+		position: relative;
+		background: url(../img/bg.png) no-repeat -281px -181px;
+		margin: 0.6rem 0 0 0;
+		overflow: hidden;
+		padding-left: 26px;
+		min-width: 200px;
+	}
+
+	.icon_search {
+		position: absolute;
+		width: 19px;
+		height: 19px;
+		background: url(../img/bg.png) no-repeat -125px 0;
+		margin-right: 6px;
+	}
+
+	.search input[type="text"] {
+		border: 0;
+		border-bottom: 1px solid #d7d7d7;
+		background: none;
+		outline: 0 !important;
+		box-shadow: none;
+		border-radius: 0;
+		padding: 0;
+		max-width: 100%;
+	}
+
+	.search input[type="submit"] {
+		display: none;
+		border: 0;
+		padding: 0;
+		outline: 0 !important;
+	}
+
+	.navbar-toggler:focus {
+		outline: 0;
+	}
+
+	.close {
+		position: absolute;
+		right: 12px;
+		top: 14px;
+		width: 18px;
+		height: 18px;
+		z-index: 101;
+		cursor: pointer;
+	}
+
+	.dropdown:hover > .dropdown-menu {
+		display: block;
+	}
+
+	.dropdown-menu {
+		border-radius: 0;
+		top: 99%;
+		font-size: 0.6rem;
+	}
+
+	.dropdown:hover > .dropdown-menu {
+		display: block;
+	}
+
+	.dropdown-menu {
+		border-radius: 0;
+		top: 99%;
+		font-size: 0.6rem;
+	}
+
+	@include media-breakpoint-up(lg) {
+		.navbar-collapse {
+			background: rgb(38, 38, 38);
+		}
+	}
+}

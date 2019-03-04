@@ -2,7 +2,7 @@
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
- * @package in-2018
+ * @package IvanNikitin_2019
  */
 
 /**
@@ -11,7 +11,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function in_2018_body_classes( $classes ) {
+function in_2019_body_classes( $classes ) {
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
@@ -24,14 +24,14 @@ function in_2018_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'in_2018_body_classes' );
+add_filter( 'body_class', 'in_2019_body_classes' );
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.
  */
-function in_2018_pingback_header() {
+function in_2019_pingback_header() {
 	if ( is_singular() && pings_open() ) {
-		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
+		printf( '<link rel="pingback" href="%s">', esc_url( get_bloginfo( 'pingback_url' ) ) );
 	}
 }
-add_action( 'wp_head', 'in_2018_pingback_header' );
+add_action( 'wp_head', 'in_2019_pingback_header' );

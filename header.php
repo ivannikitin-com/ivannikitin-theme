@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package in-2018
+ * @package IvanNikitin_2019
  */
 
 ?>
@@ -15,40 +15,22 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
-
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	<!-- Custom styles for this template    
-	<link href="custom.css" rel="stylesheet">	 -->    
+	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-<div class="container-fluid">
-	<div id="page" class="site">
-		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'in-2018' ); ?></a>
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'in-2019' ); ?></a>
 
-		<header id="masthead" class="site-header">
-			<div class="row align-items-stretch m-0">
-				<div class="col-5 col-sm-4 col-md-3 col-lg-3 col-xl-2 logo justify-content-center">
-					<?php
-					if (get_theme_mod( 'logo_header' )){					
-					if ( is_front_page() && is_home() ) : ?>
-						<span class="text-center"><img src="<?php echo get_theme_mod( 'logo_header' ); ?>" width="165" height="136" class="ml-auto mr-auto img-fluid" alt="<?php bloginfo( 'name' ); ?>"></span>	
-						<?php else : ?>
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-center"><img src="<?php echo get_theme_mod( 'logo_header' ); ?>" width="165" height="136" alt="<?php bloginfo( 'name' ); ?>" class="m-auto img-fluid"></a>
-					<?php endif;
-					$in_2018_description = get_bloginfo( 'description', 'display' );
-					if ( $in_2018_description || is_customize_preview() ) :?>
-						<p class="site-description"><?php echo $in_2018_description; /* WPCS: xss ok. */ ?></p>
-					<?php endif;
-					}
-					?>
-				</div><!--/.logo-->
-				<div class="col-7 col-sm-8 col-md-9 col-lg-9 col-xl-10 pr-0">
+	<header id="masthead" class="site-header">
+		<div class="row align-items-stretch m-0">
+			<div class="col-5 col-sm-4 col-md-3 col-lg-3 col-xl-2 logo justify-content-center">
+				<?php the_custom_logo(); ?>
+			</div>
+
+			<div class="col-7 col-sm-8 col-md-9 col-lg-9 col-xl-10 pr-0">
             	<div class="row mr-0">
         			<div class="col-md-7 col-lg-7 col-xl-8">
                     	<div class="row">
@@ -87,14 +69,16 @@
 									<?php 
                                         //TODO: Вывести меню
                                     wp_nav_menu( array( 
-										'theme_location' => 'Primary',		// Название места в шаблоне
-										//'menu' => 'Primary menu',			// Не надо явно указывать какое меню выводить! 
-										//'menu_id'        => '',			// Это должно управдяться их админки
-										'container_class' => 'navbar-collapse collapse',
-										'container_id' => 'navbar',
-										'menu_class' => 'navbar-nav text-left',
-                                        'items_wrap' => '<ul class="%2$s">%3$s</ul>',
-                                        //'walker' =>  new in2018_Walker_Menu(),	// Пока обойдемся без Walker
+                                        'menu'            => 'Primary',
+                                        'theme_location'  => 'Primary',
+                                        'container'       => 'div',
+                                        'container_id'    => 'primary',
+                                        'container_class' => 'collapse navbar-collapse',
+                                        'menu_id'         => false,
+                                        'menu_class'      => 'navbar-nav mr-auto',
+                                        'depth'           => 2,
+                                        'fallback_cb'     => 'bs4navwalker::fallback',
+                                        'walker'          => new bs4navwalker()
 									) );?>									                                
                                 </nav>
                             </div><!--/.col-->
@@ -102,8 +86,7 @@
                     </div><!--/.col-->
             	</div><!--/.row-->
             </div>
-        
-			</div><!--/.row-->
+		</div><!--/.row-->
             
             <!-- --For mobile-->
             <div class="col d-sm-none p-0">
@@ -134,6 +117,6 @@
                     </div><!--/.col-->
 				</div><!--/.row-->
 			</div><!--/.col-->
-      	</header>
-    
-        
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">

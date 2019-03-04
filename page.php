@@ -9,17 +9,15 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package in-2018
+ * @package IvanNikitin_2019
  */
 
 get_header();
 ?>
 
+	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-		<?php
-		if ( function_exists('yoast_breadcrumb') ) {
-			yoast_breadcrumb('<div id="breadcrumbs">','</div>');
-		} ?>
+
 		<?php
 		while ( have_posts() ) :
 			the_post();
@@ -35,7 +33,8 @@ get_header();
 		?>
 
 		</main><!-- #main -->
+	</div><!-- #primary -->
 
 <?php
-//if ( !is_front_page() && !is_home() ){ get_sidebar(); }
+get_sidebar();
 get_footer();
