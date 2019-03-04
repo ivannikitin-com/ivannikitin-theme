@@ -17,7 +17,7 @@ const blockAttributes = {
 	},
 	xs: {
 		type: 'number',
-		default: 0,
+		default: 12,
 	},
 	orderXl: {
 		type: 'string',
