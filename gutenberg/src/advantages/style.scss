@@ -1,0 +1,24 @@
+.wp-block-in-2019-advantages {
+	padding: 13px 0;
+
+	&__image {
+		margin-bottom: 12px;
+	}
+
+	&__block {
+		font-size: 36px;
+		font-family: 'Roboto Condensed';
+		color: $white;
+		font-weight: bold;
+		line-height: 1.2;
+		margin-bottom: 18px;
+	}
+
+	&__text {
+		font-size: 16px;
+		font-family: 'Roboto Condensed';
+		color: $white;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
+}
