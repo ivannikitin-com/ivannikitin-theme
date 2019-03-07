@@ -68,7 +68,21 @@ a[href^='tel:'], a[href^='mailto:']{
 .bg-dark{
 	background-color:#072133 !important;
 }
-
+header{
+	position:relative;
+	-webkit-box-shadow: 0px 14px 6px -4px rgba(50, 50, 50, 0.42);
+	-moz-box-shadow:    0px 14px 6px -4px rgba(50, 50, 50, 0.42);
+	box-shadow:         0px 14px 6px -4px rgba(50, 50, 50, 0.42);
+	z-index:2;
+}
+.box-shadow{
+	-webkit-box-shadow: 0px 14px 6px -4px rgba(50, 50, 50, 0.42);
+	-moz-box-shadow:    0px 14px 6px -4px rgba(50, 50, 50, 0.42);
+	box-shadow:         0px 14px 6px -4px rgba(50, 50, 50, 0.42);
+}
+.logo{
+	padding-left:0;
+}
 .logo a, .logo span{
     display:flex;
 	align-items: flex-start !important;
