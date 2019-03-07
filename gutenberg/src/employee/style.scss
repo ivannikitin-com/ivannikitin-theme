@@ -1,17 +1,17 @@
 .wp-block-in-2019-employee {
-  display: block;
-  margin-bottom: 30px;
-  
-  .employee_name {
-    font-family: $default__fonts;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-top: 15px;
-  }
+	display: block;
+	margin-bottom: 30px;
 
-  .employee_name,
-  .employee_rank {
-    color: $black;
-    font-size: 1rem;
-  }
+	.employee_name {
+		font-family: $default__fonts;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-top: 15px;
+	}
+
+	.employee_name,
+	.employee_rank {
+		color: $black;
+		font-size: 1rem;
+	}
 }

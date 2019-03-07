@@ -1,13 +1,12 @@
 .wp-block-in-2019-section {
 	position: relative;
 	background-position: center center;
-  width: 100%;
-  max-width: 100%;
+	width: 100%;
+	max-width: 100%;
 
-  .editor-block-list__block .editor-block-list__layout {
-    margin: 0;
-  }
-
+	.editor-block-list__block .editor-block-list__layout {
+		margin: 0;
+	}
 
 	&.has-parallax {
 		background-attachment: fixed;
@@ -17,15 +16,15 @@
 	}
 
 	&.cover {
-			background-size: cover;
+		background-size: cover;
 	}
 
 	&.no-repeat {
-			background-repeat: no-repeat;
+		background-repeat: no-repeat;
 	}
-	
+
 	&.has-background-opacity::before {
-		content: "";
+		content: '';
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -33,9 +32,9 @@
 		right: 0;
 		background-color: inherit;
 		opacity: 0.5;
-		z-index: z-index(".wp-block-in-2019-section.has-background-opacity::before");
+		z-index: z-index('.wp-block-in-2019-section.has-background-opacity::before');
 	}
-	
+
 	@for $i from 1 through 10 {
 		&.has-background-opacity.has-background-opacity-#{ $i * 10 }::before {
 			opacity: $i * 0.1;

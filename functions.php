@@ -163,6 +163,11 @@ require get_template_directory() . '/gutenberg/index.php';
 require get_template_directory() . '/inc/classes/class-walker-menu.php';
 
 /**
+ * Custom customizer.
+ */
+require get_template_directory() . '/inc/customizer/index.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {

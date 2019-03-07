@@ -31,10 +31,23 @@
             <div class="row mr-0">
                 <div class="col-md-7 col-lg-7 col-xl-8">
                     <div class="row">
-                        <div class="col-auto col-lg-auto phone ffrc mt-2 mt-lg-3"><a href="tel:+74955653488" class="d-block ffrc">+7 (495) 565-34-88</a>
-                            <span class="hour">Пн.-Пт. 10:00 - 18:00</span>
+                        <div class="col-auto col-lg-auto phone ffrc mt-2 mt-lg-3">
+                            <?php if ( get_theme_mod( 'phone_header' ) ) : ?>
+                                <a href="tel:<?php echo get_theme_mod( 'phone_header' ); ?>" class="d-block ffrc">
+                                    <?php echo get_theme_mod( 'phone_header' ); ?>
+                                </a>
+                            <?php endif; ?>
+                            <?php if ( get_theme_mod( 'work_time_header' ) ) : ?>
+                                <span class="hour"><?php echo get_theme_mod( 'work_time_header' ); ?></span>
+                            <?php endif; ?>
                         </div>
-                        <div class="col-auto col-lg-6 email mt-2 mt-lg-3"><a href="mailto:info@ivannikitin.com" class="ffrc">info@ivannikitin.com</a></div>
+                        <div class="col-auto col-lg-6 email mt-2 mt-lg-3">
+                            <?php if ( get_theme_mod( 'email_header' ) ) : ?>
+                                <a href="mailto:<?php echo get_theme_mod( 'email_header' ); ?>" class="ffrc">
+                                    <?php echo get_theme_mod( 'email_header' ); ?>
+                                </a>
+                            <?php endif; ?>
+                        </div>
                     </div><!--/.row-->
                     
                 </div>

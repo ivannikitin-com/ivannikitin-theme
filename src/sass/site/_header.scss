@@ -150,9 +150,7 @@ header {
 	}
 
 	@media (min-width: 576px) {
-		header {
-			background: #ebeef3;
-		}
+		background: #ebeef3;
 	}
 	@media (min-width: 768px) {
 		.login a {
@@ -183,6 +181,11 @@ header {
 	@media (min-width: 992px) {
 		.jc-sb-lg {
 			justify-content: space-between;
+		}
+		.main_menu ul > li {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 		.main_menu ul > li > a {
 			font-size: 1.5rem;
@@ -228,13 +231,6 @@ header {
 		}
 	}
 
-	@media (min-width: 1200px) {
-		.container {
-			max-width: 1170px;
-		}
-	}
-	@media (max-width: 1199.98px) {
-	}
 	@media (max-width: 991.98px) {
 		.main_menu ul {
 			/*background:#fff;*/
@@ -273,24 +269,24 @@ header {
 		.logo {
 			/*padding-right:0;*/
 		}
-		header .phone a {
+		.phone a {
 			font-size: 1rem;
 		}
 		.login a:before,
 		.cart a:before,
-		header .phone a:before,
-		header .email a:before {
+		.phone a:before,
+		.email a:before {
 			margin-right: 4px;
 		}
 	}
 	@media (max-width: 481px) {
-		header .row [class^='col'] {
+		.row [class^='col'] {
 			padding-right: 0;
 		}
-		header .phone {
+		.phone {
 			font-size: 14px;
 		}
-		header .hour {
+		.hour {
 			font-size: 13px;
 		}
 	}
