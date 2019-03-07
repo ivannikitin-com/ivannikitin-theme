@@ -10,6 +10,10 @@
     "wp-pot": "wp-pot --src '**/*.php' '**/*.js' --dest-file 'languages/palenight.pot' --domain 'palenight'"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.15",
+    "@fortawesome/free-brands-svg-icons": "^5.7.2",
+    "@fortawesome/free-regular-svg-icons": "^5.7.2",
+    "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "bootstrap": "^4.3.1",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.7"

@@ -21,3 +21,31 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
+.social {
+	display: flex;
+	justify-content: flex-end;
+	max-width: 285px;
+	align-items: center;
+	right: 0;
+	background: $red;
+	min-height: 42px;
+	position: relative;
+	text-align: center;
+	margin-right: 0;
+	margin-left: auto;
+	z-index: 1;
+}
+.social a {
+	display: inline-block;
+	color: $white;
+	font-size: 17px;
+	padding: 5px;
+	margin: 0 11px;
+	text-decoration: none;
+}
+
+.home .social {
+	position: absolute;
+	right: 0;
+}
