@@ -130,6 +130,14 @@
 	<div id="content" class="site-content">
 
         <div class="social">
+            <?php
+            if ( !is_front_page() ) {
+                if ( function_exists('yoast_breadcrumb') ) {
+                    yoast_breadcrumb( '<div id="breadcrumbs">','</div>' );
+                }
+            }
+            ?>
+            <div class="social__list">
             <?php if ( get_theme_mod( 'social_twitter' ) ) : ?>
                 <a href="<?php echo get_theme_mod( 'social_twitter' ); ?>" title="Twitter" target="_blank" class="">
                     <i class="fab fa-twitter"></i>
@@ -166,4 +174,5 @@
                     <span class="screen-reader-text">RSS</span>
                 </a>
             <?php endif; ?>
+            </div>
         </div><!--/.social-->
