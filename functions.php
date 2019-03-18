@@ -168,6 +168,11 @@ require get_template_directory() . '/inc/classes/class-walker-menu.php';
 require get_template_directory() . '/inc/customizer/index.php';
 
 /**
+ * Hooks.
+ */
+require get_template_directory() . '/inc/hooks/index.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {

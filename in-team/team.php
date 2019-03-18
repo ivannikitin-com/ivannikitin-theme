@@ -17,15 +17,12 @@ get_header(); ?>
 		do_action( 'inteam_before_main_content' );
 	?>
 	
-	<?php while ( have_posts() ) : the_post(); ?>
-		<div class="single in-team">
-			<h1><?php the_title() ?></h1>
-			<?php if ( has_post_thumbnail() ): ?>
-				<?php the_post_thumbnail() ?>
-			<?php endif; ?>
-			<?php the_content(); ?>
-		</div>
-	<?php endwhile; // end of the loop. ?>
+	<?php while ( have_posts() ) : 
+		the_post();
+
+		get_template_part( 'in-team/templates/content', 'team' );
+
+	endwhile; // end of the loop. ?>
 
 	<?php
 		/**

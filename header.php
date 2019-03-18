@@ -22,7 +22,7 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-    <header>
+    <header class="site-header">
         <div class="row align-items-stretch m-0">
         <div class="col-5 col-sm-4 col-md-3 col-lg-3 col-xl-2 logo justify-content-center">
             <span class="text-center"><?php the_custom_logo(); ?></span>
