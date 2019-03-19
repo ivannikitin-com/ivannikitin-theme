@@ -1,22 +1,32 @@
 button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-	border: 1px solid;
-	border-color: $color__border-button;
+input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+	display: inline-block;
+	background: $blue;
+	color: $white;
+	padding: 0.538em 1.077em;
+	font-family: inherit;
+	font-size: 0.923em;
+	font-weight: 400;
+	margin: 0;
+	border: 0;
+	cursor: pointer;
+	line-height: 1.65;
+	appearance: none;
+	-webkit-appearance: none;
+	-webkit-font-smoothing: inherit;
+	text-decoration: none;
+	max-width: 100%;
+	transition: 0.15s all ease;
 	border-radius: 3px;
-	background: $color__background-button;
-	color: rgba(0, 0, 0, .8);
-	@include font-size(0.75);
-	line-height: 1;
-	padding: .6em 1em .4em;
 
 	&:hover {
-		border-color: $color__border-button-hover;
+		background: $primary;
 	}
 
 	&:active,
 	&:focus {
-		border-color: $color__border-button-focus;
+		background: $primary;
 	}
 }
