@@ -1,5 +1,5 @@
 .team {
-	padding: 24px 0 90px;
+	padding: rem(24px) 0 rem(90px);
 
 	&_item {
 		margin-bottom: 2.2rem;
@@ -9,7 +9,7 @@
 		}
 
 		img {
-			max-width: 195px;
+			max-width: rem(195px);
 			width: 100%;
 		}
 	}
@@ -25,5 +25,36 @@
 	&_name {
 		color: $black;
 		font-size: 1rem;
+	}
+}
+
+.in-team.single {
+	margin-top: rem(38px);
+
+	img {
+		max-width: 100%;
+		widows: 100%;
+	}
+
+	.entry-title {
+		margin-bottom: rem(46px);
+	}
+}
+
+.in-team {
+	&__info_member {
+		margin-bottom: rem(40px);
+	}
+
+	&__item {
+		font-size: rem(16px);
+		line-height: 1.5;
+		color: $black;
+	}
+
+	&__label {
+		font-weight: bold;
+		font-stretch: condensed;
+		text-transform: uppercase;
 	}
 }

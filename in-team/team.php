@@ -16,6 +16,15 @@ get_header(); ?>
 		 */
 		do_action( 'inteam_before_main_content' );
 	?>
+
+	<div class="col-md-12">
+		<header class="page-header text-center">
+			<?php
+			the_archive_title( '<h1 class="page-title">', '</h1>' );
+			the_archive_description( '<div class="archive-description">', '</div>' );
+			?>
+		</header>
+	</div>
 	
 	<?php while ( have_posts() ) : 
 		the_post();

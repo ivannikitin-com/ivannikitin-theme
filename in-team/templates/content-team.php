@@ -1,4 +1,4 @@
-<article class="col-12 col-sm-4 team_item text-center">
+<article id="post-<?php the_ID(); ?>" <?php post_class('col-12 col-sm-4 team_item text-center'); ?>>
     <a href="<?php the_permalink(); ?>">
         <?php the_post_thumbnail( 
             null, 

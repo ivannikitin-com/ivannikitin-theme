@@ -1,5 +1,6 @@
 html {
 	box-sizing: border-box;
+	font-size: 14px;
 }
 
 *,
@@ -10,6 +11,8 @@ html {
 }
 
 body {
+	font-size: rem(14px);
+	line-height: 1.71;
 	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
 }
 
@@ -20,7 +23,7 @@ hr {
 	margin-bottom: 1.5em;
 }
 
-@import "lists";
+@import 'lists';
 
 img {
 	height: auto; /* Make sure images are scaled correctly. */
@@ -31,4 +34,4 @@ figure {
 	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
 }
 
-@import "tables";
+@import 'tables';
