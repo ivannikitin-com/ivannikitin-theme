@@ -96,7 +96,7 @@ add_filter( 'woocommerce_product_thumbnails_columns', 'in_2019_woocommerce_thumb
  * @return integer products per row.
  */
 function in_2019_woocommerce_loop_columns() {
-	return 3;
+	return 1;
 }
 add_filter( 'loop_shop_columns', 'in_2019_woocommerce_loop_columns' );
 
@@ -268,3 +268,66 @@ if ( ! function_exists( 'in_2019_woocommerce_header_cart' ) ) {
 		<?php
 	}
 }
+
+/**
+ * ==============
+ * Rewrite hooks
+ * ==============
+ */
+function in_woocommerce_start_container() {
+	echo '<div class="container-fluid">';
+}
+
+function in_woocommerce_end_container () {
+	echo '</div>';
+}
+
+function in_woocommerce_before_shop_loop_title() {
+	
+	echo '<div class="shop-loop-header">';
+		echo '<div class="shop-loop-header__label">' . esc_html( 'Название услуги', 'in-2019' ) . '</div>';
+		echo '<div class="shop-loop-header__label">' . esc_html( 'Стоимость', 'in-2019' ) . '</div>';
+	echo '</div>';
+}
+
+function in_woocommerce_wrap_start() {
+	echo '<div class="product__value">';
+}
+
+function in_woocommerce_wrap_end() {
+	echo '</div>';
+}
+
+// woocommerce_before_main_content
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+add_action( 'woocommerce_before_main_content', 'in_woocommerce_start_container', 20 );
+
+
+// woocommerce_after_main_content
+add_action( 'woocommerce_after_main_content', 'in_woocommerce_end_container', 20 );
+
+// woocommerce_sidebar
+remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+
+// woocommerce_before_shop_loop
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+add_action( 'woocommerce_before_shop_loop', 'in_woocommerce_before_shop_loop_title', 30 );
+
+// woocommerce_before_shop_loop_item_title
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
+
+// woocommerce_after_shop_loop_item_title
+remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
+remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
+
+// woocommerce_after_shop_loop_item
+add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_price', 9 );
+add_action( 'woocommerce_after_shop_loop_item', 'in_woocommerce_wrap_end', 6 );
+add_action( 'woocommerce_after_shop_loop_item', 'in_woocommerce_wrap_start', 7 );
+add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_show_product_loop_sale_flash', 9 );
+add_action( 'woocommerce_after_shop_loop_item', 'in_woocommerce_wrap_end', 15 );
+
+// woocommerce_before_shop_loop_item
+add_action( 'woocommerce_before_shop_loop_item', 'in_woocommerce_wrap_start', 9 );

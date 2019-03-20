@@ -25,7 +25,7 @@
 			'depth'     		=> 1
 		) );?>
 		<div class="row m-0 mt-3 justify-content-between align-items-center">
-			<div class="col-4">
+			<div class="col-md-4 text-center text-md-left mb-3">
 				<?php if ( get_theme_mod( 'logo_footer' ) ) : ?>
 					<a href="<?php echo esc_url( home_url() ); ?>">
 						<img src="<?php echo get_theme_mod( 'logo_footer' ); ?>" width="133" height="64" class="img-fluid">
@@ -33,7 +33,7 @@
 				<?php endif; ?>
 			</div>
 			<?php if ( get_theme_mod( 'copyright_footer' ) ) : ?>
-			<div class="col-4 text-secondary">
+			<div class=" col-md-4 text-secondary text-md-right text-center">
 				<?php printf( 
 					esc_html__( '%1$s - %2$s.', 'in-2019')
 					, 
