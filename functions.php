@@ -123,6 +123,7 @@ add_action( 'widgets_init', 'in_2019_widgets_init' );
  * Enqueue scripts and styles.
  */
 function in_2019_scripts() {
+
 	wp_enqueue_style( 'in-2019-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'in-2019-js', get_template_directory_uri() . '/build/app.min.js', null, null, true );
