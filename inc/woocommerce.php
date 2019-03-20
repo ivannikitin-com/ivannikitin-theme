@@ -248,10 +248,10 @@ if ( ! function_exists( 'in_2019_woocommerce_header_cart' ) ) {
 		if ( is_cart() ) {
 			$class = 'current-menu-item';
 		} else {
-			$class = '';
+			$class = 'nodecor';
 		}
 		?>
-		<ul id="site-header-cart" class="site-header-cart">
+		<ul id="site-header-cart" class="site-header-cart col-lg-6 cart ffrc">
 			<li class="<?php echo esc_attr( $class ); ?>">
 				<?php in_2019_woocommerce_cart_link(); ?>
 			</li>

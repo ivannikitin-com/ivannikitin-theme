@@ -46,6 +46,7 @@ if ( ! function_exists( 'in_2019_setup' ) ) :
 		register_nav_menus( array(
 			'Primary' => esc_html__( 'Основное меню', 'in-2019' ),
 			'Footer' => esc_html__( 'Меню в подвале', 'in-201' ),
+			'Account' => esc_html__( 'Меню рядом с корзиной', 'in-201' ),
 		) );
 
 		/*

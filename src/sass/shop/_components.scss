@@ -2,10 +2,13 @@
  * Header cart
  */
 .site-header-cart {
+	list-style: none;
 	position: relative;
-	margin: 0;
-	padding: 0;
 	@include clearfix;
+
+	a {
+		text-decoration: none;
+	}
 
 	.cart-contents {
 		text-decoration: none;
@@ -13,11 +16,47 @@
 
 	.widget_shopping_cart {
 		display: none;
+		text-align: right;
 	}
 
 	.product_list_widget {
 		margin: 0;
 		padding: 0;
+	}
+
+	.remove_from_cart_button {
+		position: absolute;
+		right: 0;
+		top: 0;
+		text-decoration: none;
+		color: $red;
+		font-size: rem(20px);
+		line-height: 1.2;
+
+		& + a {
+			display: block;
+		}
+	}
+	.woocommerce-mini-cart {
+		list-style: none;
+	}
+
+	.woocommerce-mini-cart__buttons {
+		display: flex;
+		flex-direction: column;
+
+		a {
+			margin-bottom: 5px;
+			display: inline-block;
+			color: $red;
+		}
+	}
+
+	.woocommerce-mini-cart-item {
+		padding-right: 15px;
+		position: relative;
+		border-bottom: 1px solid $grey2;
+		margin-bottom: 10px;
 	}
 }
 
@@ -35,8 +74,8 @@
 	font-weight: 400;
 
 	&:before {
-		content: "\53\53\53\53\53";
-		opacity: .25;
+		content: '\53\53\53\53\53';
+		opacity: 0.25;
 		float: left;
 		top: 0;
 		left: 0;
@@ -53,7 +92,7 @@
 	}
 
 	span:before {
-		content: "\53\53\53\53\53";
+		content: '\53\53\53\53\53';
 		top: 0;
 		position: absolute;
 		left: 0;
@@ -80,18 +119,18 @@ p.stars {
 			width: 1em;
 			height: 1em;
 			line-height: 1;
-			font-family: "star";
-			content: "\53";
+			font-family: 'star';
+			content: '\53';
 			color: $color__text-main;
 			text-indent: 0;
-			opacity: .25;
+			opacity: 0.25;
 		}
 
 		&:hover {
 			~ a:before {
-				content: "\53";
+				content: '\53';
 				color: $color__text-main;
-				opacity: .25;
+				opacity: 0.25;
 			}
 		}
 	}
@@ -99,7 +138,7 @@ p.stars {
 	&:hover {
 		a {
 			&:before {
-				content: "\53";
+				content: '\53';
 				color: $color__link;
 				opacity: 1;
 			}
@@ -109,21 +148,21 @@ p.stars {
 	&.selected {
 		a.active {
 			&:before {
-				content: "\53";
+				content: '\53';
 				color: $color__link;
 				opacity: 1;
 			}
 
 			~ a:before {
-				content: "\53";
+				content: '\53';
 				color: $color__text-main;
-				opacity: .25;
+				opacity: 0.25;
 			}
 		}
 
 		a:not(.active) {
 			&:before {
-				content: "\53";
+				content: '\53';
 				color: $color__link;
 				opacity: 1;
 			}
@@ -251,12 +290,19 @@ p.no-comments {
 			left: -999em;
 			display: block;
 			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+			background-color: $white;
+			padding: 5px;
+
+			img {
+				display: none;
+			}
 		}
 
 		&:hover,
 		&.focus {
 			.widget_shopping_cart {
-				left: 0;
+				right: 0;
+				left: auto;
 				display: block;
 			}
 		}

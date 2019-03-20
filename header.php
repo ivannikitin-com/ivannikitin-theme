@@ -53,8 +53,22 @@
                 </div>
                 <div class="col-md-5 col-lg-5 col-xl-4 mr-0">
                     <div class="row mt-3 mt-md-2 mt-lg-3">
-                        <div class="col login text-nowrap ffrc"><a href="#" class="nodecor"><span>Личный кабинет</span></a></div>
-                        <div class="col cart text-nowrap ffrc"><a href="#" class="nodecor"><span>Корзина 123456</span></a></div>
+                        <?php
+                            wp_nav_menu( array(
+                                'theme_location'    => 'Account',
+                                'depth'             => 1,
+                                'container'         => 'div',
+                                'container_class'   => 'col-lg-6 login text-nowrap ffrc',
+                            ) );
+                        ?>
+                            <!-- <a href="#" class="nodecor">
+                                <span>Личный кабинет</span>
+                            </a> -->
+                        <?php
+                            if ( function_exists( 'in_2019_woocommerce_header_cart' ) ) {
+                                in_2019_woocommerce_header_cart();
+                            }
+                        ?>
                     </div><!--/.row-->
                 </div>
             

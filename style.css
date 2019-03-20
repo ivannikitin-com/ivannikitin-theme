@@ -1542,6 +1542,10 @@ a[href^="mailto:"] {
   z-index: 2; }
   .site-header .logo {
     padding-left: 0; }
+  .site-header .login ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
   .site-header .logo a,
   .site-header .logo span {
     display: -webkit-box;
@@ -1556,11 +1560,12 @@ a[href^="mailto:"] {
     height: 100%;
     background: #0e76bc; }
   .site-header .login a,
-  .site-header .cart a {
+  .site-header .cart .cart-contents {
     color: #bf1e2e;
-    display: inline-block; }
+    display: inline-block;
+    text-decoration: none; }
   .site-header .login a:before,
-  .site-header .cart a:before,
+  .site-header .cart .cart-contents:before,
   .site-header .phone a:before,
   .site-header .email a:before {
     content: '';
@@ -1571,7 +1576,7 @@ a[href^="mailto:"] {
   .site-header .login a:before {
     width: 16px;
     height: 26px; }
-  .site-header .cart a:before {
+  .site-header .cart .cart-contents:before {
     width: 28px;
     height: 19px;
     background-position: -25px 0; }
@@ -1765,7 +1770,7 @@ a[href^="mailto:"] {
     .site-header .phone a {
       font-size: 1rem; }
     .site-header .login a:before,
-    .site-header .cart a:before,
+    .site-header .cart .cart-contents:before,
     .site-header .phone a:before,
     .site-header .email a:before {
       margin-right: 4px; } }
@@ -1778,6 +1783,9 @@ a[href^="mailto:"] {
 .box-shadow {
   -webkit-box-shadow: 0px 14px 6px -4px rgba(50, 50, 50, 0.42);
           box-shadow: 0px 14px 6px -4px rgba(50, 50, 50, 0.42); }
+
+.navbar-light .navbar-nav .nav-link {
+  color: #072133; }
 
 /*--------------------------------------------------------------
 ## Header

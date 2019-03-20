@@ -7,6 +7,14 @@
 		padding-left: 0;
 	}
 
+	.login {
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	}
+
 	.logo a,
 	.logo span {
 		display: flex;
@@ -16,12 +24,13 @@
 		background: $blue;
 	}
 	.login a,
-	.cart a {
+	.cart .cart-contents {
 		color: $red;
 		display: inline-block;
+		text-decoration: none;
 	}
 	.login a:before,
-	.cart a:before,
+	.cart .cart-contents:before,
 	.phone a:before,
 	.email a:before {
 		content: '';
@@ -34,7 +43,7 @@
 		width: 16px;
 		height: 26px;
 	}
-	.cart a:before {
+	.cart .cart-contents:before {
 		width: 28px;
 		height: 19px;
 		background-position: -25px 0;
@@ -273,7 +282,7 @@
 			font-size: 1rem;
 		}
 		.login a:before,
-		.cart a:before,
+		.cart .cart-contents:before,
 		.phone a:before,
 		.email a:before {
 			margin-right: 4px;
@@ -291,4 +300,8 @@
 
 .box-shadow {
 	box-shadow: 0px 14px 6px -4px rgba(50, 50, 50, 0.42);
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: $black;
 }
