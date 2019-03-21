@@ -49306,3 +49306,36 @@ h2 {
   left: -14px;
   top: -14px;
   bottom: -14px; }
+
+.in-tabs-content-wrap [data-type="in-2019/tab"] {
+  display: none; }
+
+.wp-block-in-2019-tabs.in-active-tab-1 > .in-tabs-content-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-tab="1"] {
+  display: block; }
+
+.wp-block-in-2019-tabs.in-active-tab-2 > .in-tabs-content-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-tab="2"] {
+  display: block; }
+
+.wp-block-in-2019-tabs.in-active-tab-3 > .in-tabs-content-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-tab="3"] {
+  display: block; }
+
+.wp-block-in-2019-tabs.in-active-tab-4 > .in-tabs-content-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-tab="4"] {
+  display: block; }
+
+.wp-block-in-2019-tabs.in-active-tab-5 > .in-tabs-content-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-tab="5"] {
+  display: block; }
+
+.wp-block-in-2019-tabs.in-active-tab-6 > .in-tabs-content-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-tab="6"] {
+  display: block; }
+
+.wp-block-in-2019-tabs.in-active-tab-7 > .in-tabs-content-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-tab="7"] {
+  display: block; }
+
+.wp-block-in-2019-tabs.in-active-tab-8 > .in-tabs-content-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-tab="8"] {
+  display: block; }
+
+.wp-block-in-2019-tabs.in-active-tab-9 > .in-tabs-content-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-tab="9"] {
+  display: block; }
+
+.wp-block-in-2019-tabs.in-active-tab-10 > .in-tabs-content-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-tab="10"] {
+  display: block; }

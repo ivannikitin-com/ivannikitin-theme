@@ -1,17 +1,45 @@
-.tab-list {
-	border-bottom: 1px solid #ccc;
-	padding-left: 0;
-}
+.wp-block-in-2019-tabs {
+	.in-tabs-title-list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		text-align: center;
+		text-transform: uppercase;
+	}
 
-.tab-list-item {
-	display: inline-block;
-	list-style: none;
-	margin-bottom: -1px;
-	padding: 0.5rem 0.75rem;
-}
+	.in-tab-title-image {
+		width: 65px;
+		height: 65px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto;
+		background-color: $black;
+		border-radius: 100%;
+		overflow: hidden;
+		transition: all 0.15s ease-in-out;
+	}
 
-.tab-list-active {
-	background-color: white;
-	border: solid #ccc;
-	border-width: 1px 1px 0 1px;
+	.in-tab-title {
+		color: $black;
+		font-family: Roboto;
+		font-size: 14px;
+		font-stretch: condensed;
+		text-decoration: underline;
+		transition: all 0.15s ease-in-out;
+	}
+
+	.in-tab-title-active,
+	.in-tab-title:focus,
+	.in-tab-title:hover {
+		text-decoration: none;
+		color: $blue;
+
+		.in-tab-title-image {
+			background-color: $blue;
+		}
+	}
 }

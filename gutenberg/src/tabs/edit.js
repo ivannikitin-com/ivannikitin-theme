@@ -1,5 +1,4 @@
 import times from 'lodash/times';
-import map from 'lodash/map';
 import classnames from 'classnames';
 import memize from 'memize';
 
@@ -9,23 +8,13 @@ const {
 	InnerBlocks,
 	InspectorControls,
 	RichText,
-	BlockControls,
-	ColorPalette,
-	AlignmentToolbar,
-	BlockAlignmentToolbar,
 	MediaUpload,
 	MediaUploadCheck,
 } = wp.editor;
 const {
 	Button,
-	ButtonGroup,
-	Tooltip,
-	TabPanel,
-	Dashicon,
 	PanelBody,
 	RangeControl,
-	ToggleControl,
-	SelectControl,
 } = wp.components;
 
 const ALLOWED_BLOCKS = [ 'in-2019/tab' ];
@@ -58,7 +47,12 @@ class Tabs extends Component {
 
 	render() {
 		const { className, setAttributes, attributes } = this.props;
-		const { tabCount, titles, currentTab } = attributes;
+		const { tabCount, titles, currentTab, uniqueID } = attributes;
+
+		const classes = classnames(
+			className,
+			`in-tabs-wrap in-tabs-id${ uniqueID } in-tabs-has-${ tabCount }-tabs in-active-tab-${ currentTab }`
+		);
 
 		const tabsCountChange = (
 			<Fragment>
@@ -106,9 +100,16 @@ class Tabs extends Component {
 		const renderTitles = index => {
 			return (
 				<Fragment>
-					<li>
+					<li
+						className={ `in-title-item in-title-item-${ index } in-tab-title-${
+							1 + index === currentTab ? 'active' : 'inactive'
+						}` }
+						onClick={ () => setAttributes( { currentTab: index + 1 } ) }
+					>
 						<div className={ `in-tab-title in-tab-title-${ 1 + index }` }>
-							<img src={ titles[ index ].url } alt={ titles[ index ].alt } />
+							<div className="in-tab-title-image">
+								<img src={ titles[ index ].url } alt={ titles[ index ].alt } />
+							</div>
 							<MediaUploadCheck>
 								<MediaUpload
 									onSelect={ media => selectMedia( media, index ) }
@@ -140,9 +141,12 @@ class Tabs extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>{ tabsCountChange }</InspectorControls>
-				<div className={ className }>
+				<div className={ classes }>
 					<div className="in-tabs-wrap">
 						<ul className="in-tabs-title-list">{ renderPreviewArray }</ul>
+					</div>
+					<div className="in-tabs-content-wrap">
+						<InnerBlocks template={ getPanesTemplate( tabCount ) } templateLock="all" allowedBlocks={ ALLOWED_BLOCKS } />
 					</div>
 				</div>
 			</Fragment>

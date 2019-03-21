@@ -1,13 +1,13 @@
 import './style.scss';
 import './editor.scss';
 import edit from './edit';
-// import save from './save';
+import save from './save';
 import attributes from './attributes';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
-registerBlockType( 'in-2019/site-creation', {
+registerBlockType( 'in-2019/tabs', {
 	title: __( 'Tabs', 'in-2019' ),
 	category: 'nikitin',
 	supports: {
@@ -20,7 +20,5 @@ registerBlockType( 'in-2019/site-creation', {
 		}
 	},
 	edit,
-	save: () => {
-		return null;
-	},
+	save,
 } );

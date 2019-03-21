@@ -19,4 +19,5 @@ import './employee/index';
 import './news/index';
 import './advantages/index';
 import './tabs/index';
+import './tab/index';
 // import './block/block.js';

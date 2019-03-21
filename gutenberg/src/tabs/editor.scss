@@ -1,0 +1,10 @@
+.in-tabs-content-wrap [data-type="in-2019/tab"] {
+    display: none;
+}
+
+
+@for $i from 1 through 10 {
+    .wp-block-in-2019-tabs.in-active-tab-#{$i} > .in-tabs-content-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-tab="#{$i}"] {
+        display: block;
+    }
+}
