@@ -18,5 +18,5 @@ import './service/index';
 import './employee/index';
 import './news/index';
 import './advantages/index';
-import './site-creation/index';
+import './tabs/index';
 // import './block/block.js';

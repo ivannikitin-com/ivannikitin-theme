@@ -10,7 +10,8 @@
   "dependencies": {
     "bootstrap": "^4.3.0",
     "cgb-scripts": "1.14.0",
-    "classnames": "^2.2.6"
+    "classnames": "^2.2.6",
+    "memize": "^1.0.5"
   },
   "devDependencies": {
     "react": "^16.8.4",
