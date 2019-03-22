@@ -8,6 +8,7 @@
 		justify-content: space-around;
 		text-align: center;
 		text-transform: uppercase;
+		margin-bottom: rem(52px);
 	}
 
 	.in-tab-title-image {
@@ -43,7 +44,7 @@
 		}
 	}
 
-	.in-tab-inner-content {
+	> .in-tabs-content-wrap > .in-tab-inner-content {
 		display: none;
 		opacity: 0;
 		transition: opacity 0.15s ease-in-out;

@@ -1,0 +1,29 @@
+.wp-block-in-2019-faq {
+    display: flex;
+    margin-bottom: rem(71px);
+
+    &__image {
+        flex: 0 0 67px;
+        height: 70px;
+        background: $blue url(../src/assets/i.png) no-repeat center center;
+        margin-right: rem(33px);
+    }
+
+    &__text {
+        font-size: 14px;
+        line-height: 1.71;
+        color: $grey;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    &__title {
+        font-family: 'RobotoCondensed-Bold', sans-serif;
+        font-size: 14px;
+        font-stretch: condensed;
+        color: $black;
+        text-transform: uppercase;
+    }
+}
