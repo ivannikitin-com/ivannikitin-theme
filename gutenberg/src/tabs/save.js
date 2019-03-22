@@ -18,7 +18,7 @@ class TabsSave extends Component {
 			return (
 				<Fragment>
 					<li
-						className={ `in-title-item in-title-item-${ index } in-tab-title-${
+						className={ `in-title-item in-title-item-${ 1 + index } in-tab-title-${
 							1 + index === currentTab ? 'active' : 'inactive'
 						}` }
 					>

@@ -20,4 +20,5 @@ import './news/index';
 import './advantages/index';
 import './tabs/index';
 import './tab/index';
+import './faq';
 // import './block/block.js';

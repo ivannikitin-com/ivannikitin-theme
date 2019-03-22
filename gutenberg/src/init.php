@@ -12,6 +12,13 @@ function gutenberg_cgb_block_assets() { // phpcs:ignore
 		get_template_directory_uri() . '/gutenberg/dist/blocks.style.build.css', // Block style CSS.
 		array( 'wp-editor' ) // Dependency to include the CSS after it.
 	);
+
+	wp_enqueue_script(
+		'gutenberg-tabs-js', // Handle.
+		get_template_directory_uri() . '/gutenberg/dist/in-tabs.js', // Block.build.js: We register the block here. Built with Webpack.
+		array( 'wp-editor' ), // Dependencies, defined above.
+		true // Enqueue the script in the footer.
+	);
 }
 
 // Hook: Frontend assets.
