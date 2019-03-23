@@ -1,0 +1,54 @@
+.owl-item > div {
+    // cursor: pointer;
+    // margin: 6% 8%;
+    // transition: margin 0.4s ease;
+}
+.owl-item.center > div {
+    // cursor: auto;
+    // margin: 0;
+}
+.owl-item:not(.center) > div:hover {
+    // opacity: .75;
+}
+
+.wp-block-in-2019-carousel {
+    .item {
+        background: $white;
+        border: 1px solid $grey2;
+        padding-top: rem(81px);
+        padding-bottom: rem(68px);
+        color: $black2;
+
+        &__title {
+            margin: 0 0 rem(15px) 0;
+            padding-bottom: rem(18px);
+            border-bottom: 1px dotted $black2;
+        }
+
+        &__description {
+            margin-bottom: rem(30px);
+        }
+
+        &__price {
+            text-align: center;
+            text-transform: uppercase;
+            font-stretch: condensed;
+            font-size: rem(26px);
+            font-family: 'RobotoCondensed-Regular', sans-serif;
+            margin-bottom: rem(16px);
+        }
+    }
+}
+
+.owl-item.center {
+    .item {
+        background: $blue;
+        border: 1px solid $blue;
+        color: $white;
+
+        &__title {
+            color: $white;
+            border-bottom: 1px dotted $white;
+        }
+    }
+}

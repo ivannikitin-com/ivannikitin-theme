@@ -10,15 +10,16 @@
  */
 
 // Blocks
-import './section/index';
-import './container/index';
-import './row/index';
-import './col/index';
-import './service/index';
-import './employee/index';
-import './news/index';
-import './advantages/index';
-import './tabs/index';
-import './tab/index';
+import './section';
+import './container';
+import './row';
+import './col';
+import './service';
+import './employee';
+import './news';
+import './advantages';
+import './tabs';
+import './tab';
 import './faq';
+import './carousel';
 // import './block/block.js';

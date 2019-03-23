@@ -14,11 +14,16 @@
 @import '~bootstrap/scss/bootstrap-grid';
 @import '~bootstrap/scss/utilities';
 
+// Libs
+@import '../node_modules/react-owl-carousel2/src/owl.carousel.css';
+
 // Colors.
 $white: #fff;
 $black: #072133;
+$black2: #464646;
 $blue: #0c68a5;
 $grey: #7d7d7d;
+$grey2: #d2d4d8;
 
 // Fonts
 $default__fonts: 'Roboto Condensed', sans-serif;
