@@ -32,6 +32,13 @@ function gutenberg_cgb_block_assets() { // phpcs:ignore
 		get_template_directory_uri() . '/gutenberg/dist/blocks.style.build.css#asyncload', // Block style CSS.
 		array( 'wp-editor' ) // Dependency to include the CSS after it.
 	);
+
+	wp_enqueue_style(
+		'owl-carousel-css', // Handle.
+		'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css#asyncload', // Block style CSS.
+		array( 'wp-editor' ) // Dependency to include the CSS after it.
+	);
+
 }
 
 // Hook: Frontend assets.
