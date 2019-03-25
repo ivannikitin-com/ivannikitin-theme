@@ -10,16 +10,14 @@ class TabsSave extends Component {
 			attributes: { tabCount, currentTab, uniqueID, titles },
 		} = this.props;
 
-		const classes = classnames(
-			`in-tabs-wrap in-tabs-id${ uniqueID } in-tabs-has-${ tabCount }-tabs in-active-tab-${ currentTab }`
-		);
+		const classes = classnames( `in-tabs-wrap in-tabs-id${ uniqueID } in-tabs-has-${ tabCount }-tabs in-active-tab-1` );
 
 		const renderTitles = index => {
 			return (
 				<Fragment>
 					<li
 						className={ `in-title-item in-title-item-${ 1 + index } in-tab-title-${
-							1 + index === currentTab ? 'active' : 'inactive'
+							1 + index === 1 ? 'active' : 'inactive'
 						}` }
 					>
 						<a href="javascript:;" data-tab={ 1 + index } className={ `in-tab-title in-tab-title-${ 1 + index } ` }>
