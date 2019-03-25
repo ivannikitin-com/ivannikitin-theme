@@ -1,11 +1,71 @@
-import OwlCarousel from 'react-owl-carousel2';
 import times from 'lodash/times';
-import Accordion from './components/Accordion';
+import memoize from 'lodash/memoize';
+import './components/descriptionCarouselBlock';
+import './components/whatEnter';
 
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, RichText } = wp.editor;
-const { PanelBody, ToggleControl, RangeControl } = wp.components;
+const { InspectorControls, RichText, InnerBlocks } = wp.editor;
+const { PanelBody, RangeControl } = wp.components;
+
+const ALLOWED_BLOCKS = [ 'in-2019/carousel-description', 'in-2019/what-enter' ];
+
+const getPanesTemplate = memoize( ( panels, slides ) => {
+	return times( panels, n => [
+		'in-2019/what-enter',
+		{
+			id: n + 1,
+		},
+		[
+			[
+				'in-2019/col',
+				{
+					md: 12,
+				},
+				[
+					[
+						'in-2019/row',
+						{},
+						[
+							[
+								'in-2019/col',
+								{
+									md: 3,
+								},
+							],
+							[
+								'in-2019/col',
+								{
+									md: 3,
+								},
+							],
+							[
+								'in-2019/col',
+								{
+									md: 3,
+								},
+							],
+							[
+								'in-2019/col',
+								{
+									md: 3,
+								},
+							],
+						],
+					],
+				],
+			],
+			[
+				'in-2019/carousel-description',
+				{
+					id: n + 1,
+					title: slides[ n ].title,
+					price: slides[ n ].price,
+				},
+			],
+		],
+	] );
+} );
 
 class CarouselIn extends Component {
 	saveArrayUpdate( value, index ) {
@@ -29,7 +89,7 @@ class CarouselIn extends Component {
 
 	render() {
 		const { className, setAttributes, attributes } = this.props;
-		const { nav, items, slides } = attributes;
+		const { items, slides } = attributes;
 
 		const settingsCarousel = (
 			<Fragment>
@@ -50,6 +110,8 @@ class CarouselIn extends Component {
 											gift: true,
 											values: __( '<li>Point</li>', 'in-2019' ),
 											price: '1 000 ₽',
+											linkMore: __( 'More about the tariff', 'in-2019' ),
+											order: __( 'Order', 'in-2019' ),
 										} );
 									} );
 								}
@@ -64,21 +126,11 @@ class CarouselIn extends Component {
 						min={ 1 }
 						max={ 5 }
 					/>
-					<ToggleControl
-						label={ __( 'Show navigate arrow', 'in-2019' ) }
-						checked={ nav }
-						onChange={ value =>
-							setAttributes( {
-								nav: value,
-							} )
-						}
-					/>
 				</PanelBody>
 			</Fragment>
 		);
 
 		const renderSlide = index => {
-			console.log( slides[ index ] );
 			return (
 				<Fragment>
 					<div className={ `item items-${ index }` } key={ index }>
@@ -128,10 +180,25 @@ class CarouselIn extends Component {
 								this.saveArrayUpdate( { price: value }, index );
 							} }
 						/>
-						<a href="#">Подробне о тарифе</a>
-						<a href="#">Заказать</a>
+						<RichText
+							tagName="a"
+							cclassName="item__link-more"
+							value={ slides[ index ].linkMore }
+							onChange={ value => {
+								this.saveArrayUpdate( { linkMore: value }, index );
+							} }
+						/>
+						<div className="text-center">
+							<RichText
+								tagName="a"
+								className="item__order"
+								value={ slides[ index ].order }
+								onChange={ value => {
+									this.saveArrayUpdate( { order: value }, index );
+								} }
+							/>
+						</div>
 					</div>
-					<Accordion />
 				</Fragment>
 			);
 		};
@@ -143,6 +210,7 @@ class CarouselIn extends Component {
 				<div className={ className }>
 					<InspectorControls>{ settingsCarousel }</InspectorControls>
 					{ renderPreviewArray }
+					<InnerBlocks template={ getPanesTemplate( items, slides ) } templateLock="all" allowedBlocks={ ALLOWED_BLOCKS } />
 				</div>
 			</Fragment>
 		);
