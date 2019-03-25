@@ -4,7 +4,20 @@ jQuery( document ).ready( function( $ ) {
 	$owl.owlCarousel( {
 		loop: false,
 		center: true,
-		startPosition: 1,
+		responsive: {
+			0: {
+				items: 1,
+				startPosition: 0,
+			},
+			500: {
+				items: 2,
+				startPosition: 1,
+			},
+			768: {
+				items: 3,
+				startPosition: 1,
+			},
+		},
 	} );
 
 	$owl
