@@ -1,4 +1,6 @@
 jQuery( document ).ready( function( $ ) {
+
+	// Формирование карусели
 	const $owl = $( '.owl-carousel-custom' );
 
 	$owl.owlCarousel( {
@@ -48,9 +50,8 @@ jQuery( document ).ready( function( $ ) {
 
 		$( '.wp-block-in-2019-what-enter-item-' + changeActiveSlideId ).addClass( 'active' );
 	} );
-} );
 
-jQuery( document ).ready( function( $ ) {
+	// Плавный скролл
 	$( '.owl-carousel-custom' ).on( 'click', '.item__link-more', function( event ) {
 		event.preventDefault();
 
@@ -58,6 +59,13 @@ jQuery( document ).ready( function( $ ) {
 			top = $( id ).offset().top;
 
 		//анимируем переход на расстояние - top за 1500 мс
-		$( 'body,html' ).animate( { scrollTop: top }, 1500 );
+		$( 'body,html' ).animate( { scrollTop: top }, 1000 );
 	} );
+
+	$('a').on('click', function() {
+		if($(this).data('name-service')) {
+			$('.name-service-field').val($(this).data('name-service'));
+		}
+	})
 } );
+

@@ -14,6 +14,10 @@ registerBlockType( 'in-2019/carousel', {
 			type: 'number',
 			default: 3,
 		},
+		currentSlide: {
+			type: 'number',
+			default: 0,
+		},
 		slides: {
 			type: 'array',
 			default: [

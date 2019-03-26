@@ -6,10 +6,24 @@
     padding-bottom: rem(48px);
     color: $black2;
 
-    &__title {
+    &-title-wrapper {
       margin: 0 0 rem(15px) 0;
       padding-bottom: rem(18px);
       border-bottom: 1px dotted $black2;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__gift {
+      padding-top: rem(58px);
+      font-stretch: condensed;
+      color: $grey;
+      font-family: "RobotoCondensed-Regular", sans-serif;
+      max-width: 83px;
+      background: url(../src/carousel/gift-grey.svg) no-repeat left top;
+    }
+
+    &__title {
     }
 
     &__description {
@@ -69,11 +83,28 @@
     min-height: $height;
 
     .item {
+      &-title-wrapper {
+        margin: 0 0 rem(15px) 0;
+        padding-bottom: rem(18px);
+        border-bottom: 1px dotted $black2;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      &__gift {
+        padding-top: rem(58px);
+        font-stretch: condensed;
+        color: $grey;
+        font-family: "RobotoCondensed-Regular", sans-serif;
+        max-width: 70px;
+        background: url(../src/carousel/gift-grey.svg) no-repeat left top;
+      }
+
       &__title {
         font-size: rem(24px);
         font-family: "RobotoCondensed-Regular", sans-serif;
         margin-top: 0;
-        border-bottom: 1px dotted $black2;
       }
 
       &__description {
@@ -128,7 +159,15 @@
 
       &__title {
         color: $white;
-        border-bottom: 1px dotted $white;
+      }
+
+      &-title-wrapper {
+        border-bottom-color: $white;
+      }
+
+      &__gift {
+        color: $white;
+        background: url(../src/carousel/gift-white.svg) no-repeat left top;
       }
 
       &__price {

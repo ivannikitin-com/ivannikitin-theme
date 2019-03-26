@@ -12,7 +12,10 @@ class SaveCarouselIn extends Component {
 			return (
 				<Fragment>
 					<div className={ `item items-${ index + 1 }` }>
-						<RichText.Content className="item__title" tagName="h3" value={ slides[ index ].title } />
+						<div className="item-title-wrapper">
+							<RichText.Content className="item__title" tagName="h3" value={ slides[ index ].title } />
+							{ slides[ index ].gift && <div className="item__gift">подарок при заказе</div> }
+						</div>
 						<RichText.Content tagName="div" className="item__description" value={ slides[ index ].description } />
 						<RichText.Content tagName="ul" multiline="li" value={ slides[ index ].values } />
 						<RichText.Content tagName="div" className="item__price" value={ slides[ index ].price } />
@@ -23,7 +26,7 @@ class SaveCarouselIn extends Component {
 							value={ slides[ index ].linkMore }
 						/>
 						<div className="text-center">
-							<RichText.Content tagName="a" className="item__order" value={ slides[ index ].order } />
+							<RichText.Content tagName="a" data-fancybox="" data-name-service={ slides[ index ].title } data-src="#order_service" className="item__order" value={ slides[ index ].order } />
 						</div>
 					</div>
 				</Fragment>

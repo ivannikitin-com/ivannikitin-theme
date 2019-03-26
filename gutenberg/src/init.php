@@ -8,7 +8,7 @@ function gutenberg_cgb_block_assets_frontend() {
 	);
 	wp_enqueue_script(
 		'owl-carousel-lib', // Handle.
-		'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js', // Block.build.js: We register the block here. Built with Webpack.
+		'//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js', // Block.build.js: We register the block here. Built with Webpack.
 		true // Enqueue the script in the footer.
 	);
 	wp_enqueue_script(
@@ -16,6 +16,19 @@ function gutenberg_cgb_block_assets_frontend() {
 		get_template_directory_uri() . '/gutenberg/dist/in-owl-carousel.js', // Block.build.js: We register the block here. Built with Webpack.
 		array( 'wp-editor' ), // Dependencies, defined above.
 		true // Enqueue the script in the footer.
+	);
+
+	wp_enqueue_script(
+		'fancybox-lib-js',
+		'//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js#asyncload',
+		'',
+		true
+	);
+	
+	wp_enqueue_style(
+		'fancybox-lib-css',
+		'//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css#asyncload',
+		''
 	);
 }
 add_action( 'wp_enqueue_scripts', 'gutenberg_cgb_block_assets_frontend' );

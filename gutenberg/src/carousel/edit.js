@@ -6,7 +6,7 @@ import './components/whatEnter';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InspectorControls, RichText, InnerBlocks } = wp.editor;
-const { PanelBody, RangeControl } = wp.components;
+const { PanelBody, RangeControl, ToggleControl } = wp.components;
 
 const ALLOWED_BLOCKS = [ 'in-2019/carousel-description', 'in-2019/what-enter' ];
 
@@ -89,7 +89,7 @@ class CarouselIn extends Component {
 
 	render() {
 		const { className, setAttributes, attributes } = this.props;
-		const { items, slides } = attributes;
+		const { items, slides, currentSlide } = attributes;
 
 		const settingsCarousel = (
 			<Fragment>
@@ -127,27 +127,42 @@ class CarouselIn extends Component {
 						max={ 5 }
 					/>
 				</PanelBody>
+				<PanelBody label={ `Settings slide ${ slides[ currentSlide ].title }` }>
+					<ToggleControl
+						label={ __( 'Gift', 'in-2019' ) }
+						checked={ slides[ currentSlide ].gift }
+						onChange={ value => this.saveArrayUpdate( { gift: value }, currentSlide ) }
+					/>
+				</PanelBody>
 			</Fragment>
 		);
 
 		const renderSlide = index => {
 			return (
 				<Fragment>
-					<div className={ `item items-${ index }` } key={ index }>
-						<RichText
-							className="item__title"
-							tagName="h3"
-							placeholder={ __( 'Title', 'in-2019' ) }
-							value={ slides[ index ].title }
-							onChange={ value => {
-								this.saveArrayUpdate(
-									{
-										title: value,
-									},
-									index
-								);
-							} }
-						/>
+					<div className={ `item items-${ index }` } onClick={ () => setAttributes( { currentSlide: index } ) }>
+						<div className="item-title-wrapper">
+							<RichText
+								className="item__title"
+								tagName="h3"
+								placeholder={ __( 'Title', 'in-2019' ) }
+								value={ slides[ index ].title }
+								onChange={ value => {
+									this.saveArrayUpdate(
+										{
+											title: value,
+										},
+										index
+									);
+								} }
+							/>
+							{ slides[ index ].gift && (
+								<div className="item__gift">
+									подарок
+									при заказе
+								</div>
+							) }
+						</div>
 						<RichText
 							tagName="div"
 							className="item__description"
