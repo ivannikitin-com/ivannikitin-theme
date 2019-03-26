@@ -22,4 +22,5 @@ import './tabs';
 import './tab';
 import './faq';
 import './carousel';
+import './list';
 // import './block/block.js';
