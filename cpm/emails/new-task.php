@@ -14,6 +14,9 @@ $tpbk   = CPM_URL . '/assets/images/tpbk.png';
 $author = wp_get_current_user();
 $linkto = cpm_get_option( 'email_url_link', 'cpm_mails' );
 
+// Категория проекта
+$terms = get_the_terms( $project_id, 'cpm_project_category' );
+$category = ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
 ?>
 
 <div id="cpm_author">
@@ -21,6 +24,9 @@ $linkto = cpm_get_option( 'email_url_link', 'cpm_mails' );
 		<?php echo get_avatar( $author->ID, 48 ); ?>
 	</div> 
 	<?php echo $author->display_name; ?><br>
+	<?php if ( ! empty( $category ) ): ?>
+		<span>CPM категория</span>: <?php echo $category ?><br>
+	<?php endif ?>	
 	Новая задача: <?php echo $task_data->post_title ?></br>
 	<?php if ( ! empty( $due_date ) ):?>
 		Срок: <?php echo $due_date ?></br>

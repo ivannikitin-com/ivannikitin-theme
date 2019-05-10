@@ -10,6 +10,10 @@ cpm_get_email_header();
 $tpbk           = CPM_URL . '/assets/images/tpbk.png';
 $completed_user = get_user_by( 'id', $data->completed_by );
 
+// Категория проекта
+$terms = get_the_terms( $project_id, 'cpm_project_category' );
+$category = ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
+
 // $template_vars = array(
 //     '%SITE%'         => wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ),
 //     '%PROJECT_NAME%' => get_post_field( 'post_title', $project_id ),
@@ -24,6 +28,9 @@ $completed_user = get_user_by( 'id', $data->completed_by );
 <div id="author">
 	<div style="width:48px;height:48px;float:left;margin:4px"><?php echo get_avatar( $completed_user->ID, 48 ); ?></div> 
 	<?php echo $completed_user->display_name; ?><br>
+	<?php if ( ! empty( $category ) ): ?>
+		<span>CPM категория</span>: <?php echo $category ?><br>
+	<?php endif ?>	
 	Задача завершена.
 </div>
 

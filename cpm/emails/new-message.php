@@ -10,6 +10,11 @@ $msg_obj = CPM_Message::getInstance();
 $project = $pro_obj->get( $project_id );
 $msg     = $msg_obj->get( $message_id );
 $author  = wp_get_current_user();
+
+// Категория проекта
+$terms = get_the_terms( $project_id, 'cpm_project_category' );
+$category = ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
+
 // $template_vars = array(
 //     '%SITE%'         => wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ),
 //     '%PROJECT_NAME%' => $project->post_title,
@@ -35,7 +40,10 @@ $author  = wp_get_current_user();
 <div id="author">
 	<div style="width:48px;height:48px;float:left;margin:4px"><?php echo get_avatar( $author->ID, 48 ); ?></div> 
 	<?php echo $author->display_name; ?><br>
-	<?php echo $msg->post_title; ?>
+	<?php echo $msg->post_title; ?><br>
+	<?php if ( ! empty( $category ) ): ?>
+		<span>CPM категория</span>: <?php echo $category ?><br>
+	<?php endif ?>	
 </div>
 
 

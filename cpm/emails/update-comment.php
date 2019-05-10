@@ -9,6 +9,10 @@ $parent_post = get_post( $data['comment_post_ID'] );
 $author      = wp_get_current_user();
 $comment_url = '';
 
+// Категория проекта
+$terms = get_the_terms( $project_id, 'cpm_project_category' );
+$category = ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
+
 switch ( $parent_post->post_type ) {
     case 'cpm_message':
         $type        = __( 'Message', 'cpm' );
@@ -35,6 +39,9 @@ switch ( $parent_post->post_type ) {
 <div id="author">
 	<div style="width:48px;height:48px;float:left;margin:4px"><?php echo get_avatar( $author->ID, 48 ); ?></div> 
 	<?php echo $author->display_name; ?><br>
+	<?php if ( ! empty( $category ) ): ?>
+		<span>CPM категория</span>: <?php echo $category ?><br>
+	<?php endif ?>	
 	<?php echo $type; ?>: <a href="<?php echo $comment_url; ?>"><?php echo $title; ?></a>
 </div>
 
