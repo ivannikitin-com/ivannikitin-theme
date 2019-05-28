@@ -1,2 +1,2 @@
-// import './js/custom';
-import './js/icons';
+import './js/custom';
+// import './js/icons';
