@@ -1,6 +1,4 @@
-import './libs/jquery.spincrement.min';
-
-$(document).ready(function() {
+jQuery(document).ready(function($) {
   if ($('.wp-block-in-2019-advantages__count').length !== 0) {
     var show = true;
     var countbox = '.wp-block-in-2019-advantages__count';

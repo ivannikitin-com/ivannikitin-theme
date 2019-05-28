@@ -1,3 +1,10 @@
+// Required
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
 .edit-post-visual-editor .editor-block-list__block[data-type='in-2019/col'] {
 	margin-right: 0;
 	margin-left: 0;

@@ -2,7 +2,7 @@
     position: relative;
     background-position: center center;
 		width: 100%;
-		
+
 		> div {
 			position: relative;
 		}
@@ -22,7 +22,7 @@
     &.no-repeat {
         background-repeat: no-repeat;
     }
-    
+
     &.has-background-opacity::before {
 		content: "";
 		position: absolute;
@@ -34,7 +34,7 @@
 		opacity: 0.5;
 		z-index: z-index(".wp-block-in-2019-col.has-background-opacity::before");
     }
-    
+
     @for $i from 1 through 10 {
 		&.has-background-opacity.has-background-opacity-#{ $i * 10 }::before {
 			opacity: $i * 0.1;
@@ -44,7 +44,7 @@
 
 [class*="arrow-right"]::after,
 [class*="arrow-left"]::after {
-    @include media-breakpoint-down(md) {
+    @media(max-width: 992px) {
         display: none;
     }
 }

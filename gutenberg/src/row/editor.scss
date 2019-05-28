@@ -1,6 +1,12 @@
 .wp-block-in-2019-row {
 	> .editor-inner-blocks > .editor-block-list__layout {
-		@extend .row;
+		display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
 
 		> [data-type='core/paragraph'],
 		> *:last-child {

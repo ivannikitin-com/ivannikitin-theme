@@ -5,15 +5,6 @@
  * that are used across the project.
 */
 
-// Required
-@import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/variables";
-@import "node_modules/bootstrap/scss/mixins";
-
-// Optional
-@import "~bootstrap/scss/bootstrap-grid";
-@import "~bootstrap/scss/utilities";
-
 // Colors.
 $white: #fff;
 $white2: #ebeef3;

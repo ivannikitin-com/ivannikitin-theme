@@ -124,15 +124,31 @@ add_action( 'widgets_init', 'in_2019_widgets_init' );
  */
 function in_2019_scripts() {
 
-	wp_enqueue_style( 'in-2019-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' );
+}
+add_action( 'wp_enqueue_scripts', 'in_2019_scripts' );
 
-	wp_enqueue_script( 'in-2019-js', get_template_directory_uri() . '/build/app.min.js', null, null, true );
-	
+/**
+ * Footer scripts and styles.
+ */
+function in_2019_footer_style_scripts() {
+
+	wp_enqueue_style( 'in_2019-style', get_stylesheet_uri() );
+
+	wp_enqueue_script( 'popper', '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', array('jquery'), true );
+
+	wp_enqueue_script( 'bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array('jquery'), true );
+
+	wp_enqueue_script( 'spincrement', get_template_directory_uri() . '/src/js/libs/jquery.spincrement.min.js', array('jquery'), true );
+
+	wp_enqueue_script( 'custom', get_template_directory_uri() . '/src/js/custom.js', array('jquery', 'spincrement'), true );
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'in_2019_scripts' );
+
+add_action( 'wp_footer', 'in_2019_footer_style_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -173,6 +189,11 @@ require get_template_directory() . '/inc/customizer/index.php';
  * Hooks.
  */
 require get_template_directory() . '/inc/hooks/index.php';
+
+/**
+ * Hooks.
+ */
+require get_template_directory() . '/inc/optimize.php';
 
 /**
  * Load Jetpack compatibility file.
