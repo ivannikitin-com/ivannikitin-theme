@@ -7,7 +7,7 @@
 
 	&__block {
 		font-size: 36px;
-		font-family: 'Roboto Condensed';
+		font-family: 'Roboto Condensed', sans-serif;
 		color: $white;
 		font-weight: bold;
 		line-height: 1.2;
@@ -16,7 +16,7 @@
 
 	&__text {
 		font-size: 16px;
-		font-family: 'Roboto Condensed';
+		font-family: 'Roboto Condensed', sans-serif;
 		color: $white;
 		line-height: 1.2;
 		text-transform: uppercase;

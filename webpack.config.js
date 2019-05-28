@@ -76,7 +76,7 @@ module.exports = {
     }),
     new CleanWebpackPlugin(['./build/*']),
     new BrowserSyncPlugin({
-      proxy: 'http://ivannikitin.local/',
+      proxy: 'https://ivannikitin.local/',
       files: ['**/*.php'],
       reloadDelay: 0
     }),
