@@ -7,7 +7,7 @@
   "scripts": {
     "start": "webpack --watch --mode development",
     "build": "webpack --mode production",
-    "wp-pot": "wp-pot --src '**/*.php' '**/*.js' --dest-file 'languages/palenight.pot' --domain 'palenight'"
+    "wp-pot": "wp-pot --src '**/*.js' --dest-file 'languages/in-2019.pot' --domain 'in-2019'"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
