@@ -5,4 +5,20 @@
 	select {
 		max-width: 100%;
 	}
+
+	.widget-title {
+		background-color: $blue;
+		color: $white;
+		padding: rem(20px) rem(20px);
+
+		~ * {
+			padding: rem(10px) rem(20px);
+		}
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
 }

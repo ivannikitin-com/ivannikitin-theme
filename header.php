@@ -49,7 +49,7 @@
                             <?php endif; ?>
                         </div>
                     </div><!--/.row-->
-                    
+
                 </div>
                 <div class="col-md-5 col-lg-5 col-xl-4 mr-0">
                     <div class="row mt-3 mt-md-2 mt-lg-3">
@@ -71,9 +71,9 @@
                         ?>
                     </div><!--/.row-->
                 </div>
-            
+
                 <div class="w-100 mt-3 mt-lg-4 d-none d-sm-block"></div>
-                
+
                 <div class="col d-none d-sm-block mb-lg-2">
                     <div class="row align-items-center jc-sb-lg">
                         <div class="col-lg search order-lg-last">
@@ -103,9 +103,9 @@
                     </div><!--/.row-->
                 </div><!--/.col-->
             </div><!--/.row-->
-        </div>        
+        </div>
         </div><!--/.row-->
-        
+
         <!-- --For mobile-->
         <div class="col d-sm-none p-0">
             <div class="row align-items-center no-gutters">
@@ -154,37 +154,37 @@
             <div class="social__list">
             <?php if ( get_theme_mod( 'social_twitter' ) ) : ?>
                 <a href="<?php echo get_theme_mod( 'social_twitter' ); ?>" title="Twitter" target="_blank" class="">
-                    <i class="fab fa-twitter"></i>
+                    <i class="icon-twitter"></i>
                     <span class="screen-reader-text">Twitter</span>
                 </a>
             <?php endif; ?>
             <?php if ( get_theme_mod( 'social_facebook' ) ) : ?>
                 <a href="<?php echo get_theme_mod( 'social_facebook' ); ?>" title="Facebook" target="_blank" class="">
-                    <i class="fab fa-facebook-f"></i>
+                    <i class="icon-facebook"></i>
                     <span class="screen-reader-text">Facebook</span>
                 </a>
             <?php endif; ?>
             <?php if ( get_theme_mod( 'social_google' ) ) : ?>
                 <a href="<?php echo get_theme_mod( 'social_google' ); ?>" title="Google Plus" target="_blank" class="#">
-                    <i class="fab fa-google-plus-g"></i>
+                    <i class="icon-google-plus"></i>
                     <span class="screen-reader-text">Google Plus</span>
                 </a>
             <?php endif; ?>
             <?php if ( get_theme_mod( 'social_pinterest' ) ) : ?>
                 <a href="<?php echo get_theme_mod( 'social_pinterest' ); ?>" title="Pinterest" target="_blank" class="#">
-                    <i class="fab fa-pinterest-p"></i>
+                    <i class="icon-pinterest"></i>
                     <span class="screen-reader-text">Pinterest</span>
                 </a>
             <?php endif; ?>
             <?php if ( get_theme_mod( 'social_vk' ) ) : ?>
                 <a href="<?php echo get_theme_mod( 'social_vk' ); ?>" title="VK" target="_blank" class="">
-                    <i class="fab fa-vk"></i>
+                    <i class="icon-vk"></i>
                     <span class="screen-reader-text">VK</span>
                 </a>
             <?php endif; ?>
             <?php if ( get_theme_mod( 'social_rss' ) ) : ?>
                 <a href="<?php echo get_theme_mod( 'social_rss' ); ?>" title="RSS" target="_blank" class="">
-                    <i class="fas fa-rss"></i>
+                    <i class="icon-rss"></i>
                     <span class="screen-reader-text">RSS</span>
                 </a>
             <?php endif; ?>

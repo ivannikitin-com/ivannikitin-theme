@@ -28,7 +28,7 @@
 	align-items: center;
 	justify-content: space-between;
 	border-bottom: 1px solid $grey;
-	z-index: 10;
+	z-index: 1;
 
 	@include media-breakpoint-down(md) {
 		flex-direction: column-reverse;
@@ -70,4 +70,9 @@
 	font-size: 36px;
 	font-stretch: condensed;
 	color: $black;
+}
+
+body:not(.home) .content-area {
+	margin-top: 40px;
+	margin-bottom: 40px;
 }
