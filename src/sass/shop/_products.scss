@@ -65,6 +65,11 @@ ul.products {
 		}
 	}
 
+	.product__value {
+		display: flex;
+		flex-direction: column;
+	}
+
 	.onsale {
 		display: inline-block;
 		width: 25px;

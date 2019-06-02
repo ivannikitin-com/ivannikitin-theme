@@ -1,0 +1,33 @@
+.woocommerce-account:not(.logged-in) {
+  .woocommerce {
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .woocommerce-form-row,
+  .form-row {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.woocommerce-account.logged-in {
+  .entry-content {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .woocommerce-MyAccount-navigation {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}

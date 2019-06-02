@@ -283,7 +283,7 @@ function in_woocommerce_end_container () {
 }
 
 function in_woocommerce_before_shop_loop_title() {
-	
+
 	echo '<div class="shop-loop-header">';
 		echo '<div class="shop-loop-header__label">' . esc_html( 'Название услуги', 'in-2019' ) . '</div>';
 		echo '<div class="shop-loop-header__label">' . esc_html( 'Стоимость', 'in-2019' ) . '</div>';
@@ -331,3 +331,5 @@ add_action( 'woocommerce_after_shop_loop_item', 'in_woocommerce_wrap_end', 15 );
 
 // woocommerce_before_shop_loop_item
 add_action( 'woocommerce_before_shop_loop_item', 'in_woocommerce_wrap_start', 9 );
+
+// woocommerce_single_product_summary
