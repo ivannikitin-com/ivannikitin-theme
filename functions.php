@@ -123,7 +123,6 @@ add_action( 'widgets_init', 'in_2019_widgets_init' );
  * Enqueue scripts and styles.
  */
 function in_2019_scripts() {
-
 	wp_enqueue_style( 'bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' );
 }
 add_action( 'wp_enqueue_scripts', 'in_2019_scripts' );
