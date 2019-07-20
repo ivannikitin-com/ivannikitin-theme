@@ -19,26 +19,26 @@ function in_cpm_email_project_update_subject( $subject, $project )
 add_filter( 'cpm_email_complete_task_subject', 	'in_cpm_email_complete_task_subject', 10, 3 );
 function in_cpm_email_complete_task_subject( $subject, $project, $task )
 {
-	return $project . ': ' . $task . ': Задача завершена';
+	return 'Re: '. $project . ': ' . $task;
 }
 
 add_filter( 'cpm_email_new_message_subject', 	'in_cpm_email_new_message_subject', 10, 3 );
 function in_cpm_email_new_message_subject( $subject, $project, $message )
 {
-	return $project . ': Новое сообщение: ' . mb_substr( $message, 0, 50 ) . '...';
+	return ( mb_strlen( $message ) > 50 ) ? $project .  ':' . mb_substr( $message, 0, 50 ) . '...' : $project . ':' . mb_substr( $message, 0, 50 );
 }
 
 add_filter( 'cpm_email_new_comment_subject', 	'in_cpm_email_comment_subject', 10, 3 );
 add_filter( 'cpm_email_update_comment_subject', 'in_cpm_email_comment_subject', 10, 3 );
 function in_cpm_email_comment_subject( $subject, $project, $task )
 {
-	return $project . ': ' . $task;
+	return 'Re: ' . $project . ': ' . $task;
 }
 
-add_filter( 'cpm_email_new_task_subject', 	'in_cpm_email_new_task_subject', 10, 3 );
-function in_cpm_email_new_task_subject( $subject, $project, $list_and_task )
+add_filter( 'cpm_email_new_task_subject', 	'in_cpm_email_new_task_subject', 10, 4 );
+function in_cpm_email_new_task_subject( $subject, $project, $task, $list )
 {
-	return $project . ': ' . $list_and_task;
+	return $project . ': ' . $task;
 }
 
 
