@@ -6,7 +6,12 @@
  *
  * @package IvanNikitin_2019
  */
-
+ 
+/* Доп. подключения */
+include( 'cpm/hooks.php' ); 
+include( 'in-employee-reports/hooks.php' ); 
+ 
+/* Theme setup */
 if ( ! function_exists( 'in_2019_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
