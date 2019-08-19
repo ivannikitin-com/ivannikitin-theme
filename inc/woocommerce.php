@@ -29,7 +29,8 @@ add_action( 'after_setup_theme', 'in_2019_woocommerce_setup' );
  * @return void
  */
 function in_2019_woocommerce_scripts() {
-	wp_enqueue_style( 'in-2019-woocommerce-style', get_template_directory_uri() . '/woocommerce.css' );
+	$version = wp_get_theme()->get( 'Version' );
+	wp_enqueue_style( 'in-2019-woocommerce-style', get_template_directory_uri() . '/woocommerce.css', array(), $version );
 
 	$font_path   = WC()->plugin_url() . '/assets/fonts/';
 	$inline_font = '@font-face {

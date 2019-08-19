@@ -10,6 +10,12 @@
 /* Доп. подключения */
 include( 'cpm/hooks.php' ); 
 include( 'in-employee-reports/hooks.php' ); 
+
+/* Убираем ссылки Visual Composer*/
+add_action( 'vc_after_init', function() {
+  vc_disable_frontend(); // this will disable frontend editor
+});
+
  
 /* Theme setup */
 if ( ! function_exists( 'in_2019_setup' ) ) :
@@ -128,7 +134,8 @@ add_action( 'widgets_init', 'in_2019_widgets_init' );
  * Enqueue scripts and styles.
  */
 function in_2019_scripts() {
-	wp_enqueue_style( 'bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' );
+	$version = wp_get_theme()->get( 'Version' );
+	wp_enqueue_style( 'bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', array(), $version );
 }
 add_action( 'wp_enqueue_scripts', 'in_2019_scripts' );
 
@@ -136,17 +143,19 @@ add_action( 'wp_enqueue_scripts', 'in_2019_scripts' );
  * Footer scripts and styles.
  */
 function in_2019_footer_style_scripts() {
+	
+	$version = wp_get_theme()->get( 'Version' );
 
-	wp_enqueue_style( 'in_2019-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'in_2019-style', get_stylesheet_uri(), array(), $version );
 
-	wp_enqueue_script( 'popper', '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', array('jquery'), true );
+	wp_enqueue_script( 'popper', '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', array('jquery'), $version, true );
 
-	wp_enqueue_script( 'bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array('jquery'), true );
+	wp_enqueue_script( 'bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array('jquery'), $version, true );
 
-	// wp_enqueue_script( 'spincrement', get_template_directory_uri() . '/src/js/libs/jquery.spincrement.min.js', array('jquery'), true );
+	// wp_enqueue_script( 'spincrement', get_template_directory_uri() . '/src/js/libs/jquery.spincrement.min.js', array('jquery'), $version, true );
 
-	// wp_enqueue_script( 'custom', get_template_directory_uri() . '/src/js/custom.js', array('jquery', 'spincrement'), true );
-	// wp_enqueue_script( 'custom', get_template_directory_uri() . '/build/app.min.js', array('jquery'), true );
+	// wp_enqueue_script( 'custom', get_template_directory_uri() . '/src/js/custom.js', array('jquery', 'spincrement'), $version, true );
+	// wp_enqueue_script( 'custom', get_template_directory_uri() . '/build/app.min.js', array('jquery'), $version, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
