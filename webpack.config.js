@@ -1,10 +1,10 @@
-const path = require('path'),
-  webpack = require('webpack'),
-  UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
-  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
-  OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
-  CleanWebpackPlugin = require('clean-webpack-plugin'),
-  BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -32,11 +32,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: [
-                require('autoprefixer')({
-                  browsers: ['> 1%', 'last 2 versions']
-                })
-              ]
+              plugins: [require('autoprefixer')]
             }
           },
           { loader: 'sass-loader', options: {} }
@@ -74,7 +70,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: './[name].css'
     }),
-    new CleanWebpackPlugin(['./build/*']),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['./build/*']
+    }),
     new BrowserSyncPlugin({
       proxy: 'https://ivannikitin.local/',
       files: ['**/*.php'],
