@@ -30,7 +30,7 @@
 	border-bottom: 1px solid $grey;
 	z-index: 1;
 
-	@include media-breakpoint-down(md) {
+	@media (max-width: 991.98px) {
 		flex-direction: column-reverse;
 		align-items: flex-start;
 	}
@@ -42,7 +42,7 @@
 		display: flex;
 		align-items: center;
 
-		@include media-breakpoint-down(md) {
+		@media (max-width: 991.98px) {
 			max-width: 100%;
 			width: 100%;
 		}
