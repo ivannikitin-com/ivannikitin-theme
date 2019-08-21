@@ -346,3 +346,11 @@ add_action( 'woocommerce_checkout_before_order_review_heading', 'woocommerce_che
 
 // woocommerce_checkout_after_order_review
 add_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_before_order_end', 0 );
+
+// woocommerce_archive_description
+remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
+remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10 );
+
+// woocommerce_after_shop_loop
+add_action( 'woocommerce_after_shop_loop',  'woocommerce_taxonomy_archive_description', 11 );
+add_action( 'woocommerce_after_shop_loop',  'woocommerce_product_archive_description', 11 );
