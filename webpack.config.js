@@ -71,7 +71,7 @@ module.exports = {
       filename: './[name].css'
     }),
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['./build/*']
+      cleanOnceBeforeBuildPatterns: []
     }),
     new BrowserSyncPlugin({
       proxy: 'https://ivannikitin.local/',
