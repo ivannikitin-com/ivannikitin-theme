@@ -200,6 +200,6 @@ export default withSelect( ( select, props ) => {
 	const { getEntityRecords } = select( 'core' );
 
 	return {
-		posts: getEntityRecords( 'postType', currentPostType, { _embed: true } ),
+		posts: getEntityRecords( 'postType', currentPostType, { _embed: true, per_page: 100 } ),
 	};
 } )( Employee );
