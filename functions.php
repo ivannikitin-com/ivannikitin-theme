@@ -135,7 +135,8 @@ add_action( 'widgets_init', 'in_2019_widgets_init' );
  */
 function in_2019_scripts() {
 	$version = wp_get_theme()->get( 'Version' );
-	wp_enqueue_style( 'bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', array(), $version );
+
+	wp_enqueue_style( 'in_2019-style', get_stylesheet_uri(), array(), $version );
 }
 add_action( 'wp_enqueue_scripts', 'in_2019_scripts' );
 
@@ -145,8 +146,6 @@ add_action( 'wp_enqueue_scripts', 'in_2019_scripts' );
 function in_2019_footer_style_scripts() {
 	
 	$version = wp_get_theme()->get( 'Version' );
-
-	wp_enqueue_style( 'in_2019-style', get_stylesheet_uri(), array(), $version );
 
 	wp_enqueue_script( 'popper', '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', array('jquery'), $version, true );
 
