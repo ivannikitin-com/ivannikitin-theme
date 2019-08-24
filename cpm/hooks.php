@@ -355,5 +355,3 @@ function in_wpex_top_bar_content( $content )
 	
 	return $content;
 }
-
-

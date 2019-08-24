@@ -58,7 +58,7 @@
                                 'theme_location'    => 'Account',
                                 'depth'             => 1,
                                 'container'         => 'div',
-                                'container_class'   => 'col-lg-6 login text-nowrap ffrc',
+                                'container_class'   => 'menu-account hide-menu-items col-lg-6 login text-nowrap ffrc',
                             ) );
                         ?>
                             <!-- <a href="#" class="nodecor">
