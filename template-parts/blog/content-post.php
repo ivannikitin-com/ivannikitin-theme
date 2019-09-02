@@ -5,6 +5,7 @@
   <div class="card-body">
     <h5 class="wp-block-in-2019-news_title"><?php the_title(); ?></h5>
     <time datetime="<?php the_date(); ?>" class="wp-block-in-2019-news_date"><?php the_time('d.m.Y'); ?></time>
+    <p class="wp-block-in-2019-news_description"><?php the_excerpt(); ?></p>
     <a href="<?php the_permalink(); ?>" class="wp-block-in-2019-news_link"><?php esc_html_e( 'Read More', 'in-2019' ) ?></a>
   </div>
 </div>
