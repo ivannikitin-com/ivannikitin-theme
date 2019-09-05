@@ -10,7 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<header class="entry-header">
