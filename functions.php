@@ -207,6 +207,11 @@ require get_template_directory() . '/inc/customizer/index.php';
 require get_template_directory() . '/inc/hooks/index.php';
 
 /**
+ * Filters.
+ */
+require get_template_directory() . '/inc/filters/index.php';
+
+/**
  * Hooks.
  */
 require get_template_directory() . '/inc/optimize.php';
