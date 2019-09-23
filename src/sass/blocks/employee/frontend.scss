@@ -1,0 +1,17 @@
+.wp-block-in-2019-employee {
+	display: block;
+	margin-bottom: 30px;
+
+	.employee_name {
+		font-family: 'Roboto Condensed', sans-serif;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-top: 15px;
+	}
+
+	.employee_name,
+	.employee_rank {
+		color: $black;
+		font-size: 1rem;
+	}
+}

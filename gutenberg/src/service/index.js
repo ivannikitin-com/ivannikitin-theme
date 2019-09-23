@@ -1,5 +1,3 @@
-import './style.scss';
-import './editor.scss';
 import icon from '-!svg-react-loader!../assets/service.svg';
 import classname from 'classnames';
 
@@ -27,7 +25,7 @@ registerBlockType( 'in-2019/service', {
 
 		const inspectorControl = (
 			<InspectorControls>
-				<PanelBody title={ __( 'Settings', 'in-2019' ) } initialOpen={ true } >
+				<PanelBody title={ __( 'Settings', 'in-2019' ) } initialOpen={ true }>
 					<ToggleControl
 						label={ __( 'Center', 'in-2019' ) }
 						checked={ center }
@@ -39,12 +37,9 @@ registerBlockType( 'in-2019/service', {
 			</InspectorControls>
 		);
 
-		const classes = classname(
-			className,
-			{
-				'align-middle': center,
-			}
-		);
+		const classes = classname( className, {
+			'align-middle': center,
+		} );
 
 		return (
 			<Fragment>
@@ -59,11 +54,9 @@ registerBlockType( 'in-2019/service', {
 		const { attributes } = props;
 		const { center } = attributes;
 
-		const classes = classname(
-			{
-				'align-middle': center,
-			}
-		);
+		const classes = classname( {
+			'align-middle': center,
+		} );
 
 		return (
 			<div className={ classes }>
@@ -71,5 +64,4 @@ registerBlockType( 'in-2019/service', {
 			</div>
 		);
 	},
-} )
-;
+} );

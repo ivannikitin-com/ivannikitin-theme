@@ -37,11 +37,6 @@ function gutenberg_cgb_block_assets_frontend() {
 		'//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css',
 		''
 	);
-	wp_enqueue_style(
-		'gutenberg-cgb-style-css', // Handle.
-		get_template_directory_uri() . '/gutenberg/dist/blocks.style.build.css', // Block style CSS.
-		array( 'wp-editor' ) // Dependency to include the CSS after it.
-	);
 }
 add_action( 'wp_footer', 'gutenberg_cgb_block_assets_frontend' );
 /**
@@ -67,11 +62,6 @@ add_action( 'enqueue_block_assets', 'gutenberg_cgb_block_assets' );
  * @since 1.0.0
  */
 function gutenberg_cgb_editor_assets() { // phpcs:ignore
-	wp_enqueue_style(
-		'gutenberg-cgb-style-css', // Handle.
-		get_template_directory_uri() . '/gutenberg/dist/blocks.style.build.css', // Block style CSS.
-		array( 'wp-editor' ) // Dependency to include the CSS after it.
-	);
 	// Scripts.
 	wp_enqueue_script(
 		'gutenberg-cgb-block-js', // Handle.
@@ -79,19 +69,14 @@ function gutenberg_cgb_editor_assets() { // phpcs:ignore
 		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), // Dependencies, defined above.
 		true // Enqueue the script in the footer.
 	);
-
-	// Styles.
-	wp_enqueue_style(
-		'single_block-cgb-block-editor-css',
-		get_template_directory_uri() . '/gutenberg/dist/blocks.editor.build.css#asyncload',
-		array( 'wp-edit-blocks' )
-	);
 }
 
 // Hook: Editor assets.
 add_action( 'enqueue_block_editor_assets', 'gutenberg_cgb_editor_assets' );
 
 // Create custom category
+add_filter( 'block_categories', 'gutenberg_nikitin_block_categories', 10, 2 );
+
 function gutenberg_nikitin_block_categories ( $categories ) {
 	return array_merge(
 		$categories,
@@ -103,21 +88,6 @@ function gutenberg_nikitin_block_categories ( $categories ) {
 		)
 	);
 }
-
-add_filter( 'block_categories', 'gutenberg_nikitin_block_categories', 10, 2 );
-
-add_theme_support( 'align-wide' );
-
-function add_async_forscript_in_2019($url)
-{
-    if (strpos($url, '#asyncload')===false)
-        return $url;
-    else if (is_admin())
-        return str_replace('#asyncload', '', $url);
-    else
-        return str_replace('#asyncload', '', $url)."' async='async";
-}
-add_filter('clean_url', 'add_async_forscript_in_2019', 11, 1);
 
 // Register block news
 include __DIR__ . '/news/index.php';

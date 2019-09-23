@@ -10,7 +10,8 @@ module.exports = {
   entry: {
     app: './src/index.js',
     style: './src/sass/style.scss',
-    woocommerce: './src/sass/woocommerce.scss'
+    woocommerce: './src/sass/woocommerce.scss',
+    'editor-style': './src/sass/editor-style.scss'
   },
   output: {
     filename: './build/[name].min.js',
@@ -35,7 +36,8 @@ module.exports = {
               plugins: [require('autoprefixer')]
             }
           },
-          { loader: 'sass-loader', options: {} }
+          { loader: 'sass-loader', options: {} },
+          { loader: 'import-glob-loader' }
         ]
       },
       {
@@ -74,7 +76,7 @@ module.exports = {
       cleanOnceBeforeBuildPatterns: []
     }),
     new BrowserSyncPlugin({
-      proxy: 'https://ivannikitin.local/',
+      proxy: 'http://ivannikitin.local/',
       files: ['**/*.php'],
       reloadDelay: 0
     }),

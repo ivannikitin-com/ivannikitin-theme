@@ -1,5 +1,3 @@
-import './style.scss';
-import './editor.scss';
 import icon from '-!svg-react-loader!../assets/employee.svg';
 import edit from './edit';
 import Image from '../components/Image.jsx';
@@ -54,18 +52,10 @@ registerBlockType( 'in-2019/employee', {
 		const { attributes } = props;
 		const { name, src, alt, widthImage, heighthImage, circleImage, alignment, url } = attributes;
 
-		const classes = classnames(
-			`text-${ alignment }`
-		);
+		const classes = classnames( `text-${ alignment }` );
 		return (
 			<a className={ classes } href={ url }>
-				<Image
-					width={ widthImage }
-					height={ heighthImage }
-					circle={ circleImage }
-					src={ src }
-					alt={ alt }
-				/>
+				<Image width={ widthImage } height={ heighthImage } circle={ circleImage } src={ src } alt={ alt } />
 				<div className="employee_name">{ name }</div>
 				<div className="employee_rank"></div>
 			</a>

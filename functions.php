@@ -93,6 +93,11 @@ if ( ! function_exists( 'in_2019_setup' ) ) :
 			'flex-height' => true,
 			'class'		  => 'ml-auto mr-auto img-fluid'
 		) );
+
+		// Supports aline gutenberg
+		add_theme_support( 'align-wide' );
+		add_theme_support( 'editor-styles' );
+		add_editor_style( 'editor-style.css' );
 	}
 endif;
 add_action( 'after_setup_theme', 'in_2019_setup' );

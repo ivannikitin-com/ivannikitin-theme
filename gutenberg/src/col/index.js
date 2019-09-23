@@ -1,5 +1,3 @@
-import './editor.scss';
-import './style.scss';
 import icon from '-!svg-react-loader!../assets/col.svg';
 import classnames from 'classnames';
 import blockAttributes from './components/attributes';

@@ -1,5 +1,3 @@
-import './style.scss';
-import './editor.scss';
 import icon from '-!svg-react-loader!../assets/news.svg';
 import edit from './edit';
 

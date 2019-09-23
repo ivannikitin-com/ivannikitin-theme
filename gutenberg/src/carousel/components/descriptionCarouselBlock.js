@@ -1,5 +1,3 @@
-import './style.scss';
-
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { InnerBlocks, RichText } = wp.editor;
@@ -98,7 +96,14 @@ registerBlockType( 'in-2019/carousel-description', {
 					<div className="carousel-description-item">
 						<RichText.Content tagName="div" className="carousel-description-price" value={ price } />
 						<RichText.Content tagName="div" className="carousel-description-link" value={ linkExample } />
-						<RichText.Content tagName="div" data-fancybox="" data-src="#order_service" className="carousel-description-button" data-name-service={ title } value={ order } />
+						<RichText.Content
+							tagName="div"
+							data-fancybox=""
+							data-src="#order_service"
+							className="carousel-description-button"
+							data-name-service={ title }
+							value={ order }
+						/>
 					</div>
 				</div>
 			</div>

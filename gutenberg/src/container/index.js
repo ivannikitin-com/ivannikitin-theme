@@ -1,5 +1,3 @@
-import './style.scss';
-import './editor.scss';
 import icon from '-!svg-react-loader!../assets/container.svg';
 import classnames from 'classnames';
 import BlockName from '../components/BlockName.jsx';
@@ -32,10 +30,7 @@ registerBlockType( 'in-2019/container', {
 		const { className, attributes, setAttributes, name } = props;
 		const { container } = attributes;
 
-		const classes = classnames(
-			className,
-			container
-		);
+		const classes = classnames( className, container );
 
 		return (
 			<Fragment>
@@ -48,7 +43,7 @@ registerBlockType( 'in-2019/container', {
 								{ label: 'Container', value: 'container' },
 								{ label: 'Container-fluid', value: 'container-fluid' },
 							] }
-							onChange={ ( container ) => {
+							onChange={ container => {
 								setAttributes( { container } );
 							} }
 						/>
@@ -65,12 +60,11 @@ registerBlockType( 'in-2019/container', {
 		const { attributes, className } = props;
 		const { container } = attributes;
 
-		const classes = classnames(
-			className,
-			container
-		);
+		const classes = classnames( className, container );
 		return (
-			<div className={ classes }><InnerBlocks.Content /></div>
+			<div className={ classes }>
+				<InnerBlocks.Content />
+			</div>
 		);
 	},
 } );

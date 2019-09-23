@@ -1,5 +1,3 @@
-import './style.scss';
-import './editor.scss';
 import './item';
 
 const { __ } = wp.i18n;
