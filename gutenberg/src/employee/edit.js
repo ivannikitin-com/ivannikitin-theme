@@ -77,13 +77,11 @@ class Employee extends Component {
 				<TextControl
 					label={ __( 'Width' ) }
 					value={ widthImage }
-					type="number"
 					onChange={ ( widthImage ) => setAttributes( { widthImage } ) }
 				/>
 				<TextControl
 					label={ __( 'Height' ) }
 					value={ heighthImage }
-					type="number"
 					onChange={ ( heighthImage ) => setAttributes( { heighthImage } ) }
 				/>
 				<CheckboxControl

@@ -12,11 +12,11 @@ registerBlockType( 'in-2019/employee', {
 	icon: icon,
 	attributes: {
 		widthImage: {
-			type: 'number',
+			type: 'string',
 			default: 170,
 		},
 		heighthImage: {
-			type: 'number',
+			type: 'string',
 			default: 170,
 		},
 		circleImage: {
