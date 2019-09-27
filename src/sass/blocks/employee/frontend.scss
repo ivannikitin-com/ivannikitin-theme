@@ -14,9 +14,4 @@
 		color: $black;
 		font-size: 1rem;
 	}
-
-	img:not(img[height]) {
-		height: inherit;
-		width: inherit;
-	}
 }
