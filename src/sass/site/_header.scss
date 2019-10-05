@@ -38,7 +38,7 @@
 		vertical-align: middle;
 		margin-right: 6px;
 	}
-	.login a:before {
+	.login a svg {
 		width: 16px;
 		height: 26px;
 	}
@@ -261,7 +261,7 @@
 		.phone a {
 			font-size: 1rem;
 		}
-		.login a:before,
+		.login a svg,
 		.cart .cart-contents:before,
 		.phone a:before,
 		.email a:before {
