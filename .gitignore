@@ -1,1 +1,4 @@
 node_modules
+*.log
+stamp.png
+sign.png
