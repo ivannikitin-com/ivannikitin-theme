@@ -1,7 +1,7 @@
 <?php
 /**
  * Хуки и настройки плагина woocommerce-pdf-invoices-packing-slips
- */
+ */ 
 
 // Название кнопки на скачивание счета
 add_filter( 'wpo_wcpdf_myaccount_button_text', 'in_wpo_wcpdf_myaccount_button_text', 10 , 2 );

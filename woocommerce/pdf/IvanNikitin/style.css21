@@ -1,0 +1,433 @@
+<?php global $wpo_wcpdf;?>
+/* Main Body */
+/*@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v7/yYRnAC2KygoXnEC8IdU0gQLUuEpTyoUstqEm5AMlJo4.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: bold;
+	src: local('Open Sans Bold'), local('OpenSans-Bold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v7/k3k702ZOKiLJc3WVjuplzMDdSZkkecOE1hvV7ZHvhyU.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: normal;
+	src: local('Open Sans Italic'), local('OpenSans-Italic'), url(http://themes.googleusercontent.com/static/fonts/opensans/v7/O4NhV7_qs9r9seTo7fnsVCZ2oysoEQEeKwjgmXLRnTc.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: bold;
+	src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(http://themes.googleusercontent.com/static/fonts/opensans/v7/PRmiXeptR36kaC0GEAetxrQhS7CD3GIaelOwHPAPh9w.ttf) format('truetype');
+}
+*/
+
+body {
+	background: #fff;
+	color: #000;
+	margin: 0cm;
+	/*font-family: 'Open Sans', sans-serif;
+	font-size: 9pt;*/
+	line-height: 100%; /* fixes inherit dompdf bug */
+}
+
+h1, h2, h3, h4 {
+	font-weight: bold;
+	margin: 0;
+}
+
+h1 {
+	font-size: 15pt;
+	margin: .8cm 0 .6cm;	
+	text-align:center;
+}
+h2 {
+	font-size: 14pt;
+}
+h4 {
+	font-size: 9pt;
+}
+ol,
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+li,
+ul {
+	margin-bottom: 0.75em;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+}
+
+p + p {
+	margin-top: 1.25em;
+}
+
+a { 
+	border-bottom: 1px solid; 
+	text-decoration: none; 
+}
+
+/* Basic Table Styling */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	page-break-inside: avoid;
+	border: 0;
+	margin: 0 0 .6cm;
+	padding: 0;
+}
+
+th, td {
+	vertical-align: top;
+	text-align: left;
+}
+
+table.container {
+	width:100%;
+	border: 0;
+}
+
+tr.no-borders,
+td.no-borders {
+	border: 0 !important;
+	border-top: 0 !important;
+	border-bottom: 0 !important;
+	padding: 0 !important;
+	width: auto;
+}
+
+/* Header */
+table.head {
+	margin-bottom: 1.2cm;
+}
+
+td.header img {
+	max-height: 3cm;
+	width: auto;
+}
+
+td.header {
+	font-size: 16pt;
+	font-weight: 700;
+}
+
+td.shop-info {
+	width: 40%;
+}
+.document-type-label {
+	text-transform: uppercase;
+}
+
+/* Recipient addressses & order data */
+table.order-data-addresses {
+	width: 100%;
+	margin-bottom: 1cm;
+}
+
+td.order-data {
+	width: 40%;
+}
+
+.invoice .shipping-address {
+	width: 30%;
+}
+
+.packing-slip .billing-address {
+	width: 30%;
+}
+
+td.order-data table th {
+	font-weight: normal;
+	padding-right: .2cm;
+}
+
+/* Order details */
+table.order-details {
+	width:100%;
+	margin-bottom: .8cm;
+}
+
+.quantity,
+.price {
+	width: 20%;
+}
+
+.order-details tr {
+	page-break-inside: avoid;
+	page-break-after: auto;	
+}
+
+.order-details td,
+.order-details th {
+	border-bottom: 1px #ccc solid;
+	border-top: 1px #ccc solid;
+	padding: 0.375em;
+}
+
+.order-details th {
+	font-weight: bold;
+	text-align: left;
+}
+
+.order-details thead th {
+	color: white;
+	background-color: black;
+	border-color: black;
+}
+
+/* product bundles compatibility */
+.order-details tr.bundled-item td.product {
+	padding-left: .5cm;
+}
+
+.order-details tr.product-bundle td,
+.order-details tr.bundled-item td {
+	border: 0;
+}
+dl {
+	margin: 4px 0;
+}
+
+dt, dd, dd p {
+	display: inline;
+	font-size: 7pt;
+	line-height: 7pt;
+}
+
+dd {
+	margin-left: 5px;
+}
+
+dd:after {
+	content: "\A";
+	white-space: pre;
+}
+
+/* Notes & Totals */
+.customer-notes {
+	margin-top: .5cm;
+}
+
+table.totals {
+	width: 100%;
+	margin-top: .5cm;
+}
+
+table.totals th,
+table.totals td {
+	border: 0;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+table.totals th.description,
+table.totals td.price {
+	width: 50%;
+}
+
+table.totals tr:last-child td,
+table.totals tr:last-child th {
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+	font-weight: bold;
+}
+
+table.totals tr.payment_method {
+	display: none;
+}
+
+/* Footer Imprint */
+#footer {
+	position: absolute;
+	bottom: -2cm;
+	left: 0;
+	right: 0;
+	height: 2cm; /* if you change the footer height, don't forget to change the bottom (=negative height) and the @page margin-bottom as well! */
+	text-align: center;
+	border-top: 0.1mm solid gray;
+	margin-bottom: 0;
+	padding-top: .2cm;
+}
+/* page numbers */
+.pagenum:before {
+	content: counter(page);
+}
+.pagenum,.pagecount {
+	font-family: sans-serif;
+}
+/* Ivan Nikitin */
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12pt;
+}
+h3{
+	font-size:100%;
+	margin-bottom:1em;
+}
+header, footer{
+	margin-left:.5cm;
+}
+table.head td{
+	vertical-align:middle;
+}
+pre{
+	font-family:inherit;
+}
+.clearfix:before,
+.clearfix:after{	
+  	display: table;
+  	content: " ";
+	clear: both;
+}
+.txt-center, .txt-center td{
+	text-align:center;
+}
+.txt-right{
+	text-align:right !important;
+}
+.txt-left{
+	text-align:left;
+}
+td.txt-left {
+	text-align:left !important;
+}
+.brd-bott{
+	border-bottom:2px solid #000;
+	padding:0 0 10px;
+}
+.shop-address > div{
+	margin-bottom:.2cm;
+}
+.shop-name h3{
+	font-weight:normal;
+}
+#logo
+{
+	width: 215px;
+	height: 99px;
+}
+td.header {
+	text-align:right;
+}
+table.brd {
+	border:1px solid #000;	
+	width:100%;
+}
+table.brd td{
+	padding:.2cm;
+	border:1px solid #000;
+}
+.nbsp{
+	white-space:nowrap;
+}
+.td-brd{
+	border:1px solid #000;
+}
+.brd0{
+	border:0 !important;
+}
+.brdTop0{
+	border-top:0 !important;
+}
+.brdBot0{
+	border-bottom:0 !important;
+}
+.brd-top{
+	border-top:1px solid #000;
+}
+caption{
+	font-size:90%;
+	margin:0 0 .3cm .5cm;
+	text-align:left;
+}
+.result{
+	width:96%;
+}
+.result td:nth-of-type(1){
+	text-align:right;
+	padding-right:1cm;
+}
+footer{
+	position:relative;
+	padding:30px 0;
+}
+img.sign{
+	width:150px;
+	height:auto;
+}
+table.signing{
+	width:100%;
+	margin-top:.4cm;
+	border-collapse:separate;
+	border-spacing:.3cm .2cm;
+}
+table.signing td{
+	text-align:center;
+	vertical-align:bottom;
+}
+table.signing img{
+	vertical-align:bottom;
+}
+.signet, .signet1{
+	position:absolute;
+	width:170px;
+	height:auto;
+	top:10px;
+	left:50%;
+	margin-left:-90px;
+}
+.signet1{
+	top:-20px;
+	left:0;
+	margin-left:2cm;
+	
+}
+h1.brd-bott{
+	border-width:1px;
+}
+.mrgTop{
+	margin-top:0.5cm;
+}
+.mrgLeft0{
+	margin-left:0 !important;
+}
+.padTop{
+	padding-top:0.5cm;
+}
+.padTop0{
+	padding-top:0;
+}
+.col-left{
+	float:left;
+	width:48%;
+}
+.col-right{
+	float:right;
+	width:48%;
+}
+.fio{
+	min-height:1cm;
+}
+.info {
+	width:100%;
+	border-collapse:separate;
+}
+.info td{
+	padding:.2cm;
+}
+.info tr td:nth-of-type(1n){
+	padding-left:0;
+}
+.info tr td:nth-of-type(2n){
+	border-bottom: 1px solid #000;
+}
