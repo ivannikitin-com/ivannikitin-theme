@@ -1,0 +1,22 @@
+// Colors
+$very-light-blue: #ebeef3;
+$nice-blue: #0e76bc;
+$nice-blue-two: #0c68a5;
+
+$headerBg: $very-light-blue;
+$headerLogoBg: $nice-blue;
+$phoneColor: $nice-blue-two;
+
+// Fonts
+$default-font: 'Roboto', sans-serif;
+$secondary-font: 'Roboto Condensed', sans-serif;
+
+// Sizing
+$content-width: 1170px;
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: $content-width,
+);

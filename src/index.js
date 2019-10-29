@@ -1,2 +1,3 @@
-import './js/custom';
+import './sass/style.scss';
+
 import './js/icons';
