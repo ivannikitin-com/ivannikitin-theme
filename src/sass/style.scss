@@ -1,7 +1,14 @@
 @import './fonts';
+@import '~bootstrap/scss/functions.scss';
+@import '~bootstrap/scss/variables.scss';
+@import '~bootstrap/scss/mixins.scss';
+@import '~bootstrap/scss/utilities';
 @import '~bootstrap/scss/bootstrap-grid.scss';
+@import '~bootstrap/scss/navbar.scss';
+@import '~bootstrap/scss/dropdown.scss';
+@import '~bootstrap/scss/transitions.scss';
 @import './layouts/**/*.scss';
 
 body {
-    @include base-style();
+	@include base-style();
 }

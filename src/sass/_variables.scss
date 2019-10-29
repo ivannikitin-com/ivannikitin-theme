@@ -2,10 +2,15 @@
 $very-light-blue: #ebeef3;
 $nice-blue: #0e76bc;
 $nice-blue-two: #0c68a5;
+$black: #072133;
+$rouge: #bf1e2e;
 
 $headerBg: $very-light-blue;
 $headerLogoBg: $nice-blue;
 $phoneColor: $nice-blue-two;
+$menuColor: $black;
+$menuAccountColor: $rouge;
+$headerToggleBg: $nice-blue;
 
 // Fonts
 $default-font: 'Roboto', sans-serif;
@@ -15,8 +20,8 @@ $secondary-font: 'Roboto Condensed', sans-serif;
 $content-width: 1170px;
 
 $container-max-widths: (
-    sm: 540px,
-    md: 720px,
-    lg: 960px,
-    xl: $content-width,
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: $content-width,
 );
