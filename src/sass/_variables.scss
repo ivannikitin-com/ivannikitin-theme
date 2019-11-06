@@ -11,6 +11,7 @@ $phoneColor: $nice-blue-two;
 $menuColor: $black;
 $menuAccountColor: $rouge;
 $headerToggleBg: $nice-blue;
+$cart: $rouge;
 
 // Fonts
 $default-font: 'Roboto', sans-serif;
@@ -18,6 +19,7 @@ $secondary-font: 'Roboto Condensed', sans-serif;
 
 // Sizing
 $content-width: 1170px;
+$grid-gutter-width: 30px;
 
 $container-max-widths: (
 	sm: 540px,
