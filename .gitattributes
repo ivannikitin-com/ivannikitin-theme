@@ -1,8 +1,6 @@
+  
+#
+# Ignore certain files from the release archives.
+#
 /.travis.yml export-ignore
 /phpcs.xml.dist export-ignore
-
-* text=auto
-
-*.md text
-*.php text
-*.inc text

@@ -1,6 +1,3 @@
-import './sass/style.scss';
-
-import './js/icons';
-import 'bootstrap';
-import 'popper.js';
-import 'jquery';
+import 'bootstrap'
+import 'popper.js'
+import './js/icons'

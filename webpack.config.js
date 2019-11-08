@@ -1,27 +1,23 @@
-const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const defaultConfig = require( './node_modules/@wordpress/scripts/config/webpack.config' );
+const path = require( 'path' );
+const postcssAutoprefixer = require( 'autoprefixer' );
+const postcssPresetEnv = require( 'postcss-preset-env' );
+const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
+const IgnoreEmitPlugin = require( 'ignore-emit-webpack-plugin' );
+const BrowserSyncPlugin = require( 'browser-sync-webpack-plugin' );
 
 module.exports = {
-	entry: './src/index.js',
-	output: {
-		filename: '[name].bundle.js',
-		path: path.resolve(__dirname, 'dist'),
+	...defaultConfig,
+	entry: {
+		index: path.resolve( process.cwd(), 'src', 'index.js' ),
+		style: path.resolve( process.cwd(), 'src', 'sass', 'style.scss' ),
+		'editor-style': path.resolve( process.cwd(), 'src', 'sass', 'editor-style.scss' ),
+		woocommerce: path.resolve( process.cwd(), 'src', 'sass', 'woocommerce.scss' )
 	},
-	mode: 'development',
 	module: {
+		...defaultConfig.module,
 		rules: [
-			{
-				test: /\.m?js$/,
-				exclude: /(node_modules|bower_components)/,
-				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: ['@babel/preset-env'],
-					},
-				},
-			},
+			...defaultConfig.module.rules,
 			{
 				test: /\.s[ac]ss$/i,
 				exclude: /node_modules/,
@@ -32,25 +28,31 @@ module.exports = {
 					{
 						loader: 'sass-resources-loader',
 						options: {
-							resources: [
-								'./src/sass/_variables.scss',
-								'./src/sass/mixins/**/*.scss',
-							],
-						},
+							resources: [ './src/sass/_variables.scss', './src/sass/mixins/**/*.scss' ]
+						}
 					},
 					{
 						loader: 'postcss-loader',
 						options: {
 							plugins: () => [
-								require('autoprefixer'),
-								require('cssnano')({
-									removeAll: true,
-								}),
-							],
-						},
+								postcssAutoprefixer(),
+								postcssPresetEnv( {
+									stage: 3,
+									features: {
+										'custom-media-queries': {
+											preserve: false
+										},
+										'custom-properties': {
+											preserve: true
+										},
+										'nesting-rules': true
+									}
+								} )
+							]
+						}
 					},
-					'import-glob-loader',
-				],
+					'import-glob-loader'
+				]
 			},
 			{
 				test: /\.(png|svg|jpg|gif)$/,
@@ -59,10 +61,10 @@ module.exports = {
 						loader: 'file-loader',
 						options: {
 							name: 'img/[name].[ext]',
-							useRelativePath: true,
-						},
-					},
-				],
+							useRelativePath: true
+						}
+					}
+				]
 			},
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -71,24 +73,25 @@ module.exports = {
 						loader: 'file-loader',
 						options: {
 							name: 'fonts/[name].[ext]',
-							useRelativePath: true,
-						},
-					},
-				],
-			},
-		],
+							useRelativePath: true
+						}
+					}
+				]
+			}
+		]
 	},
 	plugins: [
-		// new CleanWebpackPlugin(),
-		new MiniCssExtractPlugin({
+		...defaultConfig.plugins,
+		new MiniCssExtractPlugin( {
 			filename: '[name].css',
 			chunkFilename: '[id].css',
-			ignoreOrder: false,
-		}),
-		new BrowserSyncPlugin({
+			ignoreOrder: false
+		} ),
+		new IgnoreEmitPlugin( [ /\.php$/, /\.map$/, 'style.js', 'editor-style.js', 'woocommerce.js' ] ),
+		new BrowserSyncPlugin( {
 			host: 'localhost',
 			port: 3000,
-			proxy: 'http://ivannikitin.local/',
-		}),
-	],
+			proxy: 'http://ivannikitin.local/'
+		} )
+	]
 };

@@ -99,7 +99,7 @@ if (!function_exists('in_2019_setup')):
 		// Supports aline gutenberg
 		add_theme_support('align-wide');
 		add_theme_support('editor-styles');
-		add_editor_style('dist/css/editor-style.css');
+		add_editor_style('build/editor-style.css');
 	}
 endif;
 add_action('after_setup_theme', 'in_2019_setup');
@@ -146,7 +146,7 @@ function in_2019_scripts()
 {
 	$version = wp_get_theme()->get('Version');
 
-	wp_enqueue_style('main', get_template_directory_uri() . '/dist/main.css', array(), $version);
+	wp_enqueue_style('main', get_template_directory_uri() . '/build/style.css', array(), $version);
 }
 add_action('wp_enqueue_scripts', 'in_2019_scripts');
 
@@ -165,7 +165,7 @@ function in_2019_footer_style_scripts()
 
 	wp_enqueue_script(
 		'main',
-		get_template_directory_uri() . '/dist/main.bundle.js',
+		get_template_directory_uri() . '/build/index.js',
 		null,
 		$version,
 		true

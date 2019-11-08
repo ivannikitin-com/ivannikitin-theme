@@ -9,7 +9,26 @@
 @import '~bootstrap/scss/transitions.scss';
 @import './layouts/**/*.scss';
 
+html,
+body {
+	height: 100%;
+}
+
 body {
 	min-width: 320px;
+
 	@include base-style();
+}
+
+.theme-ivannikitin-theme {
+
+	.site {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	.site-content {
+		flex-grow: 1;
+	}
 }

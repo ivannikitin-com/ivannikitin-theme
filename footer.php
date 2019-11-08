@@ -13,39 +13,44 @@
 
 	</div><!-- #content -->
 
-	<footer class="bg-light site-footer">
-		<?php wp_nav_menu( array( 
-			'theme_location' 	=> 'Footer',
-			'menu' 				=> 'Footer',
-			'container' 		=> 'nav',
-			'menu_id'        	=> '',
-			'container_class' 	=> '',
-			'container_id' 		=> '',
-			'menu_class' 		=> 'nav justify-content-center ffrc',
-			'depth'     		=> 1
-		) );?>
-		<div class="row m-0 mt-3 justify-content-between align-items-center">
-			<div class="col-md-4 text-center text-md-left mb-3">
-				<?php if ( get_theme_mod( 'logo_footer' ) ) : ?>
-					<a href="<?php echo esc_url( home_url() ); ?>">
-						<img src="<?php echo get_theme_mod( 'logo_footer' ); ?>" width="133" height="64" class="img-fluid">
-					</a>
-				<?php endif; ?>
-			</div>
-			<?php if ( get_theme_mod( 'copyright_footer' ) ) : ?>
-			<div class=" col-md-4 text-secondary text-md-right text-center">
-				<?php printf( 
-					esc_html__( '%1$s - %2$s.', 'in-2019')
-					, 
-					get_theme_mod( 'copyright_footer' ),
-					date('Y')
-				); ?>
-			</div>
-			<?php endif; ?>
-		</div><!--/.row-->
-	
+	<footer class="site-footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 site-footer__menu">
+          <?php wp_nav_menu( array( 
+            'theme_location' 	=> 'Footer',
+            'menu' 				=> 'Footer',
+            'container' 		=> 'nav',
+            'menu_id'        	=> '',
+            'container_id' 		=> '',
+            'depth'     		=> 1
+          ) );?>
+        </div>
+      </div>
+      <div class="row align-items-center justify-content-between site-footer__info">
+        <div class="col-md-6">
+          <?php if ( get_theme_mod( 'logo_footer' ) ) : ?>
+            <a class="site-footer__logo" href="<?php echo esc_url( home_url() ); ?>">
+              <img src="<?php echo get_theme_mod( 'logo_footer' ); ?>">
+            </a>
+          <?php endif; ?>
+        </div>
+        <?php if ( get_theme_mod( 'copyright_footer' ) ) : ?>
+        <div class="col-md-6">
+          <div class="site-footer__copyright">
+            <?php printf( 
+              esc_html__( '%1$s - %2$s.', 'in-2019')
+              , 
+              get_theme_mod( 'copyright_footer' ),
+              date('Y')
+            ); ?>
+          </div>
+        </div>
+        <?php endif; ?>
+      </div>
+    </div>
 	</footer>
-</div><!-- #page -->
+</div>
 
 <?php wp_footer(); ?>
 

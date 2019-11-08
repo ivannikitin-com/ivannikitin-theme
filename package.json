@@ -8,52 +8,62 @@
 		"build": "webpack --mode=production"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.6.4",
-		"@babel/preset-env": "^7.6.3",
-		"@prettier/plugin-php": "^0.11.2",
 		"@wordpress/browserslist-config": "^2.6.0",
+		"@wordpress/scripts": "^5.1.0",
 		"autoprefixer": "^9.7.0",
-		"babel-loader": "^8.0.6",
+		"babel-eslint": "^10.0.3",
 		"browser-sync": "^2.26.7",
 		"browser-sync-webpack-plugin": "^2.2.2",
-		"clean-webpack-plugin": "^3.0.0",
 		"css-loader": "^3.2.0",
-		"cssnano": "^4.1.10",
 		"file-loader": "^4.2.0",
 		"husky": "^3.0.9",
+		"ignore-emit-webpack-plugin": "^2.0.2",
 		"import-glob-loader": "^1.1.0",
+		"lint-staged": "^9.4.2",
 		"mini-css-extract-plugin": "^0.8.0",
 		"node-sass": "^4.13.0",
 		"postcss-loader": "^3.0.0",
+		"postcss-preset-env": "^6.7.0",
 		"prettier": "^1.18.2",
 		"sass-loader": "^8.0.0",
 		"sass-resources-loader": "^2.0.1",
-		"webpack": "^4.41.2",
-		"webpack-cli": "^3.3.9",
-		"wp-prettier": "^1.18.2"
+		"stylelint": "^11.1.1",
+		"stylelint-config-prettier": "^6.0.0",
+		"stylelint-config-recommended": "^3.0.0",
+		"stylelint-declaration-block-no-ignored-properties": "^2.1.0",
+		"stylelint-order": "^3.1.1",
+		"stylelint-scss": "^3.12.0"
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^1.2.25",
 		"@fortawesome/free-solid-svg-icons": "^5.11.2",
 		"bootstrap": "^4.3.1",
-		"jquery": "^3.4.1",
 		"popper.js": "^1.16.0"
 	},
 	"browserslist": [
-		"extends @wordpress/browserslist-config"
+		"extends @wordpress/browserslist-config",
+		"last 1 version",
+		"> 1%",
+		"ie >= 10"
 	],
 	"prettier": {
-		"semi": true,
-		"tabWidth": 4,
-		"printWidth": 100,
+		"trailingComma": "es5",
+		"tabWidth": 2,
+		"semi": false,
 		"singleQuote": true,
-		"trailingComma": "all",
-		"bracketSpacing": true,
-		"arrowParens": "always"
+		"endOfLine": "auto",
+		"printWidth": 100
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "yarn build"
+			"pre-commit": "lint-staged"
 		}
+	},
+	"lint-staged": {
+		"*.scss": [
+			"prettier --write",
+			"stylelint --fix --config ./.stylelintrc",
+			"git add"
+		]
 	}
 }

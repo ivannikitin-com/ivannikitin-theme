@@ -34,7 +34,7 @@ function in_2019_woocommerce_scripts()
 	$version = wp_get_theme()->get('Version');
 	wp_enqueue_style(
 		'in-2019-woocommerce-style',
-		get_template_directory_uri() . '/dist/woocommerce.css',
+		get_template_directory_uri() . '/build/woocommerce.css',
 		array(),
 		$version
 	);
