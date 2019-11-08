@@ -14,7 +14,6 @@
     "rule-empty-line-before": "always",
     "selector-max-id": 0,
     "max-nesting-depth": 4,
-    "declaration-no-important": true,
     "plugin/declaration-block-no-ignored-properties": true,
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,

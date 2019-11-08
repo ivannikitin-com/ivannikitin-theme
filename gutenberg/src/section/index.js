@@ -1,6 +1,5 @@
 import icon from '-!svg-react-loader!../assets/section.svg';
 import classnames from 'classnames';
-import BlockName from '../components/BlockName.jsx';
 
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
@@ -59,17 +58,12 @@ registerBlockType( 'in-2019/section', {
 			type: 'number',
 			default: 50,
 		},
-		align: {
-			type: 'string',
-			default: 'full',
-		},
 	},
 	supports: {
-		align: [ 'full' ],
 		anchor: true,
 	},
 	edit: compose( [ withColors( { overlayColor: 'background-color' } ) ] )( props => {
-		const { className, attributes, setAttributes, overlayColor, setOverlayColor, name } = props;
+		const { className, attributes, setAttributes, overlayColor, setOverlayColor } = props;
 		const { url, id, hasParallax, hasRepeat, hasCover, backgroundType, opacity } = attributes;
 
 		const toggleParallax = () => setAttributes( { hasParallax: ! hasParallax } );
@@ -151,9 +145,21 @@ registerBlockType( 'in-2019/section', {
 					<PanelBody title={ __( 'Background Settings', 'in-2019' ) }>
 						{ !! url && IMAGE_BACKGROUND_TYPE === backgroundType && (
 							<Fragment>
-								<ToggleControl label={ __( 'Fixed', 'in-2019' ) } checked={ hasParallax } onChange={ toggleParallax } />
-								<ToggleControl label={ __( 'Cover', 'in-2019' ) } checked={ hasCover } onChange={ toggleCover } />
-								<ToggleControl label={ __( 'No Repeat', 'in-2019' ) } checked={ hasRepeat } onChange={ toggleRepeat } />
+								<ToggleControl
+									label={ __( 'Fixed', 'in-2019' ) }
+									checked={ hasParallax }
+									onChange={ toggleParallax }
+								/>
+								<ToggleControl
+									label={ __( 'Cover', 'in-2019' ) }
+									checked={ hasCover }
+									onChange={ toggleCover }
+								/>
+								<ToggleControl
+									label={ __( 'No Repeat', 'in-2019' ) }
+									checked={ hasRepeat }
+									onChange={ toggleRepeat }
+								/>
 								<RangeControl
 									label={ __( 'Background Opacity', 'in-2019' ) }
 									value={ opacity }
@@ -178,7 +184,6 @@ registerBlockType( 'in-2019/section', {
 					</PanelBody>
 				</InspectorControls>
 				<section className={ classes } style={ style }>
-					<BlockName name={ name } />
 					<InnerBlocks />
 				</section>
 			</Fragment>
@@ -186,19 +191,32 @@ registerBlockType( 'in-2019/section', {
 	} ),
 	save: function( props ) {
 		const { attributes } = props;
-		const { url, hasParallax, hasRepeat, hasCover, opacity, overlayColor, customOverlayColor } = attributes;
+		const {
+			url,
+			hasParallax,
+			hasRepeat,
+			hasCover,
+			opacity,
+			overlayColor,
+			customOverlayColor,
+		} = attributes;
 		const overlayColorClass = getColorClassName( 'background-color', overlayColor );
 		const style = backgroundImageStyles( url );
 		if ( ! overlayColorClass ) {
 			style.backgroundColor = customOverlayColor;
 		}
 
-		const classes = classnames( 'wp-block-in-2019-section', overlayColorClass, !! url && opacityToClass( opacity ), {
-			'has-background-opacity': opacity !== 0 && url,
-			'has-parallax': hasParallax,
-			'no-repeat': hasRepeat,
-			cover: hasCover,
-		} );
+		const classes = classnames(
+			'wp-block-in-2019-section',
+			overlayColorClass,
+			!! url && opacityToClass( opacity ),
+			{
+				'has-background-opacity': opacity !== 0 && url,
+				'has-parallax': hasParallax,
+				'no-repeat': hasRepeat,
+				cover: hasCover,
+			}
+		);
 
 		return (
 			<section className={ classes } style={ style }>
@@ -209,7 +227,9 @@ registerBlockType( 'in-2019/section', {
 } );
 
 function opacityToClass( ratio ) {
-	return ratio === 0 || ratio === 50 ? null : 'has-background-opacity-' + 10 * Math.round( ratio / 10 );
+	return ratio === 0 || ratio === 50 ?
+		null :
+		'has-background-opacity-' + 10 * Math.round( ratio / 10 );
 }
 
 function backgroundImageStyles( url ) {

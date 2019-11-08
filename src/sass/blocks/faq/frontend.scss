@@ -1,0 +1,28 @@
+.wp-block-in-2019-faq {
+	margin-bottom: 71px;
+	display: flex;
+
+	&__image {
+		margin-right: 33px;
+		background: $faqBg url(../img/i.png) no-repeat center center;
+		flex: 0 0 67px;
+	}
+
+	&__text {
+		font-size: 14px;
+		line-height: 1.71;
+		color: $faqText;
+
+		p {
+			margin: 0;
+		}
+	}
+
+	&__title {
+		font-family: $secondary-font;
+		font-size: 14px;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: $black;
+	}
+}

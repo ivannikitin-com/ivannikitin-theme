@@ -1,0 +1,13 @@
+.wp-block-in-2019-row {
+
+	> .editor-inner-blocks {
+		width: 100%;
+
+		> .editor-block-list__layout {
+			padding: 3px 0;
+			display: flex;
+			width: 100%;
+			flex-wrap: wrap;
+		}
+	}
+}
