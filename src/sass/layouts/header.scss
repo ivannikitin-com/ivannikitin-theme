@@ -1,53 +1,52 @@
 .site-header {
-	background-color: $headerBg;
 	min-height: 138px;
+	background-color: $headerBg;
 	box-shadow: 0px 14px 6px -4px rgba(50, 50, 50, 0.32);
 
 	&__logo {
-		width: 100%;
-		height: 100%;
 		margin-left: -#{$grid-gutter-width / 2};
+		width: 100%;
 		width: calc(100% + #{$grid-gutter-width / 2});
+		height: 100%;
 
 		a {
 			display: flex;
-			align-items: center;
-			justify-content: center;
 			width: 100%;
 			height: 100%;
 			background-color: $headerLogoBg;
+			align-items: center;
+			justify-content: center;
 
 			@media (max-width: 576px) {
-				min-height: 100px;
 				margin-right: -#{$grid-gutter-width / 2};
 				margin-left: -#{$grid-gutter-width / 2};
 				width: calc(100% + #{$grid-gutter-width});
+				min-height: 100px;
 			}
 		}
 	}
 
 	&__phone {
 		position: relative;
-		font-size: 14px;
-		display: flex;
-		flex-direction: column;
 		margin-top: 24px;
 		margin-left: 26px;
+		display: flex;
+		flex-direction: column;
 		font-family: $secondary-font;
 		font-size: 14px;
 		color: $phoneColor;
 
 		svg {
-			font-size: 19px;
 			position: absolute;
 			left: -26px;
+			font-size: 19px;
 		}
 	}
 
 	&__number {
 		font-size: 18px;
-		color: currentColor;
 		text-decoration: none;
+		color: currentColor;
 		transition: color 0.15s ease-in-out;
 
 		&:hover {
@@ -57,13 +56,13 @@
 
 	&__email {
 		position: relative;
-		display: inline-block;
 		margin-top: 24px;
 		margin-left: 34px;
+		display: inline-block;
 		font-family: $secondary-font;
 		font-size: 14px;
-		color: $phoneColor;
 		text-decoration: none;
+		color: $phoneColor;
 		transition: color 0.15s ease-in-out;
 
 		&:hover {
@@ -71,18 +70,18 @@
 		}
 
 		svg {
-			font-size: 19px;
 			position: absolute;
 			left: -28px;
+			font-size: 19px;
 		}
 	}
 
 	&__account {
-		display: flex;
-		justify-content: flex-end;
-		width: 100%;
 		margin-top: 24px;
 		padding-right: 15px;
+		display: flex;
+		width: 100%;
+		justify-content: flex-end;
 
 		@media (max-width: 991px) {
 			justify-content: space-between;
@@ -102,21 +101,21 @@
 			}
 
 			svg {
+				margin-right: 5px;
 				width: 18px !important;
 				height: 18px;
-				margin-right: 5px;
 			}
 
 			a {
 				display: inline-flex;
-				align-items: center;
 				height: 22px;
-				color: $menuAccountColor;
-				font-size: 14px;
 				font-family: $secondary-font;
-				text-decoration: none;
+				font-size: 14px;
 				white-space: nowrap;
+				text-decoration: none;
+				color: $menuAccountColor;
 				transition: color 0.15s ease-in-out;
+				align-items: center;
 
 				&:hover {
 					color: lighten($menuAccountColor, 10%);
@@ -131,9 +130,9 @@
 		list-style: none;
 
 		&-amount {
-			color: $cart;
-			text-decoration: none;
 			position: relative;
+			text-decoration: none;
+			color: $cart;
 		}
 
 		&-count {
@@ -143,12 +142,12 @@
 			display: inline-block;
 			width: 15px;
 			height: 15px;
-			border-radius: 50%;
+			font-size: 10px;
 			line-height: 15px;
 			text-align: center;
-			color: #fff;
-			font-size: 10px;
+			color: #ffffff;
 			background-color: $cart;
+			border-radius: 50%;
 		}
 
 		&-icon {
@@ -180,13 +179,13 @@
 				margin-right: 34px;
 
 				&::after {
-					content: '';
 					position: absolute;
 					top: calc(50% - (17px / 2));
 					right: calc(-35px / 2);
 					display: inline-block;
 					width: 1px;
 					height: 17px;
+					content: '';
 					background-color: $menuColor;
 
 					@media (max-width: 991px) {
@@ -200,8 +199,8 @@
 			padding: 0 !important;
 			font-family: $secondary-font;
 			font-size: 24px;
-			color: $menuColor;
 			text-decoration: none;
+			color: $menuColor;
 		}
 
 		.dropdown-item {
@@ -211,8 +210,8 @@
 
 	&__search {
 		position: relative;
-		overflow: hidden;
 		padding-left: 26px;
+		overflow: hidden;
 		min-width: 200px;
 
 		@media (max-width: 991px) {
@@ -221,10 +220,10 @@
 	}
 
 	&__search-from {
-		display: flex;
-		padding-right: 15px;
-		max-width: 250px;
 		margin-left: auto;
+		padding-right: 15px;
+		display: flex;
+		max-width: 250px;
 
 		svg {
 			margin-right: 5px;
@@ -232,37 +231,57 @@
 	}
 
 	&__search-field {
-		max-width: 100%;
 		padding: 0;
-		border: 0;
-		border-radius: 0;
-		border-bottom: 1px solid #d7d7d7;
-		background: none;
-		font-size: 16px;
+		max-width: 100%;
 		font-family: $secondary-font;
+		font-size: 16px;
+		background: none;
+		border: 0;
+		border-bottom: 1px solid #d7d7d7;
+		border-radius: 0;
 		outline: none;
 	}
 
 	&__search-button {
+		padding: 0;
 		display: none;
 		border: 0;
-		padding: 0;
 		outline: 0;
 	}
 
 	.navbar-toggler {
+		padding: 0;
 		width: 37px;
 		height: 40px;
-		padding: 0;
-		background: $headerToggleBg;
-		color: #fff;
 		text-align: center;
+		color: #ffffff;
+		background: $headerToggleBg;
 		border-radius: 0;
 		outline: none;
 
 		@media (max-width: 991px) {
 			margin-top: 10px;
 			margin-left: auto;
+		}
+	}
+
+	&_small {
+		$this: &;
+		min-height: auto;
+
+		.site-header__main-menu {
+			margin-top: 5px;
+			margin-bottom: 5px;
+
+			@media (max-width: 991px) {
+				margin-top: 0;
+			}
+		}
+
+		.site-header__search-from {
+			margin-top: 10px;
+			margin-bottom: 5px;
+			max-width: none;
 		}
 	}
 }

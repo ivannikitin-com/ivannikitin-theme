@@ -1,18 +1,19 @@
-const defaultConfig = require( './node_modules/@wordpress/scripts/config/webpack.config' );
-const path = require( 'path' );
-const postcssAutoprefixer = require( 'autoprefixer' );
-const postcssPresetEnv = require( 'postcss-preset-env' );
-const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
-const IgnoreEmitPlugin = require( 'ignore-emit-webpack-plugin' );
-const BrowserSyncPlugin = require( 'browser-sync-webpack-plugin' );
+const defaultConfig = require('./node_modules/@wordpress/scripts/config/webpack.config')
+const path = require('path')
+const postcssAutoprefixer = require('autoprefixer')
+const postcssPresetEnv = require('postcss-preset-env')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin')
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
 	...defaultConfig,
 	entry: {
-		index: path.resolve( process.cwd(), 'src', 'index.js' ),
-		style: path.resolve( process.cwd(), 'src', 'sass', 'style.scss' ),
-		'editor-style': path.resolve( process.cwd(), 'src', 'sass', 'editor-style.scss' ),
-		woocommerce: path.resolve( process.cwd(), 'src', 'sass', 'woocommerce.scss' )
+		index: path.resolve(process.cwd(), 'src', 'index.js'),
+		style: path.resolve(process.cwd(), 'src', 'sass', 'style.scss'),
+		'editor-style': path.resolve(process.cwd(), 'src', 'sass', 'editor-style.scss'),
+		woocommerce: path.resolve(process.cwd(), 'src', 'sass', 'woocommerce.scss'),
 	},
 	module: {
 		...defaultConfig.module,
@@ -28,31 +29,31 @@ module.exports = {
 					{
 						loader: 'sass-resources-loader',
 						options: {
-							resources: [ './src/sass/_variables.scss', './src/sass/mixins/**/*.scss' ]
-						}
+							resources: ['./src/sass/_variables.scss', './src/sass/mixins/**/*.scss'],
+						},
 					},
 					{
 						loader: 'postcss-loader',
 						options: {
 							plugins: () => [
 								postcssAutoprefixer(),
-								postcssPresetEnv( {
+								postcssPresetEnv({
 									stage: 3,
 									features: {
 										'custom-media-queries': {
-											preserve: false
+											preserve: false,
 										},
 										'custom-properties': {
-											preserve: true
+											preserve: true,
 										},
-										'nesting-rules': true
-									}
-								} )
-							]
-						}
+										'nesting-rules': true,
+									},
+								}),
+							],
+						},
 					},
-					'import-glob-loader'
-				]
+					'import-glob-loader',
+				],
 			},
 			{
 				test: /\.(png|svg|jpg|gif)$/,
@@ -61,10 +62,10 @@ module.exports = {
 						loader: 'file-loader',
 						options: {
 							name: 'img/[name].[ext]',
-							useRelativePath: true
-						}
-					}
-				]
+							useRelativePath: true,
+						},
+					},
+				],
 			},
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -73,25 +74,31 @@ module.exports = {
 						loader: 'file-loader',
 						options: {
 							name: 'fonts/[name].[ext]',
-							useRelativePath: true
-						}
-					}
-				]
-			}
-		]
+							useRelativePath: true,
+						},
+					},
+				],
+			},
+		],
 	},
 	plugins: [
 		...defaultConfig.plugins,
-		new MiniCssExtractPlugin( {
+		new MiniCssExtractPlugin({
 			filename: '[name].css',
 			chunkFilename: '[id].css',
-			ignoreOrder: false
-		} ),
-		new IgnoreEmitPlugin( [ /\.php$/, /\.map$/, 'style.js', 'editor-style.js', 'woocommerce.js' ] ),
-		new BrowserSyncPlugin( {
+			ignoreOrder: false,
+		}),
+		new IgnoreEmitPlugin([/\.php$/, /\.map$/, 'style.js', 'editor-style.js', 'woocommerce.js']),
+		new BrowserSyncPlugin({
 			host: 'localhost',
 			port: 3000,
-			proxy: 'http://ivannikitin.local/'
-		} )
-	]
-};
+			proxy: 'http://ivannikitin.local/',
+		}),
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jquery: 'jquery',
+			'window.jQuery': 'jquery',
+			jQuery: 'jquery',
+		}),
+	],
+}

@@ -56,8 +56,9 @@ if (!function_exists('in_2019_setup')):
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(array(
 			'Primary' => esc_html__('Основное меню', 'in-2019'),
-			'Footer' => esc_html__('Меню в подвале', 'in-201'),
-			'Account' => esc_html__('Меню рядом с корзиной', 'in-201')
+			'Footer' => esc_html__('Меню в подвале', 'in-2019'),
+			'Account' => esc_html__('Меню рядом с корзиной', 'in-2019'),
+			'Primary-header-small' => esc_html__('Основное меню для узкой шапки', 'in-2019')
 		));
 
 		/*
@@ -147,6 +148,8 @@ function in_2019_scripts()
 	$version = wp_get_theme()->get('Version');
 
 	wp_enqueue_style('main', get_template_directory_uri() . '/build/style.css', array(), $version);
+
+	wp_enqueue_script("jquery");
 }
 add_action('wp_enqueue_scripts', 'in_2019_scripts');
 
@@ -170,6 +173,9 @@ function in_2019_footer_style_scripts()
 		$version,
 		true
 	);
+
+	wp_deregister_script('jquery');
+	
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
