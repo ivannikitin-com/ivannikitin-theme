@@ -26,3 +26,10 @@ body {
 		flex-grow: 1;
 	}
 }
+
+.content-area {
+
+	&--top {
+		margin-top: -40px;
+	}
+}
