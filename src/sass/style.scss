@@ -16,20 +16,13 @@ body {
 }
 
 body {
+	display: flex;
+	flex-direction: column;
 	min-width: 320px;
 
 	@include base-style();
-}
 
-.theme-ivannikitin-theme {
-
-	.site {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	.site-content {
+	> .site-content {
 		flex-grow: 1;
 	}
 }

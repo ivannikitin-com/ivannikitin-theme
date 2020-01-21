@@ -1,4 +1,4 @@
-import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { library, dom } from '@fortawesome/fontawesome-svg-core'
 import {
 	faPhoneAlt,
 	faTable,
@@ -9,7 +9,17 @@ import {
 	faSearch,
 	faStream,
 	faShoppingCart,
-} from '@fortawesome/free-solid-svg-icons';
+	faRss,
+} from '@fortawesome/free-solid-svg-icons'
+
+import {
+	faTwitter,
+	faFacebook,
+	faGoogle,
+	faPinterest,
+	faVk,
+	faGooglePlus,
+} from '@fortawesome/free-brands-svg-icons'
 
 library.add(
 	faPhoneAlt,
@@ -21,6 +31,13 @@ library.add(
 	faSearch,
 	faStream,
 	faShoppingCart,
-);
+	faRss,
+	faTwitter,
+	faFacebook,
+	faGoogle,
+	faPinterest,
+	faVk,
+	faGooglePlus
+)
 
-dom.i2svg();
+dom.i2svg()
