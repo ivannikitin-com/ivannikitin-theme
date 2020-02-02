@@ -64,7 +64,6 @@
 	"lint-staged": {
 		"*.scss": [
 			"prettier --write",
-			"stylelint --fix --config ./.stylelintrc",
 			"git add"
 		]
 	}

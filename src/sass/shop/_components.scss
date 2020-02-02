@@ -1,0 +1,319 @@
+/**
+ * Header cart
+ */
+
+.site-header-cart {
+	position: relative;
+	list-style: none;
+
+	@include clearfix;
+
+	a {
+		text-decoration: none;
+	}
+
+	.cart-contents {
+		text-decoration: none;
+	}
+
+	.widget_shopping_cart {
+		display: none;
+		text-align: right;
+	}
+
+	.product_list_widget {
+		margin: 0;
+		padding: 0;
+	}
+
+	.remove_from_cart_button {
+		position: absolute;
+		top: 0;
+		right: 0;
+		font-size: 20px;
+		line-height: 1.2;
+		text-decoration: none;
+		color: $red;
+
+		& + a {
+			display: block;
+		}
+	}
+
+	.woocommerce-mini-cart {
+		list-style: none;
+	}
+
+	.woocommerce-mini-cart__buttons {
+		display: flex;
+		flex-direction: column;
+
+		a {
+			margin-bottom: 5px;
+			display: inline-block;
+			color: $red;
+		}
+	}
+
+	.woocommerce-mini-cart-item {
+		position: relative;
+		margin-bottom: 10px;
+		padding-right: 15px;
+		border-bottom: 1px solid $grey2;
+	}
+}
+
+/**
+ * Star rating
+ */
+
+.star-rating {
+	position: relative;
+	overflow: hidden;
+	width: 5.3em;
+	height: 1.618em;
+	font-family: 'star';
+	font-size: 1em;
+	font-weight: 400;
+	line-height: 1.618;
+
+	&::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		float: left;
+		content: '\53\53\53\53\53';
+		opacity: 0.25;
+	}
+
+	span {
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding-top: 1.5em;
+		float: left;
+		overflow: hidden;
+	}
+
+	span::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		content: '\53\53\53\53\53';
+		color: $color__link;
+	}
+}
+
+p.stars {
+	a {
+		position: relative;
+		margin-right: 1px;
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		font-weight: 400;
+		text-decoration: none;
+		text-indent: -999em;
+
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			width: 1em;
+			height: 1em;
+			font-family: 'star';
+			line-height: 1;
+			text-indent: 0;
+			content: '\53';
+			color: $color__text-main;
+			opacity: 0.25;
+		}
+
+		&:hover {
+			~ a::before {
+				content: '\53';
+				color: $color__text-main;
+				opacity: 0.25;
+			}
+		}
+	}
+
+	&:hover {
+		a {
+			&::before {
+				content: '\53';
+				color: $color__link;
+				opacity: 1;
+			}
+		}
+	}
+
+	&.selected {
+		a.active {
+			&::before {
+				content: '\53';
+				color: $color__link;
+				opacity: 1;
+			}
+
+			~ a::before {
+				content: '\53';
+				color: $color__text-main;
+				opacity: 0.25;
+			}
+		}
+
+		a:not(.active) {
+			&::before {
+				content: '\53';
+				color: $color__link;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+/**
+ * Tabs
+ */
+
+.woocommerce-tabs {
+	ul.tabs {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		text-align: left;
+
+		li {
+			position: relative;
+			margin: 0;
+			display: block;
+
+			a {
+				padding: 1em 0;
+				display: block;
+			}
+		}
+	}
+
+	.panel {
+		h2:first-of-type {
+			margin-bottom: 1em;
+		}
+	}
+}
+
+/**
+ * Password strength meter
+ */
+
+.woocommerce-password-strength {
+	text-align: right;
+
+	&.strong {
+		color: $woocommerce__color-success;
+	}
+
+	&.short {
+		color: $woocommerce__color-error;
+	}
+
+	&.bad {
+		color: $woocommerce__color-error;
+	}
+
+	&.good {
+		color: $woocommerce__color-info;
+	}
+}
+
+/**
+ * Forms
+ */
+
+.form-row {
+	&.woocommerce-validated {
+		input.input-text {
+			box-shadow: inset 2px 0 0 $woocommerce__color-success;
+		}
+	}
+
+	&.woocommerce-invalid {
+		input.input-text {
+			box-shadow: inset 2px 0 0 $woocommerce__color-error;
+		}
+	}
+}
+
+.required {
+	color: red;
+}
+
+/**
+ * Notices
+ */
+
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error,
+.woocommerce-noreviews,
+p.no-comments {
+	@include clearfix;
+	clear: both;
+	background-color: $woocommerce__color-success;
+}
+
+.woocommerce-info,
+.woocommerce-noreviews,
+p.no-comments {
+	background-color: $woocommerce__color-info;
+}
+
+.woocommerce-error {
+	background-color: $woocommerce__color-error;
+}
+
+.demo_store {
+	position: fixed;
+	z-index: 9999;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	margin: 0;
+	padding: 1em;
+	background-color: $woocommerce__color-info;
+}
+
+@media screen and (min-width: 48em) {
+	/**
+	 * Header cart
+	 */
+
+	.site-header-cart {
+		.widget_shopping_cart {
+			position: absolute;
+			z-index: 999999;
+			top: 100%;
+			left: -999em;
+			padding: 5px;
+			display: block;
+			width: 100%;
+			background-color: $white;
+			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+
+			img {
+				display: none;
+			}
+		}
+
+		&:hover,
+		&.focus {
+			.widget_shopping_cart {
+				right: 0;
+				left: auto;
+				display: block;
+			}
+		}
+	}
+}

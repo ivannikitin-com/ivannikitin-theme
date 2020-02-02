@@ -5,6 +5,7 @@ $nice-blue-two: #0c68a5;
 $black: #072133;
 $rouge: #bf1e2e;
 $grey: #d7d7d7;
+$grey2: #d2d4d8;
 
 $headerBg: $very-light-blue;
 $headerLogoBg: $nice-blue;
@@ -21,6 +22,42 @@ $faqText: $grey;
 $faqBg: $nice-blue-two;
 $topBarSocialBg: $rouge;
 $breadCrumbs: $nice-blue-two;
+$woocommerce__color-error: #e2401c;
+$woocommerce__color-success: #0f834d;
+$woocommerce__color-info: #3d9cd2;
+
+$color__background-body: #fff;
+$color__background-screen: #f1f1f1;
+$color__background-hr: #ccc;
+$color__background-button: #e6e6e6;
+$color__background-pre: #eee;
+$color__background-ins: #fff9c0;
+
+$color__text-screen: #21759b;
+$color__text-input: #666;
+$color__text-input-focus: #111;
+$color__link: #0c68a5;
+$color__link-visited: purple;
+$color__link-hover: midnightblue;
+$color__text-main: #404040;
+
+$color__border-button: #ccc #ccc #bbb;
+$color__border-button-hover: #ccc #bbb #aaa;
+$color__border-button-focus: #aaa #bbb #bbb;
+$color__border-input: #ccc;
+$color__border-abbr: #666;
+
+$black: #072133;
+$black2: #464646;
+$blue: #0e76bc;
+$blue2: #0c68a5;
+$primary: #2c87f0;
+$red: #bf1e2e;
+$white: #fff;
+$white2: #ebeef3;
+$grey-light: #ebeef3;
+$grey: #d7d7d7;
+$grey2: #7d7d7d;
 
 // Fonts
 $default-font: 'Roboto', sans-serif;
@@ -36,3 +73,17 @@ $container-max-widths: (
 	lg: 960px,
 	xl: $content-width,
 );
+
+$columns: (
+	1: 100%,
+	2: 50%,
+	3: 33.33%,
+	4: 25%,
+	5: 20%,
+	6: 16.66%,
+	7: 14.28%,
+	8: 12.5%,
+	9: 11.11%,
+);
+
+$columns__margin: 3.8%;

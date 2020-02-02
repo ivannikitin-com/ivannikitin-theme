@@ -1,17 +1,16 @@
 .wp-block-in-2019-carousel {
-
 	.item {
 		padding-top: 81px;
 		padding-bottom: 48px;
-		color: $black2;
-		background: $white;
-		border: 1px solid $grey2;
+		color: $black;
+		background: $grey2;
+		border: 1px solid $grey;
 
 		&-title-wrapper {
 			margin: 0 0 15px 0;
 			padding-bottom: 18px;
 			display: flex;
-			border-bottom: 1px dotted $black2;
+			border-bottom: 1px dotted $black;
 			justify-content: space-between;
 		}
 
@@ -56,21 +55,21 @@
 			width: 16px;
 			height: 16px;
 			vertical-align: middle;
-			background: $white;
-			border: 1px solid $grey2;
+			background: $grey2;
+			border: 1px solid $grey;
 			border-radius: 50%;
 			transition: all 0.15s ease;
 
 			&:hover {
-				color: $blue;
-				border-color: $blue;
+				color: $nice-blue;
+				border-color: $nice-blue;
 			}
 
 			&.active {
 				width: 25px;
 				height: 25px;
-				background: $blue;
-				border-color: $blue;
+				background: $nice-blue;
+				border-color: $nice-blue;
 			}
 		}
 	}
@@ -78,15 +77,14 @@
 	.owl-item {
 		padding: 81px 28px 68px;
 		min-height: $height;
-		border: 1px solid $grey2;
+		border: 1px solid $grey;
 
 		.item {
-
 			&-title-wrapper {
 				margin: 0 0 15px 0;
 				padding-bottom: 18px;
 				display: flex;
-				border-bottom: 1px dotted $black2;
+				border-bottom: 1px dotted $black;
 				justify-content: space-between;
 				align-items: flex-end;
 			}
@@ -137,7 +135,7 @@
 				font-family: $secondary-font;
 				text-decoration: none;
 				text-transform: uppercase;
-				color: $white;
+				color: $grey2;
 				background-color: $grey;
 			}
 		}
@@ -147,35 +145,35 @@
 		position: relative;
 		z-index: 1;
 		min-height: $height + 48px;
-		background: $blue;
-		border-color: $blue;
+		background: $nice-blue;
+		border-color: $nice-blue;
 		box-shadow: 0px 3px 7px 0 rgba(0, 0, 0, 0.35);
 		transform: translateY(-20px);
 
 		.item {
-			color: $white;
-			border: 1px solid $blue;
+			color: $grey2;
+			border: 1px solid $nice-blue;
 
 			&__title {
-				color: $white;
+				color: $grey2;
 			}
 
 			&-title-wrapper {
-				border-bottom-color: $white;
+				border-bottom-color: $grey2;
 			}
 
 			&__gift {
-				color: $white;
+				color: $grey2;
 				background: url(../img/gift-white.svg) no-repeat left top;
 			}
 
 			&__price {
 				margin-bottom: 30px;
-				color: $white;
+				color: $grey2;
 			}
 
 			&__link-more {
-				color: $white;
+				color: $grey2;
 
 				&:hover {
 					text-decoration: none;
@@ -183,12 +181,12 @@
 			}
 
 			&__order {
-				color: $blue;
-				background: $white2;
+				color: $nice-blue;
+				background: $grey2;
 				transition: all 0.15s ease-in-out;
 
 				&:hover {
-					background-color: $white;
+					background-color: $grey2;
 				}
 			}
 		}
@@ -196,15 +194,13 @@
 }
 
 .wp-block-in-2019-carousel-description {
-
 	.carousel-description {
-
 		&-wrapper {
 			margin-top: 94px;
 			padding: 41px 39px;
 			display: grid;
-			color: $white;
-			background: $blue;
+			color: $grey2;
+			background: $nice-blue;
 			grid-template-columns: 3fr minmax(170px, 1fr);
 			grid-column-gap: 80px;
 
@@ -219,7 +215,7 @@
 			margin: 0 0 23px 0;
 			font-size: 24px;
 			font-stretch: condensed;
-			color: $white;
+			color: $grey2;
 		}
 
 		&-item:nth-child(2) {
@@ -230,7 +226,7 @@
 			margin-bottom: 20px;
 			font-family: $secondary-font;
 			font-size: 24px;
-			color: $white;
+			color: $grey2;
 		}
 
 		&-link,
@@ -238,7 +234,7 @@
 			text-decoration: underline;
 			text-transform: uppercase;
 			cursor: pointer;
-			color: $white2;
+			color: $grey2;
 
 			&:hover {
 				text-decoration: none;
@@ -256,13 +252,13 @@
 			font-stretch: condensed;
 			text-decoration: none;
 			text-transform: uppercase;
-			color: $blue;
-			background-color: $white2;
+			color: $nice-blue;
+			background-color: $grey2;
 			transition: all 0.15s ease-in-out;
 
 			&:hover,
 			&:focus {
-				background-color: $white;
+				background-color: $grey2;
 			}
 		}
 	}
@@ -278,7 +274,7 @@
 
 .wp-block-in-2019-what-enter {
 	padding-top: 73px;
-	border: 2px solid $blue;
+	border: 2px solid $nice-blue;
 
 	&__title {
 		margin: 0 0 48px;
@@ -287,6 +283,6 @@
 		font-stretch: condensed;
 		text-align: center;
 		text-transform: uppercase;
-		color: $blue;
+		color: $nice-blue;
 	}
 }

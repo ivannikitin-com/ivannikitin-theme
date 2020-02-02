@@ -1,8 +1,7 @@
 .wp-block-in-2019-tabs {
-
 	.in-tabs-title-list {
 		margin: 0;
-		margin-bottom: rem(52px);
+		margin-bottom: 52px;
 		padding: 0;
 		display: flex;
 		list-style: none;
@@ -38,10 +37,10 @@
 	.in-tab-title:focus,
 	.in-tab-title:hover {
 		text-decoration: none;
-		color: $blue;
+		color: $nice-blue;
 
 		.in-tab-title-image {
-			background-color: $blue;
+			background-color: $nice-blue;
 		}
 	}
 
