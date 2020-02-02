@@ -1,0 +1,292 @@
+.wp-block-in-2019-carousel {
+
+	.item {
+		padding-top: 81px;
+		padding-bottom: 48px;
+		color: $black2;
+		background: $white;
+		border: 1px solid $grey2;
+
+		&-title-wrapper {
+			margin: 0 0 15px 0;
+			padding-bottom: 18px;
+			display: flex;
+			border-bottom: 1px dotted $black2;
+			justify-content: space-between;
+		}
+
+		&__gift {
+			padding-top: 58px;
+			max-width: 83px;
+			font-family: $secondary-font;
+			font-stretch: condensed;
+			color: $grey;
+			background: url(../img/gift-grey.svg) no-repeat left top;
+		}
+
+		&__description {
+			margin-bottom: 30px;
+		}
+
+		&__price {
+			margin-bottom: 16px;
+			font-family: $secondary-font;
+			font-size: 26px;
+			font-stretch: condensed;
+			text-align: center;
+			text-transform: uppercase;
+		}
+	}
+}
+
+.owl-carousel-custom {
+	$height: 483px;
+	margin-bottom: 35px;
+
+	.owl-stage-outer {
+		margin-bottom: 62px;
+		padding: 25px;
+	}
+
+	.owl-dots {
+		text-align: center;
+
+		.owl-dot {
+			padding: 0;
+			width: 16px;
+			height: 16px;
+			vertical-align: middle;
+			background: $white;
+			border: 1px solid $grey2;
+			border-radius: 50%;
+			transition: all 0.15s ease;
+
+			&:hover {
+				color: $blue;
+				border-color: $blue;
+			}
+
+			&.active {
+				width: 25px;
+				height: 25px;
+				background: $blue;
+				border-color: $blue;
+			}
+		}
+	}
+
+	.owl-item {
+		padding: 81px 28px 68px;
+		min-height: $height;
+		border: 1px solid $grey2;
+
+		.item {
+
+			&-title-wrapper {
+				margin: 0 0 15px 0;
+				padding-bottom: 18px;
+				display: flex;
+				border-bottom: 1px dotted $black2;
+				justify-content: space-between;
+				align-items: flex-end;
+			}
+
+			&__gift {
+				padding-top: 58px;
+				max-width: 70px;
+				font-family: $secondary-font;
+				font-stretch: condensed;
+				color: $grey;
+				background: url(../img/gift-grey.svg) no-repeat left top;
+			}
+
+			&__title {
+				margin-top: 0;
+				font-family: $secondary-font;
+				font-size: 24px;
+			}
+
+			&__description {
+				margin-bottom: 28px;
+			}
+
+			ul {
+				font-size: 16px;
+			}
+
+			&__price {
+				font-family: $secondary-font;
+				font-size: 24px;
+				font-stretch: condensed;
+				text-align: center;
+				color: $grey;
+			}
+
+			&__link-more {
+				display: block;
+				text-align: center;
+				text-decoration: underline;
+				text-transform: uppercase;
+				color: $grey;
+			}
+
+			&__order {
+				margin: 12px auto 0;
+				padding: 14px 34px;
+				display: inline-block;
+				font-family: $secondary-font;
+				text-decoration: none;
+				text-transform: uppercase;
+				color: $white;
+				background-color: $grey;
+			}
+		}
+	}
+
+	.owl-item.center {
+		position: relative;
+		z-index: 1;
+		min-height: $height + 48px;
+		background: $blue;
+		border-color: $blue;
+		box-shadow: 0px 3px 7px 0 rgba(0, 0, 0, 0.35);
+		transform: translateY(-20px);
+
+		.item {
+			color: $white;
+			border: 1px solid $blue;
+
+			&__title {
+				color: $white;
+			}
+
+			&-title-wrapper {
+				border-bottom-color: $white;
+			}
+
+			&__gift {
+				color: $white;
+				background: url(../img/gift-white.svg) no-repeat left top;
+			}
+
+			&__price {
+				margin-bottom: 30px;
+				color: $white;
+			}
+
+			&__link-more {
+				color: $white;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+
+			&__order {
+				color: $blue;
+				background: $white2;
+				transition: all 0.15s ease-in-out;
+
+				&:hover {
+					background-color: $white;
+				}
+			}
+		}
+	}
+}
+
+.wp-block-in-2019-carousel-description {
+
+	.carousel-description {
+
+		&-wrapper {
+			margin-top: 94px;
+			padding: 41px 39px;
+			display: grid;
+			color: $white;
+			background: $blue;
+			grid-template-columns: 3fr minmax(170px, 1fr);
+			grid-column-gap: 80px;
+
+			@media (max-width: 768px) {
+				padding: 20px;
+				grid-template-columns: 1fr;
+				grid-row-gap: 20px;
+			}
+		}
+
+		&-title {
+			margin: 0 0 23px 0;
+			font-size: 24px;
+			font-stretch: condensed;
+			color: $white;
+		}
+
+		&-item:nth-child(2) {
+			text-align: center;
+		}
+
+		&-price {
+			margin-bottom: 20px;
+			font-family: $secondary-font;
+			font-size: 24px;
+			color: $white;
+		}
+
+		&-link,
+		&-link a {
+			text-decoration: underline;
+			text-transform: uppercase;
+			cursor: pointer;
+			color: $white2;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+
+		&-link {
+			margin-bottom: 12px;
+		}
+
+		&-button a {
+			padding: 13px 20px;
+			display: inline-block;
+			font-family: $secondary-font;
+			font-stretch: condensed;
+			text-decoration: none;
+			text-transform: uppercase;
+			color: $blue;
+			background-color: $white2;
+			transition: all 0.15s ease-in-out;
+
+			&:hover,
+			&:focus {
+				background-color: $white;
+			}
+		}
+	}
+}
+
+[class*='wp-block-in-2019-what-enter-item-'] {
+	display: none;
+
+	&.active {
+		display: block;
+	}
+}
+
+.wp-block-in-2019-what-enter {
+	padding-top: 73px;
+	border: 2px solid $blue;
+
+	&__title {
+		margin: 0 0 48px;
+		font-family: $secondary-font;
+		font-size: 24px;
+		font-stretch: condensed;
+		text-align: center;
+		text-transform: uppercase;
+		color: $blue;
+	}
+}

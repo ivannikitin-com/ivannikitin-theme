@@ -1,0 +1,58 @@
+.wp-block-in-2019-tabs {
+
+	.in-tabs-title-list {
+		margin: 0;
+		margin-bottom: rem(52px);
+		padding: 0;
+		display: flex;
+		list-style: none;
+		text-align: center;
+		text-transform: uppercase;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+
+	.in-tab-title-image {
+		margin: 0 auto;
+		display: flex;
+		overflow: hidden;
+		width: 65px;
+		height: 65px;
+		background-color: $black;
+		border-radius: 100%;
+		transition: all 0.15s ease-in-out;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.in-tab-title {
+		font-family: Roboto, sans-serif;
+		font-size: 14px;
+		font-stretch: condensed;
+		text-decoration: underline;
+		color: $black;
+		transition: all 0.15s ease-in-out;
+	}
+
+	.in-tab-title-active,
+	.in-tab-title:focus,
+	.in-tab-title:hover {
+		text-decoration: none;
+		color: $blue;
+
+		.in-tab-title-image {
+			background-color: $blue;
+		}
+	}
+
+	> .in-tabs-content-wrap > .in-tab-inner-content {
+		display: none;
+		opacity: 0;
+		transition: opacity 0.15s ease-in-out;
+
+		&.active {
+			display: block;
+			opacity: 1;
+		}
+	}
+}
