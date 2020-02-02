@@ -29,8 +29,15 @@ body {
 }
 
 .content-area {
-
 	&--top {
 		margin-top: -40px;
 	}
+}
+
+.entry-title,
+.page-title {
+	font-family: $secondary-font;
+	font-size: 36px;
+	font-stretch: condensed;
+	color: $black;
 }
