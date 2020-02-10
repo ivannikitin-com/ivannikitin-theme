@@ -354,3 +354,12 @@ remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_d
 // woocommerce_after_shop_loop
 add_action( 'woocommerce_after_shop_loop',  'woocommerce_taxonomy_archive_description', 11 );
 add_action( 'woocommerce_after_shop_loop',  'woocommerce_product_archive_description', 11 );
+
+add_filter( 'use_block_editor_for_post_type', 'in_woocommerce_activate_gutenberg_products', 10, 2);
+function in_woocommerce_activate_gutenberg_products( $can_edit, $post_type ){
+	if($post_type == 'product'){
+		$can_edit = true;
+	}
+	
+	return $can_edit;
+}
