@@ -26,19 +26,6 @@ function in_2019_woocommerce_setup()
 add_action('after_setup_theme', 'in_2019_woocommerce_setup');
 
 /**
- * WooCommerce specific scripts & stylesheets.
- *
- * @return void
- */
-function in_2019_woocommerce_scripts()
-{
-	$version = wp_get_theme()->get('Version');
-	wp_enqueue_style('in-2019-woocommerce-style', get_template_directory_uri() . '/build/woocommerce.css', [], $version);
-}
-
-add_action('wp_enqueue_scripts', 'in_2019_woocommerce_scripts');
-
-/**
  * Disable the default WooCommerce stylesheet.
  *
  * Removing the default WooCommerce stylesheet and enqueing your own will
