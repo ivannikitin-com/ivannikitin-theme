@@ -22,6 +22,7 @@ function in_2019_woocommerce_setup()
 	add_theme_support('wc-product-gallery-lightbox');
 	add_theme_support('wc-product-gallery-slider');
 }
+
 add_action('after_setup_theme', 'in_2019_woocommerce_setup');
 
 /**
@@ -32,13 +33,9 @@ add_action('after_setup_theme', 'in_2019_woocommerce_setup');
 function in_2019_woocommerce_scripts()
 {
 	$version = wp_get_theme()->get('Version');
-	wp_enqueue_style(
-		'in-2019-woocommerce-style',
-		get_template_directory_uri() . '/build/woocommerce.css',
-		array(),
-		$version
-	);
+	wp_enqueue_style('in-2019-woocommerce-style', get_template_directory_uri() . '/build/woocommerce.css', [], $version);
 }
+
 add_action('wp_enqueue_scripts', 'in_2019_woocommerce_scripts');
 
 /**
@@ -54,7 +51,7 @@ add_filter('woocommerce_enqueue_styles', '__return_empty_array');
 /**
  * Add 'woocommerce-active' class to the body tag.
  *
- * @param  array $classes CSS classes applied to the body tag.
+ * @param array $classes CSS classes applied to the body tag.
  * @return array $classes modified to include 'woocommerce-active' class.
  */
 function in_2019_woocommerce_active_body_class($classes)
@@ -63,6 +60,7 @@ function in_2019_woocommerce_active_body_class($classes)
 
 	return $classes;
 }
+
 add_filter('body_class', 'in_2019_woocommerce_active_body_class');
 
 /**
@@ -74,6 +72,7 @@ function in_2019_woocommerce_products_per_page()
 {
 	return 12;
 }
+
 add_filter('loop_shop_per_page', 'in_2019_woocommerce_products_per_page');
 
 /**
@@ -85,6 +84,7 @@ function in_2019_woocommerce_thumbnail_columns()
 {
 	return 4;
 }
+
 add_filter('woocommerce_product_thumbnails_columns', 'in_2019_woocommerce_thumbnail_columns');
 
 /**
@@ -96,6 +96,7 @@ function in_2019_woocommerce_loop_columns()
 {
 	return 1;
 }
+
 add_filter('loop_shop_columns', 'in_2019_woocommerce_loop_columns');
 
 /**
@@ -106,15 +107,16 @@ add_filter('loop_shop_columns', 'in_2019_woocommerce_loop_columns');
  */
 function in_2019_woocommerce_related_products_args($args)
 {
-	$defaults = array(
+	$defaults = [
 		'posts_per_page' => 3,
-		'columns' => 3
-	);
+		'columns' => 3,
+	];
 
 	$args = wp_parse_args($defaults, $args);
 
 	return $args;
 }
+
 add_filter('woocommerce_output_related_products_args', 'in_2019_woocommerce_related_products_args');
 
 if (!function_exists('in_2019_woocommerce_product_columns_wrapper')) {
@@ -162,8 +164,8 @@ if (!function_exists('in_2019_woocommerce_wrapper_before')) {
 	{
 		?>
 		<div id="primary" class="content-area">
-			<main id="main" class="site-main" role="main">
-			<?php
+		<main id="main" class="site-main" role="main">
+		<?php
 	}
 }
 add_action('woocommerce_before_main_content', 'in_2019_woocommerce_wrapper_before');
@@ -179,7 +181,7 @@ if (!function_exists('in_2019_woocommerce_wrapper_after')) {
 	function in_2019_woocommerce_wrapper_after()
 	{
 		?>
-			</main><!-- #main -->
+		</main><!-- #main -->
 		</div><!-- #primary -->
 		<?php
 	}
@@ -191,11 +193,11 @@ add_action('woocommerce_after_main_content', 'in_2019_woocommerce_wrapper_after'
  *
  * You can add the WooCommerce Mini Cart to header.php like so ...
  *
-	<?php
-		if ( function_exists( 'in_2019_woocommerce_header_cart' ) ) {
-			in_2019_woocommerce_header_cart();
-		}
-	?>
+ * <?php
+ * if ( function_exists( 'in_2019_woocommerce_header_cart' ) ) {
+ * in_2019_woocommerce_header_cart();
+ * }
+ * ?>
  */
 
 if (!function_exists('in_2019_woocommerce_cart_link_fragment')) {
@@ -228,16 +230,15 @@ if (!function_exists('in_2019_woocommerce_header_cart')) {
 	{
 		?>
 		<div id="site-header-cart" class="site-header__cart">
-      <a class="site-header__cart-amount" href="<?php echo esc_url(
-      	wc_get_cart_url()
-      ); ?>" title="<?php esc_attr_e('View your shopping cart', 'in-2019'); ?>">
+			<a class="site-header__cart-amount" href="<?php echo esc_url(wc_get_cart_url()); ?>"
+				 title="<?php esc_attr_e('View your shopping cart', 'in-2019'); ?>">
         <span class="site-header__cart-icon">
           <i class="fas fa-shopping-cart"></i>
         </span>
-        <span class="site-header__cart-count">
+				<span class="site-header__cart-count">
           <?php echo WC()->cart->get_cart_contents_count(); ?>
         </span>
-      </a>
+			</a>
 		</div>
 		<?php
 	}
@@ -261,9 +262,7 @@ function in_woocommerce_end_container()
 function in_woocommerce_before_shop_loop_title()
 {
 	echo '<div class="shop-loop-header">';
-	echo '<div class="shop-loop-header__label">' .
-		esc_html('Название услуги', 'in-2019') .
-		'</div>';
+	echo '<div class="shop-loop-header__label">' . esc_html('Название услуги', 'in-2019') . '</div>';
 	echo '<div class="shop-loop-header__label">' . esc_html('Стоимость', 'in-2019') . '</div>';
 	echo '</div>';
 }
@@ -294,16 +293,8 @@ remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30
 add_action('woocommerce_before_shop_loop', 'in_woocommerce_before_shop_loop_title', 30);
 
 // woocommerce_before_shop_loop_item_title
-remove_action(
-	'woocommerce_before_shop_loop_item_title',
-	'woocommerce_template_loop_product_thumbnail',
-	10
-);
-remove_action(
-	'woocommerce_before_shop_loop_item_title',
-	'woocommerce_show_product_loop_sale_flash',
-	10
-);
+remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
+remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10);
 
 // woocommerce_after_shop_loop_item_title
 remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5);
@@ -330,11 +321,7 @@ function woocommerce_checkout_before_order_end()
 }
 
 // woocommerce_checkout_before_order_review_heading
-add_action(
-	'woocommerce_checkout_before_order_review_heading',
-	'woocommerce_checkout_before_order_start',
-	0
-);
+add_action('woocommerce_checkout_before_order_review_heading', 'woocommerce_checkout_before_order_start', 0);
 
 // woocommerce_checkout_after_order_review
 add_action('woocommerce_checkout_after_order_review', 'woocommerce_checkout_before_order_end', 0);
@@ -346,3 +333,13 @@ remove_action('woocommerce_archive_description', 'woocommerce_product_archive_de
 // woocommerce_after_shop_loop
 add_action('woocommerce_after_shop_loop', 'woocommerce_taxonomy_archive_description', 11);
 add_action('woocommerce_after_shop_loop', 'woocommerce_product_archive_description', 11);
+
+add_filter('use_block_editor_for_post_type', 'in_woocommerce_activate_gutenberg_products', 10, 2);
+function in_woocommerce_activate_gutenberg_products($can_edit, $post_type)
+{
+	if ($post_type == 'product') {
+		$can_edit = true;
+	}
+
+	return $can_edit;
+}
