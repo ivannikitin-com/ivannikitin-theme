@@ -1,4 +1,4 @@
-import Image from '../components/Image.jsx';
+import Image from '../components/Image';
 import classnames from 'classnames';
 
 const { __ } = wp.i18n;

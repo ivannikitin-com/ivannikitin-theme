@@ -1,0 +1,32 @@
+button,
+input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+	margin: 0;
+	padding: 0.538em 1.077em;
+	display: inline-block;
+	max-width: 100%;
+	font-family: inherit;
+	font-size: 0.923em;
+	font-weight: 400;
+	line-height: 1.65;
+	text-decoration: none;
+	cursor: pointer;
+	color: $white;
+	background: $blue;
+	border: 0;
+	border-radius: 3px;
+	transition: 0.15s all ease;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-font-smoothing: inherit;
+
+	&:hover {
+		background: $primary;
+	}
+
+	&:active,
+	&:focus {
+		background: $primary;
+	}
+}

@@ -1,6 +1,19 @@
 <?php
 add_action('customize_register', function($customizer) {
 
+$customizer->add_setting('file-upload');
+$customizer->add_control(
+    new WP_Customize_Upload_Control(
+        $customizer, 'file-upload',
+        array(
+            'label' => __( 'Лого уменьшенное', 'in-2019' ),
+            'section' => 'title_tagline',
+						'settings' => 'file-upload',
+						'priority'      => 4,
+        )
+    )
+);
+	
 	$customizer->add_section(
 		'header_settings', array(
 				'title'         => __( 'Шапка', 'in-2019' ),

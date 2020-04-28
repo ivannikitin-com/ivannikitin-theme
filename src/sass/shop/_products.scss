@@ -1,15 +1,16 @@
 /**
  * Products
  */
+
 ul.products {
-	margin: 0 0 rem(74px) 0;
+	margin: 0 0 74px 0;
 	padding: 0;
 
 	li.product {
-		list-style: none;
 		position: relative;
 		margin: 0;
 		display: grid;
+		list-style: none;
 		grid-template-columns: 1fr minmax(240px, auto);
 		grid-template-rows: auto;
 		grid-gap: 3px;
@@ -27,12 +28,12 @@ ul.products {
 		}
 
 		.woocommerce-loop-product__title {
+			margin-top: 0;
 			font-family: 'RobotoCondensed-Regular', sans-serif;
-			font-size: rem(18px);
+			font-size: 18px;
 			font-stretch: condensed;
 			line-height: 1.33;
 			color: $black;
-			margin-top: 0;
 		}
 
 		img {
@@ -45,18 +46,18 @@ ul.products {
 	}
 
 	li.product .button {
-		font-size: rem(14px);
+		font-size: 14px;
 		font-stretch: condensed;
-		text-transform: uppercase;
 		vertical-align: middle;
 		text-decoration: underline;
+		text-transform: uppercase;
 	}
 
 	.price {
 		display: flex;
 		align-items: center;
-		font-family: 'RobotoCondensed-Bold', sans-serif;
-		font-size: rem(18px);
+		font-family: $secondary-font;
+		font-size: 18px;
 		font-stretch: condensed;
 		line-height: 1.33;
 		color: $black;
@@ -76,18 +77,18 @@ ul.products {
 	}
 
 	.onsale {
+		position: relative;
 		display: inline-block;
 		width: 25px;
 		height: 28px;
-		position: relative;
+		vertical-align: text-bottom;
 		text-indent: -999em;
 		background: url(../img/invalid-name.svg) no-repeat center center;
-		vertical-align: text-bottom;
 	}
 
 	del {
 		font-family: 'RobotoCondensed-Regular', sans-serif;
-		font-size: rem(16px);
+		font-size: 16px;
 		color: $grey2;
 	}
 }
@@ -99,15 +100,15 @@ ul.products {
 
 .shop-loop-header {
 	display: grid;
+	font-family: $secondary-font;
+	font-size: 16px;
+	font-stretch: condensed;
+	line-height: 1.5;
+	text-transform: uppercase;
+	color: $white;
 	grid-template-columns: 1fr minmax(240px, auto);
 	grid-template-rows: auto;
 	grid-gap: 3px;
-	font-size: rem(16px);
-	font-family: 'RobotoCondensed-Bold', sans-serif;
-	font-stretch: condensed;
-	line-height: 1.5;
-	color: $white;
-	text-transform: uppercase;
 
 	@media (max-width: 576px) {
 		grid-template-columns: 1fr;
@@ -115,9 +116,9 @@ ul.products {
 	}
 
 	&__label {
-		background-color: $blue;
-		padding: rem(13px) rem(18px);
 		margin-bottom: 3px;
+		padding: 13px 18px;
+		background-color: $blue;
 
 		@media (max-width: 576px) {
 			&:nth-child(2) {
@@ -128,7 +129,7 @@ ul.products {
 }
 
 .product__value {
-	padding: rem(11px) rem(18px) rem(17px);
+	padding: 11px 18px 17px;
 }
 
 // @media screen and (min-width: 48em) {

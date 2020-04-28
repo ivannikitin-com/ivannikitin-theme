@@ -1,0 +1,25 @@
+.widget {
+	margin: 0 0 1.5em;
+
+	/* Make sure select elements fit in widgets. */
+	select {
+		max-width: 100%;
+	}
+
+	.widget-title {
+		background-color: $blue;
+		color: $white;
+		padding: 20px 20px;
+		margin-top: 0;
+
+		~ * {
+			padding: 10px 20px;
+		}
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+}

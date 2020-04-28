@@ -5,6 +5,7 @@
 }
 
 @for $i from 1 through 10 {
+
 	.wp-block-in-2019-tabs.in-active-tab-#{$i}
 		> .in-tabs-content-wrap
 		> .editor-inner-blocks
@@ -15,6 +16,7 @@
 }
 
 .wp-block-in-2019-tabs {
+
 	.in-tabs-title-list {
 		margin-bottom: 0 !important;
 	}

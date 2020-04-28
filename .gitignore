@@ -1,4 +1,5 @@
+.vscode
 node_modules
-*.log
-stamp.png
-sign.png
+vendor
+package-lock.json
+composer.lock

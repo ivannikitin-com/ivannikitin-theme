@@ -1,17 +1,23 @@
 .wp-block-in-2019-employee {
-	display: block;
 	margin-bottom: 30px;
+	display: block;
+	text-decoration: none;
+
+	img {
+		min-height: 170px;
+		object-fit: cover;
+	}
 
 	.employee_name {
-		font-family: 'Roboto Condensed', sans-serif;
+		margin-top: 15px;
+		font-family: $secondary-font;
 		font-weight: bold;
 		text-transform: uppercase;
-		margin-top: 15px;
 	}
 
 	.employee_name,
 	.employee_rank {
-		color: $black;
 		font-size: 1rem;
+		color: $employeeTitle;
 	}
 }

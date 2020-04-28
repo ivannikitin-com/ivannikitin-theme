@@ -1,98 +1,77 @@
-const path = require('path');
-const webpack = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const path = require("path")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const IgnoreEmitPlugin = require("ignore-emit-webpack-plugin")
+const BrowserSyncPlugin = require("browser-sync-webpack-plugin")
 
 module.exports = {
-  entry: {
-    app: './src/index.js',
-    style: './src/sass/style.scss',
-    woocommerce: './src/sass/woocommerce.scss',
-    'editor-style': './src/sass/editor-style.scss'
-  },
-  output: {
-    filename: './build/[name].min.js',
-    path: path.resolve(__dirname)
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.(scss|css)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: {} },
-          {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: [require('autoprefixer')]
-            }
-          },
-          { loader: 'sass-loader', options: {} },
-          { loader: 'import-glob-loader' }
-        ]
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              publicPath: 'build/images',
-              outputPath: 'build/images/',
-              name: '[name].[ext]'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(eot|woff|woff2|ttf)([\?]?.*)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              publicPath: 'build/fonts',
-              outputPath: 'build/fonts',
-              name: '[name].[ext]'
-            }
-          }
-        ]
-      }
-    ]
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: './[name].css'
-    }),
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: []
-    }),
-    new BrowserSyncPlugin({
-      proxy: 'http://ivannikitin.local/',
-      files: ['**/*.php'],
-      reloadDelay: 0
-    }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery'
-    })
-  ],
-  optimization: {
-    minimizer: [
-      new UglifyJSPlugin({
-        cache: true,
-        parallel: true
-      }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
-  }
-};
+	entry: {
+		index: path.resolve(process.cwd(), "src", "index.js"),
+		style: path.resolve(process.cwd(), "src", "sass", "style.scss"),
+		gutenberg: path.resolve(process.cwd(), "gutenberg", "index.js"),
+		"editor-style": path.resolve(process.cwd(), "src", "sass", "editor-style.scss"),
+	},
+	externals: {
+		react: "React",
+		"react-dom": "ReactDOM",
+	},
+	module: {
+		rules: [
+			{
+				test: /\.m?js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: "babel-loader",
+					options: {
+						presets: ["@babel/preset-react", "@babel/preset-env"],
+						plugins: ["lodash", "@babel/plugin-proposal-class-properties"],
+					},
+				},
+			},
+			{
+				test: /\.scss$/,
+				use: [
+					MiniCssExtractPlugin.loader, // creates style nodes from JS strings
+					"css-loader", // translates CSS into CommonJS
+					"postcss-loader",
+					"sass-loader", // compiles Sass to CSS, using Node Sass by default,
+					{
+						loader: "sass-resources-loader",
+						options: {
+							resources: ["./src/sass/variables.scss", "./src/sass/mixins/**/*.scss"],
+						},
+					},
+					"import-glob-loader",
+				],
+			},
+			{
+				test: /\.(png|jpg|gif|woff|woff2|svg)$/,
+				use: [
+					{
+						loader: "file-loader",
+						options: {
+							name: "[name].[ext]",
+						},
+					},
+				],
+			},
+		],
+	},
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: "[name].css",
+			chunkFilename: "[id].css",
+			ignoreOrder: false,
+		}),
+		new IgnoreEmitPlugin(["style.js", "editor-style.js", "woocommerce.js"]),
+		new BrowserSyncPlugin({
+			host: "localhost",
+			port: 3000,
+			proxy: "http://ivannikitin.local",
+			files: [
+				{
+					match: ["**/*.php"],
+				},
+			],
+		}),
+	],
+}

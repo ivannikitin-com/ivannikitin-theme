@@ -1,8 +1,7 @@
 import icon from '-!svg-react-loader!../assets/col.svg';
 import classnames from 'classnames';
 import blockAttributes from './components/attributes';
-import BlockName from '../components/BlockName.jsx';
-import ArrowBlock from '../components/ArrowBlock.jsx';
+import ArrowBlock from '../components/ArrowBlock';
 
 const { __ } = wp.i18n;
 const { compose, withInstanceId, createHigherOrderComponent } = wp.compose;
@@ -39,7 +38,7 @@ registerBlockType( 'in-2019/col', {
 	attributes: blockAttributes,
 	edit: compose( [ withColors( { overlayColor: 'background-color' } ) ] )(
 		withInstanceId( props => {
-			const { className, attributes, setAttributes, overlayColor, setOverlayColor, name, instanceId } = props;
+			const { className, attributes, setAttributes, overlayColor, setOverlayColor, instanceId } = props;
 			const {
 				xl,
 				lg,
@@ -72,7 +71,6 @@ registerBlockType( 'in-2019/col', {
 				setAttributes( { idBlock: getId } );
 			};
 
-			const cols = 'xl-' + xl + ' lg-' + lg + ' md-' + md + ' sm-' + sm + ' xs-' + xs;
 			const toggleParallax = () => setAttributes( { hasParallax: ! hasParallax } );
 			const toggleRepeat = () => setAttributes( { hasRepeat: ! hasRepeat } );
 			const toggleCover = () => setAttributes( { hasCover: ! hasCover } );
@@ -294,7 +292,6 @@ registerBlockType( 'in-2019/col', {
 						{ idCurrentBlock( instanceId ) }
 					</InspectorControls>
 					<div className={ classes } style={ style }>
-						<BlockName name={ name } text={ cols } />
 						<InnerBlocks />
 					</div>
 				</Fragment>

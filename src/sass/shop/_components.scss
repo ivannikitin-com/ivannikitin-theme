@@ -1,9 +1,11 @@
 /**
  * Header cart
  */
+
 .site-header-cart {
-	list-style: none;
 	position: relative;
+	list-style: none;
+
 	@include clearfix;
 
 	a {
@@ -26,17 +28,18 @@
 
 	.remove_from_cart_button {
 		position: absolute;
-		right: 0;
 		top: 0;
+		right: 0;
+		font-size: 20px;
+		line-height: 1.2;
 		text-decoration: none;
 		color: $red;
-		font-size: rem(20px);
-		line-height: 1.2;
 
 		& + a {
 			display: block;
 		}
 	}
+
 	.woocommerce-mini-cart {
 		list-style: none;
 	}
@@ -53,49 +56,50 @@
 	}
 
 	.woocommerce-mini-cart-item {
-		padding-right: 15px;
 		position: relative;
-		border-bottom: 1px solid $grey2;
 		margin-bottom: 10px;
+		padding-right: 15px;
+		border-bottom: 1px solid $grey2;
 	}
 }
 
 /**
  * Star rating
  */
-.star-rating {
-	overflow: hidden;
-	position: relative;
-	height: 1.618em;
-	line-height: 1.618;
-	font-size: 1em;
-	width: 5.3em;
-	font-family: 'star';
-	font-weight: 400;
 
-	&:before {
-		content: '\53\53\53\53\53';
-		opacity: 0.25;
-		float: left;
+.star-rating {
+	position: relative;
+	overflow: hidden;
+	width: 5.3em;
+	height: 1.618em;
+	font-family: 'star';
+	font-size: 1em;
+	font-weight: 400;
+	line-height: 1.618;
+
+	&::before {
+		position: absolute;
 		top: 0;
 		left: 0;
-		position: absolute;
+		float: left;
+		content: '\53\53\53\53\53';
+		opacity: 0.25;
 	}
 
 	span {
-		overflow: hidden;
-		float: left;
+		position: absolute;
 		top: 0;
 		left: 0;
-		position: absolute;
 		padding-top: 1.5em;
+		float: left;
+		overflow: hidden;
 	}
 
-	span:before {
-		content: '\53\53\53\53\53';
-		top: 0;
+	span::before {
 		position: absolute;
+		top: 0;
 		left: 0;
+		content: '\53\53\53\53\53';
 		color: $color__link;
 	}
 }
@@ -103,31 +107,31 @@
 p.stars {
 	a {
 		position: relative;
-		height: 1em;
-		width: 1em;
-		text-indent: -999em;
-		display: inline-block;
-		text-decoration: none;
 		margin-right: 1px;
+		display: inline-block;
+		width: 1em;
+		height: 1em;
 		font-weight: 400;
+		text-decoration: none;
+		text-indent: -999em;
 
-		&:before {
-			display: block;
+		&::before {
 			position: absolute;
 			top: 0;
 			left: 0;
+			display: block;
 			width: 1em;
 			height: 1em;
-			line-height: 1;
 			font-family: 'star';
+			line-height: 1;
+			text-indent: 0;
 			content: '\53';
 			color: $color__text-main;
-			text-indent: 0;
 			opacity: 0.25;
 		}
 
 		&:hover {
-			~ a:before {
+			~ a::before {
 				content: '\53';
 				color: $color__text-main;
 				opacity: 0.25;
@@ -137,7 +141,7 @@ p.stars {
 
 	&:hover {
 		a {
-			&:before {
+			&::before {
 				content: '\53';
 				color: $color__link;
 				opacity: 1;
@@ -147,13 +151,13 @@ p.stars {
 
 	&.selected {
 		a.active {
-			&:before {
+			&::before {
 				content: '\53';
 				color: $color__link;
 				opacity: 1;
 			}
 
-			~ a:before {
+			~ a::before {
 				content: '\53';
 				color: $color__text-main;
 				opacity: 0.25;
@@ -161,7 +165,7 @@ p.stars {
 		}
 
 		a:not(.active) {
-			&:before {
+			&::before {
 				content: '\53';
 				color: $color__link;
 				opacity: 1;
@@ -173,17 +177,18 @@ p.stars {
 /**
  * Tabs
  */
+
 .woocommerce-tabs {
 	ul.tabs {
-		list-style: none;
 		margin: 0;
 		padding: 0;
+		list-style: none;
 		text-align: left;
 
 		li {
-			display: block;
-			margin: 0;
 			position: relative;
+			margin: 0;
+			display: block;
 
 			a {
 				padding: 1em 0;
@@ -202,6 +207,7 @@ p.stars {
 /**
  * Password strength meter
  */
+
 .woocommerce-password-strength {
 	text-align: right;
 
@@ -225,6 +231,7 @@ p.stars {
 /**
  * Forms
  */
+
 .form-row {
 	&.woocommerce-validated {
 		input.input-text {
@@ -246,14 +253,15 @@ p.stars {
 /**
  * Notices
  */
+
 .woocommerce-message,
 .woocommerce-info,
 .woocommerce-error,
 .woocommerce-noreviews,
 p.no-comments {
 	@include clearfix;
-	background-color: $woocommerce__color-success;
 	clear: both;
+	background-color: $woocommerce__color-success;
 }
 
 .woocommerce-info,
@@ -268,30 +276,31 @@ p.no-comments {
 
 .demo_store {
 	position: fixed;
+	z-index: 9999;
+	right: 0;
 	left: 0;
 	bottom: 0;
-	right: 0;
 	margin: 0;
 	padding: 1em;
 	background-color: $woocommerce__color-info;
-	z-index: 9999;
 }
 
 @media screen and (min-width: 48em) {
 	/**
 	 * Header cart
 	 */
+
 	.site-header-cart {
 		.widget_shopping_cart {
 			position: absolute;
-			top: 100%;
-			width: 100%;
 			z-index: 999999;
+			top: 100%;
 			left: -999em;
-			display: block;
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			background-color: $white;
 			padding: 5px;
+			display: block;
+			width: 100%;
+			background-color: $white;
+			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 
 			img {
 				display: none;

@@ -1,2 +1,3 @@
-import './js/custom';
-import './js/icons';
+import 'bootstrap'
+import 'popper.js'
+import './js/icons'

@@ -1,6 +1,7 @@
 /**
  * Single Product
  */
+
 .single-product {
 	div.product {
 		@include clearfix;
@@ -9,13 +10,14 @@
 		.woocommerce-product-gallery {
 			grid-area: gallery;
 			position: relative;
+			opacity: 1 !important;
 
 			.woocommerce-product-gallery__trigger {
 				position: absolute;
+				z-index: 99;
 				top: 1em;
 				right: 1em;
 				display: block;
-				z-index: 99;
 			}
 
 			.flex-viewport {
@@ -28,12 +30,12 @@
 				padding: 0;
 
 				li {
+					float: left;
 					list-style: none;
 					cursor: pointer;
-					float: left;
 
 					img {
-						opacity: .5;
+						opacity: 0.5;
 
 						&.flex-active {
 							opacity: 1;
@@ -58,7 +60,7 @@
 								margin-right: 0;
 							}
 
-							&:nth-child(#{$i}n+1) {
+							&:nth-child(#{$i}n + 1) {
 								clear: both;
 							}
 						}
@@ -80,11 +82,11 @@
 			margin-top: 15px;
 		}
 
-		.woocommerce-variation-add-to-cart  {
+		.woocommerce-variation-add-to-cart {
+			margin-bottom: 15px;
 			display: flex;
 			flex-wrap: wrap;
 			align-items: center;
-			margin-bottom: 15px;
 
 			> * {
 				margin-right: 10px;
@@ -92,16 +94,15 @@
 		}
 
 		.price {
-			font-size: rem(24px);
 			margin-bottom: 15px;
+			font-size: 24px;
 		}
 
 		.variations_form {
-
 			tr {
+				margin-bottom: 10px;
 				display: flex;
 				flex-direction: column;
-				margin-bottom: 10px;
 
 				label {
 					margin-bottom: 0;
@@ -117,20 +118,19 @@
 	div.product {
 		display: grid;
 		grid-template-areas:
-			"gallery summary"
-			"tabs tabs";
+			'gallery summary'
+			'tabs tabs';
 		grid-template-columns: 1fr 1fr;
 		grid-column-gap: 30px;
 		grid-row-gap: 50px;
 
-		@media(max-width: 768px) {
+		@media (max-width: 768px) {
 			grid-template-areas:
-			"gallery"
-			"summary"
-			"tabs";
+				'gallery'
+				'summary'
+				'tabs';
 			grid-template-columns: 1fr;
 		}
-
 	}
 
 	.summary {
@@ -141,13 +141,13 @@
 		grid-area: tabs;
 
 		.tabs {
-			display: flex;
 			margin-bottom: 20px;
+			display: flex;
 
 			li {
+				margin-right: 10px;
 				border: 1px solid $blue;
 				border-radius: 5px;
-				margin-right: 10px;
 				transition: 0.25s;
 
 				&:last-child {
@@ -156,12 +156,12 @@
 			}
 
 			a {
-				display: inline-block;
 				padding: 5px 10px;
-				color: $black;
+				display: inline-block;
 				text-decoration: none;
-				transition: 0.25s;
+				color: $black;
 				outline: none;
+				transition: 0.25s;
 			}
 
 			li.active,
@@ -177,7 +177,7 @@
 }
 
 .stock {
-	&:empty:before {
+	&:empty::before {
 		display: none;
 	}
 
@@ -188,4 +188,8 @@
 	&.out-of-stock {
 		color: $woocommerce__color-error;
 	}
+}
+
+.woocommerce-Tabs-panel {
+	overflow-x: hidden;
 }

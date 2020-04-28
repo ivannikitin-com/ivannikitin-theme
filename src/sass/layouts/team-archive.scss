@@ -1,0 +1,60 @@
+.team {
+	padding: 24px 0 90px;
+
+	&_item {
+		margin-bottom: 2.2rem;
+
+		a {
+			text-decoration: none;
+		}
+
+		img {
+			width: 195px;
+			height: 195px;
+		}
+	}
+
+	&_name {
+		font-family: 'Roboto Condensed', sans-serif;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-top: 15px;
+	}
+
+	&_func,
+	&_name {
+		color: $black;
+		font-size: 1rem;
+	}
+}
+
+.in-team.single {
+	margin-top: 38px;
+
+	img {
+		max-width: 100%;
+		widows: 100%;
+	}
+
+	.entry-title {
+		margin-bottom: 46px;
+	}
+}
+
+.in-team {
+	&__info_member {
+		margin-bottom: 40px;
+	}
+
+	&__item {
+		font-size: 16px;
+		line-height: 1.5;
+		color: $black;
+	}
+
+	&__label {
+		font-weight: bold;
+		font-stretch: condensed;
+		text-transform: uppercase;
+	}
+}

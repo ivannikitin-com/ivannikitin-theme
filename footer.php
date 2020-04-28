@@ -8,44 +8,11 @@
  *
  * @package IvanNikitin_2019
  */
-
 ?>
 
-	</div><!-- #content -->
+	</div>
 
-	<footer class="bg-light site-footer">
-		<?php wp_nav_menu( array( 
-			'theme_location' 	=> 'Footer',
-			'menu' 				=> 'Footer',
-			'container' 		=> 'nav',
-			'menu_id'        	=> '',
-			'container_class' 	=> '',
-			'container_id' 		=> '',
-			'menu_class' 		=> 'nav justify-content-center ffrc',
-			'depth'     		=> 1
-		) );?>
-		<div class="row m-0 mt-3 justify-content-between align-items-center">
-			<div class="col-md-4 text-center text-md-left mb-3">
-				<?php if ( get_theme_mod( 'logo_footer' ) ) : ?>
-					<a href="<?php echo esc_url( home_url() ); ?>">
-						<img src="<?php echo get_theme_mod( 'logo_footer' ); ?>" width="133" height="64" class="img-fluid">
-					</a>
-				<?php endif; ?>
-			</div>
-			<?php if ( get_theme_mod( 'copyright_footer' ) ) : ?>
-			<div class=" col-md-4 text-secondary text-md-right text-center">
-				<?php printf( 
-					esc_html__( '%1$s - %2$s.', 'in-2019')
-					, 
-					get_theme_mod( 'copyright_footer' ),
-					date('Y')
-				); ?>
-			</div>
-			<?php endif; ?>
-		</div><!--/.row-->
-	
-	</footer>
-</div><!-- #page -->
+	<?php get_template_part('templates/footer'); ?>
 
 <?php wp_footer(); ?>
 
