@@ -29,6 +29,11 @@ body {
 	}
 }
 
+body:not(.home) .content-area {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
 .content-area {
 	&--top {
 		margin-top: -40px;
