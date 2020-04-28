@@ -1,7 +1,7 @@
 import icon from '-!svg-react-loader!../assets/col.svg';
 import classnames from 'classnames';
 import blockAttributes from './components/attributes';
-import ArrowBlock from '../components/ArrowBlock.jsx';
+import ArrowBlock from '../components/ArrowBlock';
 
 const { __ } = wp.i18n;
 const { compose, withInstanceId, createHigherOrderComponent } = wp.compose;

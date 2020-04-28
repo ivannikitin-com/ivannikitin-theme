@@ -10,16 +10,16 @@
  */
 
 // Blocks
-import './section';
-import './container';
-import './row';
-import './col';
-import './service';
-import './employee';
-import './news';
-import './advantages';
-import './tabs';
-import './tab';
-import './faq';
-import './carousel';
-import './list';
+import './src/section';
+import './src/container';
+import './src/row';
+import './src/col';
+import './src/service';
+import './src/employee';
+import './src/news';
+import './src/advantages';
+import './src/tabs';
+import './src/tab';
+import './src/faq';
+import './src/carousel';
+import './src/list';

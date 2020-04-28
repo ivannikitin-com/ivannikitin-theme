@@ -27,44 +27,12 @@ if (!function_exists('in_2019_setup')):
 	 */
 	function in_2019_setup()
 	{
-		/*
-		 * Make theme available for translation.
-		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on IvanNikitin 2019, use a find and replace
-		 * to change 'in-2019' to the name of your theme in all the template files.
-		 */
+
 		load_theme_textdomain('in-2019', get_template_directory() . '/languages');
 
-		// Add default posts and comments RSS feed links to head.
 		add_theme_support('automatic-feed-links');
-
-		/*
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
-		 */
 		add_theme_support('title-tag');
-
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 *
-		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		 */
 		add_theme_support('post-thumbnails');
-
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(array(
-			'Primary' => esc_html__('Основное меню', 'in-2019'),
-			'Footer' => esc_html__('Меню в подвале', 'in-2019'),
-			'Account' => esc_html__('Меню рядом с корзиной', 'in-2019'),
-			'Primary-header-small' => esc_html__('Основное меню для узкой шапки', 'in-2019')
-		));
-
-		/*
-		 * Switch default core markup for search form, comment form, and comments
-		 * to output valid HTML5.
-		 */
 		add_theme_support('html5', array(
 			'search-form',
 			'comment-form',
@@ -72,8 +40,6 @@ if (!function_exists('in_2019_setup')):
 			'gallery',
 			'caption'
 		));
-
-		// Set up the WordPress core custom background feature.
 		add_theme_support(
 			'custom-background',
 			apply_filters('in_2019_custom_background_args', array(
@@ -81,26 +47,26 @@ if (!function_exists('in_2019_setup')):
 				'default-image' => ''
 			))
 		);
-
-		// Add theme support for selective refresh for widgets.
 		add_theme_support('customize-selective-refresh-widgets');
-
-		/**
-		 * Add support for core custom logo.
-		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
-		 */
 		add_theme_support('custom-logo', array(
 			'height' => 165,
 			'width' => 136,
 			'flex-width' => true,
 			'flex-height' => true
 		));
-
-		// Supports aline gutenberg
 		add_theme_support('align-wide');
 		add_theme_support('editor-styles');
-		add_editor_style('build/editor-style.css');
+
+
+		add_editor_style('dist/editor-style.css');
+
+
+		register_nav_menus(array(
+			'Primary' => esc_html__('Основное меню', 'in-2019'),
+			'Footer' => esc_html__('Меню в подвале', 'in-2019'),
+			'Account' => esc_html__('Меню рядом с корзиной', 'in-2019'),
+			'Primary-header-small' => esc_html__('Основное меню для узкой шапки', 'in-2019')
+		));
 	}
 endif;
 add_action('after_setup_theme', 'in_2019_setup');
@@ -119,6 +85,7 @@ function in_2019_content_width()
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$GLOBALS['content_width'] = apply_filters('in_2019_content_width', 640);
 }
+
 add_action('after_setup_theme', 'in_2019_content_width', 0);
 
 /**
@@ -138,6 +105,7 @@ function in_2019_widgets_init()
 		'after_title' => '</h2>'
 	));
 }
+
 add_action('widgets_init', 'in_2019_widgets_init');
 
 /**
@@ -147,42 +115,16 @@ function in_2019_scripts()
 {
 	$version = wp_get_theme()->get('Version');
 
-	wp_enqueue_style('main', get_template_directory_uri() . '/build/style.css', array(), $version);
+	wp_enqueue_style('2019', get_template_directory_uri() . '/dist/style.css', $version);
 
-	wp_enqueue_script("jquery");
-}
-add_action('wp_enqueue_scripts', 'in_2019_scripts');
-
-/**
- * Footer scripts and styles.
- */
-function in_2019_footer_style_scripts()
-{
-	$version = wp_get_theme()->get('Version');
-
-	// wp_enqueue_script( 'popper', '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', array('jquery'), $version, true );
-
-	// wp_enqueue_script( 'bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array('jquery'), $version, true );
-
-	// wp_enqueue_script( 'spincrement', get_template_directory_uri() . '/src/js/libs/jquery.spincrement.min.js', array('jquery'), $version, true );
-
-	wp_enqueue_script(
-		'main',
-		get_template_directory_uri() . '/build/index.js',
-		null,
-		$version,
-		true
-	);
-
-	wp_deregister_script('jquery');
-	
+	wp_enqueue_script('2019', get_template_directory_uri() . '/dist/index.js', null, $version, true);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
 }
 
-add_action('wp_footer', 'in_2019_footer_style_scripts');
+add_action('wp_enqueue_scripts', 'in_2019_scripts');
 
 /**
  * Implement the Custom Header feature.
