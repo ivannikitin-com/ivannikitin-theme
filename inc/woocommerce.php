@@ -199,7 +199,8 @@ if (!function_exists('in_2019_woocommerce_cart_link_fragment')) {
 	function in_2019_woocommerce_cart_link_fragment($fragments)
 	{
 		ob_start();
-		in_2019_woocommerce_cart_link();
+		//in_2019_woocommerce_cart_link();
+		in_2019_woocommerce_header_cart();
 		$fragments['a.cart-contents'] = ob_get_clean();
 
 		return $fragments;
