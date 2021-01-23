@@ -1,0 +1,54 @@
+From c69be93e00890852cc6f192d2a38386a9a8e0a96 Mon Sep 17 00:00:00 2001
+From: Ivan Nikitin <ivan@ivannikitin.com>
+Date: Sat, 20 Jul 2019 07:15:22 +0300
+Subject: [PATCH] =?UTF-8?q?=D0=9F=D0=B5=D1=80=D0=B5=D0=B4=20=D1=81=D0=BB?=
+ =?UTF-8?q?=D0=B8=D1=8F=D0=BD=D0=B8=D0=B5=D0=BC=20=D1=81=20=D0=BD=D0=BE?=
+ =?UTF-8?q?=D0=B2=D0=BE=D0=B9=20=D0=B2=D0=B5=D1=80=D1=81=D0=B8=D0=B5=D0=B9?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ cpm/hooks.php | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/cpm/hooks.php b/cpm/hooks.php
+index 83b6ed9..65bea4b 100644
+--- a/cpm/hooks.php
++++ b/cpm/hooks.php
+@@ -19,26 +19,26 @@ function in_cpm_email_project_update_subject( $subject, $project )
+ add_filter( 'cpm_email_complete_task_subject', 	'in_cpm_email_complete_task_subject', 10, 3 );
+ function in_cpm_email_complete_task_subject( $subject, $project, $task )
+ {
+-	return $project . ': ' . $task . ': Задача завершена';
++	return 'Re: '. $project . ': ' . $task;
+ }
+ 
+ add_filter( 'cpm_email_new_message_subject', 	'in_cpm_email_new_message_subject', 10, 3 );
+ function in_cpm_email_new_message_subject( $subject, $project, $message )
+ {
+-	return $project . ': Новое сообщение: ' . mb_substr( $message, 0, 50 ) . '...';
++	return ( mb_strlen( $message ) > 50 ) ? $project .  ':' . mb_substr( $message, 0, 50 ) . '...' : $project . ':' . mb_substr( $message, 0, 50 );
+ }
+ 
+ add_filter( 'cpm_email_new_comment_subject', 	'in_cpm_email_comment_subject', 10, 3 );
+ add_filter( 'cpm_email_update_comment_subject', 'in_cpm_email_comment_subject', 10, 3 );
+ function in_cpm_email_comment_subject( $subject, $project, $task )
+ {
+-	return $project . ': ' . $task;
++	return 'Re: ' . $project . ': ' . $task;
+ }
+ 
+-add_filter( 'cpm_email_new_task_subject', 	'in_cpm_email_new_task_subject', 10, 3 );
+-function in_cpm_email_new_task_subject( $subject, $project, $list_and_task )
++add_filter( 'cpm_email_new_task_subject', 	'in_cpm_email_new_task_subject', 10, 4 );
++function in_cpm_email_new_task_subject( $subject, $project, $task, $list )
+ {
+-	return $project . ': ' . $list_and_task;
++	return $project . ': ' . $task;
+ }
+ 
+ 
+-- 
+2.30.0.windows.1
+

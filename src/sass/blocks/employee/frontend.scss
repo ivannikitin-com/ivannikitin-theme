@@ -1,0 +1,23 @@
+.wp-block-in-2019-employee {
+	margin-bottom: 30px;
+	display: block;
+	text-decoration: none;
+
+	img {
+		min-height: 170px;
+		object-fit: cover;
+	}
+
+	.employee_name {
+		margin-top: 15px;
+		font-family: $secondary-font;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	.employee_name,
+	.employee_rank {
+		font-size: 1rem;
+		color: $employeeTitle;
+	}
+}

@@ -1,0 +1,7 @@
+@mixin base-style {
+    font-family: $default-font;
+    font-size: 14px;
+    position: relative;
+    line-height: normal;
+    margin: 0;
+}

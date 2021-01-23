@@ -286,6 +286,9 @@ function in_cpm_project_breadcrumb( $crumbs )
 add_filter( 'iner_projects', 'in_cpm_project_list', 10, 2 );
 function in_cpm_project_list( $projectList, $userId )
 {
+
+	if ( strpos( $_SERVER['REQUEST_URI'], 'report-employee' ) === false ) return $projectList;
+
 	if ( class_exists( 'CPM_Project' ) )
 	{
 		$project_obj = CPM_Project::getInstance();
@@ -355,5 +358,3 @@ function in_wpex_top_bar_content( $content )
 	
 	return $content;
 }
-
-

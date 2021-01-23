@@ -9,53 +9,73 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 get_header(); ?>
-<section id="content-wrap" class="container clr">
-	<div id="primary" class="content-area clr">
-		<div id="content" class="clr site-content">
-			<article class="entry-content entry clr">
-			<?php
-				/**
-				 * inteam_before_main_content hook
-				 */
-				do_action( 'inteam_before_main_content' );
-			?>
-			
-			<?php while ( have_posts() ) : the_post(); ?>
-				<div class="single in-team clearfix">
-					<?php if ( has_post_thumbnail() ): ?>
-						<div class="images-member"><?php the_post_thumbnail( 'in_team_large' ) // Картинка 500x600 ?></div>
-					<?php endif; ?>
-					<div class="summary entry-summary">
-						<?php $post_id = get_the_ID(); ?>
-						<h1><?php the_title() ?></h1>
-						<ul class="info_member">
-							<li><?php echo do_shortcode( "[inteam_position label='<b>Должность:</b>' post_id='$post_id']" ) ?></li>
-							<li><?php echo do_shortcode( "[inteam_departament label='<b>Отдел:</b>' post_id='$post_id']" ) ?></li>		
-							<li><?php echo do_shortcode( "[inteam_email label='<b>E-mail:</b>' post_id='$post_id']" ) ?></li>
-							<li><?php echo do_shortcode( "[inteam_phone label='<b>Телефон:</b>' post_id='$post_id']" ) ?></li>
-						</ul>
-						<div class="member-about">
-							<?php the_content(); ?>
-						</div>						
-					</div><!--/.summary-->
-				</div>
-			<?php endwhile; // end of the loop. ?>
-
-			<?php
-				/**
-				 * inteam_after_main_content hook
-				 */
-				do_action( 'inteam_after_main_content' );
-			?>
-
-			<?php
-				/**
-				 * inteam_sidebar hook.
-				 */
-				do_action( 'inteam_sidebar' );
-			?>
-			</article>
+<article id="post-<?php the_ID(); ?>" <?php post_class('in-team single'); ?>>
+	<?php
+		/**
+		 * inteam_before_main_content hook
+		 */
+		do_action( 'inteam_before_main_content' );
+	?>
+	
+	<?php while ( have_posts() ) : the_post(); ?>
+		<div class="col-md-4">
+			<?php the_post_thumbnail( 
+				null, 
+				array( 
+					'class' => 'rounded-circle img-thumbnail border-0' 
+				) 
+			); ?>
 		</div>
-	</div>
-</section>
+		<div class="col-md-8">
+			<header class="entry-header">
+				<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			</header>
+
+			<?php $post_id = get_the_ID(); ?>
+			<div class="in-team__info_member">
+				<?php if ( do_shortcode( "[inteam_position post_id='$post_id']") ) : ?>
+				<div class="in-team__item">
+					<span class="in-team__label"><?php esc_html_e( 'Должность:', 'in-2019' ); ?></span>
+					<?php echo do_shortcode( "[inteam_position post_id='$post_id']" ); ?>
+
+				</div>
+				<?php endif; ?>
+				<?php if ( do_shortcode( "[inteam_departament post_id='$post_id']") ) : ?>
+				<div class="in-team__item">
+					<span class="in-team__label"><?php esc_html_e( 'Отдел:', 'in-2019' ); ?></span>
+					<?php echo do_shortcode( "[inteam_departament post_id='$post_id']" ); ?>
+				</div>	
+				<?php endif; ?>	
+				<?php if ( do_shortcode( "[inteam_email post_id='$post_id']") ) : ?>
+				<div class="in-team__item">
+					<span class="in-team__label"><?php esc_html_e( 'E-mail:', 'in-2019' ); ?></span>
+					<a href="mailto:<?php echo do_shortcode( "[inteam_email post_id='$post_id']" ); ?>"><?php echo do_shortcode( "[inteam_email post_id='$post_id']" ); ?></a>
+				</div>
+				<?php endif; ?>
+				<?php if ( do_shortcode( "[inteam_phone post_id='$post_id']") ) : ?>
+				<div class="in-team__item">
+					<span class="in-team__label"><?php esc_html_e( 'Телефон:', 'in-2019' ); ?></span>
+					<?php echo do_shortcode( "[inteam_phone post_id='$post_id']" ); ?>
+				</div>
+				<?php endif; ?>
+			</div>
+
+			<?php the_content(); ?>
+		</div>
+	<?php endwhile; // end of the loop. ?>
+
+	<?php
+		/**
+		 * inteam_after_main_content hook
+		 */
+		do_action( 'inteam_after_main_content' );
+	?>
+
+	<?php
+		/**
+		 * inteam_sidebar hook.
+		 */
+		do_action( 'inteam_sidebar' );
+	?>
+</article>
 <?php get_footer(); ?>

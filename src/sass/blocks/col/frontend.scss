@@ -1,0 +1,49 @@
+.wp-block-in-2019-col {
+	position: relative;
+	background-position: center center;
+	width: 100%;
+
+	> div {
+		position: relative;
+	}
+
+	&.has-parallax {
+		background-attachment: fixed;
+		@supports (-webkit-overflow-scrolling: touch) {
+			background-attachment: scroll;
+		}
+	}
+
+	&.cover {
+		background-size: cover;
+	}
+
+	&.no-repeat {
+		background-repeat: no-repeat;
+	}
+
+	&.has-background-opacity::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background-color: inherit;
+		opacity: 0.5;
+		z-index: z-index('.wp-block-in-2019-col.has-background-opacity::before');
+	}
+
+	@for $i from 1 through 10 {
+		&.has-background-opacity.has-background-opacity-#{ $i * 10 }::before {
+			opacity: $i * 0.1;
+		}
+	}
+}
+
+[class*='arrow-right']::after,
+[class*='arrow-left']::after {
+	@media (max-width: 992px) {
+		display: none;
+	}
+}

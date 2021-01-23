@@ -1,0 +1,42 @@
+@import '../../node_modules/bootstrap/scss/functions.scss';
+@import '../../node_modules/bootstrap/scss/variables.scss';
+@import '../../node_modules/bootstrap/scss/mixins.scss';
+@import '../../node_modules/bootstrap/scss/utilities';
+@import '../../node_modules/bootstrap/scss/bootstrap-grid.scss';
+@import './fonts';
+@import './elements/headline.scss';
+@import './blocks/**/backend.scss';
+
+.editor-post-title__block.wp-block {
+	max-width: $content-width;
+
+	.editor-post-title__input {
+		font-family: $default-font;
+	}
+}
+
+.editor-block-list__layout.block-editor-block-list__layout {
+	overflow-x: hidden;
+}
+
+.wrapper {
+	@include base-style;
+	margin: 0 auto;
+	padding: 0 15px;
+	max-width: $content-width;
+}
+
+.wp-block {
+	max-width: $content-width;
+	font-family: $default-font;
+
+	&[data-type='in-2019/container'],
+	&[data-type='in-2019/row'],
+	&[data-type='in-2019/section'] {
+		max-width: 100%;
+	}
+
+	&[data-align='full'] {
+		max-width: none;
+	}
+}
